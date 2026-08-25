@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For You ♡</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Pretty fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <!-- Floating decorations -->
+        <div class="flower flower1">🌼</div>
+        <div class="flower flower2">🌻</div>
+        <div class="flower flower3">🌸</div>
+        <div class="flower flower4">🌼</div>
+
+        <div class="tiny-dot dot1"></div>
+        <div class="tiny-dot dot2"></div>
+        <div class="tiny-dot dot3"></div>
+        <div class="tiny-dot dot4"></div>
+
+        <!-- Main content -->
+        <section class="lock-container">
+
+            <div class="moon">☾</div>
+
+            <div class="lock-area">
+
+                <div class="lock">
+                    🔒
+                </div>
+
+                <div class="key">
+                    🗝️
+                </div>
+
+            </div>
+
+            <h1>For You ♡</h1>
+
+            <p class="subtitle">
+                Enter the secret code...
+            </p>
+
+
+            <!-- Password display -->
+            <div class="password-display" id="passwordDisplay">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+
+            <!-- Keypad -->
+            <div class="keypad">
+
+                <button onclick="pressKey('1')">1</button>
+                <button onclick="pressKey('2')">2</button>
+                <button onclick="pressKey('3')">3</button>
+
+                <button onclick="pressKey('4')">4</button>
+                <button onclick="pressKey('5')">5</button>
+                <button onclick="pressKey('6')">6</button>
+
+                <button onclick="pressKey('7')">7</button>
+                <button onclick="pressKey('8')">8</button>
+                <button onclick="pressKey('9')">9</button>
+
+                <button class="empty"></button>
+                <button onclick="pressKey('0')">0</button>
+                <button onclick="deleteKey()">⌫</button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Success message -->
+    <div class="success-screen" id="successScreen">
+
+        <div class="success-box">
+
+            <div class="success-heart">♡</div>
+
+            <h2>Unlocked 💛</h2>
+
+            <p>
+                I made something special just for you.
+            </p>
+
+            <button onclick="openGift()">
+                Open your gift
+            </button>
+
+        </div>
+
+    </div>
+
+
+<script>
+
+let password = "";
+const correctPassword = "2008";
+
+
+function pressKey(number) {
+
+    if (password.length >= 4) return;
+
+    password += number;
+
+    updateDisplay();
+
+    if (password.length === 4) {
+
+        setTimeout(() => {
+
+            if (password === correctPassword) {
+
+                document
+                    .getElementById("successScreen")
+                    .classList.add("show");
+
+            } else {
+
+                password = "";
+
+                updateDisplay();
+
+                document.querySelector(".password-display")
+                    .classList.add("shake");
+
+                setTimeout(() => {
+                    document.querySelector(".password-display")
+                        .classList.remove("shake");
+                }, 400);
+
+            }
+
+        }, 300);
+    }
+}
+
+
+function deleteKey() {
+
+    password = password.slice(0, -1);
+
+    updateDisplay();
+}
+
+
+function updateDisplay() {
+
+    const dots =
+        document.querySelectorAll(".password-display span");
+
+    dots.forEach((dot, index) => {
+
+        if (index < password.length) {
+            dot.classList.add("filled");
+        } else {
+            dot.classList.remove("filled");
+        }
+
+    });
+}
+
+
+function openGift() {
+
+    window.location.href = "gift.html";
+
+}
+
+</script>
+
+</body>
+</html>
