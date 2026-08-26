@@ -483,16 +483,15 @@ body {
 ===================================================== */
 
 .keypad {
-    margin-top: 32px;
+    margin-top: 28px;
 
-    width: 270px;
+    width: 250px;
 
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
-    gap: 9px;
+    gap: 7px;
 
     transition:
         opacity .8s ease,
@@ -1211,7 +1210,7 @@ body {
     }
 
     .keypad {
-        width: 250px;
+        width: 270px;
     }
 
     .key {
