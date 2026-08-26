@@ -1,6 +1,6 @@
-/* =========================================
+/* =====================================================
    RESET
-========================================= */
+===================================================== */
 
 * {
     margin: 0;
@@ -8,346 +8,1213 @@
     box-sizing: border-box;
 }
 
-
-/* =========================================
-   PAGE
-========================================= */
-
 html,
 body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
 }
 
 body {
-    position: relative;
-    background: #fff9e8;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
 }
 
 
-/* =========================================
-   EXACT BACKGROUND IMAGE
-========================================= */
+/* =====================================================
+   MAIN SCREEN
+===================================================== */
 
-.background {
-    position: fixed;
+#lockScreen {
+    position: relative;
 
-    inset: 0;
+    width: 100vw;
+    height: 100vh;
 
-    width: 100%;
-    height: 100%;
+    overflow: hidden;
 
-    background-image: url("background.png");
-
-    background-repeat: no-repeat;
-
-    background-position: center center;
+    background-image:
+        url("chatgpt22.png");
 
     background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =====================================================
+   GOLDEN ATMOSPHERIC LIGHT
+===================================================== */
+
+.golden-glow {
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 221, 112, 0.12),
+            transparent 45%
+        );
+
+    pointer-events: none;
+
+    transition:
+        opacity 2s ease,
+        transform 3s ease;
 
     z-index: 1;
 }
 
 
-/* =========================================
-   PASSWORD SCREEN
-========================================= */
+/* =====================================================
+   LOCK AREA
+===================================================== */
 
-.password-screen {
-    position: fixed;
+.lock-area {
+    position: relative;
 
-    inset: 0;
+    z-index: 10;
 
-    width: 100%;
-    height: 100%;
-
-    z-index: 5;
-
-    pointer-events: none;
-}
-
-
-/* =========================================
-   PASSWORD DOTS
-========================================= */
-
-.password-dots {
-    position: absolute;
-
-    /*
-       Position of the four dots
-       relative to the original 1536 x 1024 image
-    */
-
-    left: 50%;
-    top: 44.4%;
-
-    transform: translateX(-50%);
+    width: 420px;
 
     display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    gap: 17px;
-
-    pointer-events: none;
+    transition:
+        opacity 1.2s ease,
+        transform 1.5s ease,
+        filter 1s ease;
 }
 
-.password-dots span {
-    width: 12px;
-    height: 12px;
+
+/* =====================================================
+   LOCK
+===================================================== */
+
+.lock-wrapper {
+    position: relative;
+
+    width: 180px;
+    height: 220px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =====================================================
+   HEART LOCK
+===================================================== */
+
+.heart-lock {
+    position: relative;
+
+    width: 115px;
+    height: 115px;
+
+    z-index: 4;
+
+    transform: rotate(-45deg);
+
+    filter:
+        drop-shadow(0 8px 10px rgba(126, 83, 15, 0.22));
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        filter 1s ease;
+}
+
+
+/* Heart shape */
+
+.heart-body {
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    left: 8px;
+    top: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffe9a3,
+            #e8a91f
+        );
+
+    border-radius:
+        15px
+        15px
+        20px
+        15px;
+
+    box-shadow:
+        inset 3px 3px 8px rgba(255,255,255,.55),
+        inset -5px -5px 12px rgba(142,92,5,.18);
+
+    overflow: hidden;
+}
+
+
+/* Make heart */
+
+.heart-body::before,
+.heart-body::after {
+    content: "";
+
+    position: absolute;
+
+    width: 58px;
+    height: 58px;
 
     border-radius: 50%;
 
-    background: #a27a38;
+    background:
+        linear-gradient(
+            145deg,
+            #ffe9a3,
+            #e8a91f
+        );
 
-    opacity: 0.9;
+    top: -30px;
+}
 
-    transition:
-        transform 0.15s ease,
-        opacity 0.15s ease;
+.heart-body::before {
+    left: 0;
+}
+
+.heart-body::after {
+    right: 0;
 }
 
 
-/* Empty dots */
+/* =====================================================
+   LOCK SHACKLE
+===================================================== */
 
-.password-dots span.empty {
-    opacity: 0.35;
-}
-
-
-/* =========================================
-   KEYPAD
-========================================= */
-
-.keypad {
+.lock-shackle {
     position: absolute;
 
-    /*
-       Original keypad is approximately
-       centered around this area.
-    */
+    width: 65px;
+    height: 80px;
 
-    left: 50%;
-    top: 47.3%;
+    left: 32px;
+    top: -48px;
 
-    width: 260px;
-    height: 260px;
+    border: 11px solid #c8901d;
 
-    transform: translateX(-50%);
+    border-bottom: none;
 
-    display: grid;
+    border-radius: 50px 50px 0 0;
 
-    grid-template-columns: repeat(3, 80px);
+    z-index: 2;
 
-    grid-template-rows: repeat(4, 58px);
-
-    column-gap: 10px;
-
-    row-gap: 9px;
-
-    justify-content: center;
-
-    pointer-events: auto;
-}
-
-
-/* =========================================
-   INVISIBLE BUTTONS
-========================================= */
-
-.key {
-    width: 80px;
-    height: 58px;
+    transform: rotate(45deg);
 
     background: transparent;
 
-    border: none;
+    box-shadow:
+        inset 2px 2px 4px rgba(255,255,255,.5);
+}
+
+
+.shackle-inner {
+    position: absolute;
+
+    width: 38px;
+    height: 55px;
+
+    left: 2px;
+    top: 8px;
+
+    border: 4px solid rgba(255,235,160,.55);
+
+    border-bottom: none;
+
+    border-radius: 30px 30px 0 0;
+}
+
+
+/* =====================================================
+   KEYHOLE
+===================================================== */
+
+.keyhole {
+    position: absolute;
+
+    left: 38px;
+    top: 35px;
+
+    width: 27px;
+    height: 35px;
+
+    z-index: 10;
+
+    transform: rotate(45deg);
+}
+
+
+.keyhole-circle {
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    left: 2px;
+
+    border-radius: 50%;
+
+    background: #70450d;
+
+    box-shadow:
+        inset 2px 2px 3px rgba(0,0,0,.2);
+}
+
+
+.keyhole-line {
+    position: absolute;
+
+    width: 10px;
+    height: 20px;
+
+    left: 8px;
+    top: 14px;
+
+    background: #70450d;
+
+    border-radius: 2px;
+}
+
+
+/* =====================================================
+   GOLDEN KEY
+===================================================== */
+
+.golden-key {
+    position: absolute;
+
+    right: -15px;
+    top: 5px;
+
+    width: 115px;
+    height: 60px;
+
+    transform: rotate(30deg);
+
+    z-index: 8;
+
+    filter:
+        drop-shadow(0 5px 5px rgba(125,80,0,.2));
+
+    transition:
+        transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.key-ring {
+    position: absolute;
+
+    width: 38px;
+    height: 38px;
+
+    border: 7px solid #d59c1e;
+
+    border-radius: 50%;
+
+    left: 0;
+    top: 8px;
+
+    box-shadow:
+        inset 2px 2px 3px rgba(255,255,255,.5);
+}
+
+
+.key-shaft {
+    position: absolute;
+
+    width: 72px;
+    height: 10px;
+
+    left: 30px;
+    top: 22px;
 
     border-radius: 8px;
 
-    cursor: pointer;
+    background:
+        linear-gradient(
+            to bottom,
+            #ffe69a,
+            #d89d20
+        );
+}
+
+
+.key-teeth {
+    position: absolute;
+
+    right: 0;
+    top: 22px;
+
+    width: 25px;
+    height: 25px;
+}
+
+
+.key-teeth span {
+    position: absolute;
+
+    width: 12px;
+    height: 13px;
+
+    background: #d89d20;
+
+    right: 0;
+}
+
+
+.key-teeth span:first-child {
+    top: 0;
+}
+
+.key-teeth span:last-child {
+    top: 10px;
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.lock-text {
+    text-align: center;
+
+    margin-top: 0;
 
     transition:
-        background 0.15s ease,
-        transform 0.1s ease;
+        opacity .8s ease,
+        transform .8s ease;
 }
 
 
-/*
-   The original buttons are already inside
-   the background image.
+.lock-text h1 {
+    font-size: 29px;
 
-   Therefore these buttons are transparent.
-*/
+    font-weight: 500;
+
+    font-style: italic;
+
+    color: #805615;
+
+    text-shadow:
+        0 1px 1px rgba(255,255,255,.7);
+}
+
+
+.lock-text h1 span {
+    font-size: 25px;
+}
+
+
+.lock-text p {
+    margin-top: 16px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 15px;
+
+    color: #976a1b;
+}
+
+
+/* =====================================================
+   CODE DISPLAY
+===================================================== */
+
+.code-display {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    margin-top: 18px;
+
+    height: 12px;
+}
+
+
+.code-display span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    border: 1px solid rgba(155,108,29,.5);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+.code-display span.active {
+    background: #a36d13;
+
+    transform: scale(1.25);
+
+    box-shadow:
+        0 0 7px rgba(215,157,40,.45);
+}
+
+
+/* =====================================================
+   KEYPAD
+===================================================== */
+
+.keypad {
+    margin-top: 32px;
+
+    width: 270px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 9px;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+
+.key {
+    height: 58px;
+
+    border: 1px solid rgba(180,130,50,.18);
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,250,234,.92),
+            rgba(245,229,194,.85)
+        );
+
+    color: #93651a;
+
+    font-size: 22px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 8px rgba(115,75,10,.13),
+        inset 0 1px 0 rgba(255,255,255,.8);
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
+}
+
 
 .key:hover {
-    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 12px rgba(115,75,10,.18),
+        inset 0 1px 0 rgba(255,255,255,.9);
 }
+
 
 .key:active {
-    background: rgba(180, 130, 50, 0.12);
+    transform: translateY(1px) scale(.96);
 
-    transform: scale(0.96);
+    box-shadow:
+        0 1px 3px rgba(115,75,10,.15);
 }
 
 
-/* Empty bottom-left space */
-
 .key.empty {
+    visibility: hidden;
+}
+
+
+.key.backspace {
+    font-size: 21px;
+}
+
+
+/* =====================================================
+   WRONG CODE
+===================================================== */
+
+.shake {
+    animation: shake .45s ease;
+}
+
+
+@keyframes shake {
+
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+    }
+
+    60% {
+        transform: translateX(-6px);
+    }
+
+    80% {
+        transform: translateX(6px);
+    }
+}
+
+
+/* =====================================================
+   UNLOCKING
+===================================================== */
+
+.unlocking .golden-glow {
+    opacity: 1;
+
+    transform: scale(1.4);
+}
+
+
+.unlocking .golden-key {
+    animation: keyUnlock 1.8s forwards;
+}
+
+
+.unlocking .heart-lock {
+    animation:
+        lockGlow 1.6s ease forwards,
+        lockOpen 2s 1.3s ease forwards;
+}
+
+
+.unlocking .keypad,
+.unlocking .lock-text {
+    opacity: 0;
+
+    transform: translateY(25px);
+
     pointer-events: none;
 }
 
 
-/* =========================================
-   SUCCESS SCREEN
-========================================= */
+@keyframes keyUnlock {
 
-.success-screen {
-    position: fixed;
+    0% {
+        transform: rotate(30deg);
+    }
+
+    35% {
+        transform:
+            rotate(30deg)
+            translateX(-20px);
+    }
+
+    65% {
+        transform:
+            rotate(30deg)
+            translateX(-20px)
+            rotate(-20deg);
+    }
+
+    100% {
+        transform:
+            rotate(30deg)
+            translateX(-20px)
+            rotate(-20deg)
+            translateX(80px);
+    }
+}
+
+
+@keyframes lockGlow {
+
+    0% {
+        filter:
+            drop-shadow(0 8px 10px rgba(126,83,15,.22));
+    }
+
+    50% {
+        filter:
+            drop-shadow(0 0 18px rgba(255,210,70,.8))
+            drop-shadow(0 0 45px rgba(255,196,35,.5));
+    }
+
+    100% {
+        filter:
+            drop-shadow(0 0 35px rgba(255,216,90,.95));
+    }
+}
+
+
+@keyframes lockOpen {
+
+    0% {
+        transform: rotate(-45deg);
+    }
+
+    40% {
+        transform:
+            rotate(-45deg)
+            scale(1.12);
+    }
+
+    100% {
+        transform:
+            rotate(-45deg)
+            scale(0)
+            translateY(-40px);
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   LIGHT BURST
+===================================================== */
+
+.light-burst {
+    position: absolute;
+
+    left: 50%;
+    top: 40%;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: rgba(255,239,172,.9);
+
+    transform:
+        translate(-50%,-50%)
+        scale(0);
+
+    opacity: 0;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+
+.unlocking .light-burst {
+    animation: burst 2.4s 1.7s ease forwards;
+}
+
+
+@keyframes burst {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(-50%,-50%)
+            scale(0);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: .7;
+
+        transform:
+            translate(-50%,-50%)
+            scale(35);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(60);
+    }
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+#particles {
+    position: absolute;
 
     inset: 0;
 
-    z-index: 20;
+    z-index: 25;
+
+    pointer-events: none;
+}
+
+
+.particle {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #e9b62d;
+
+    box-shadow:
+        0 0 8px rgba(255,211,79,.8);
+
+    animation:
+        particleFloat
+        var(--duration)
+        ease-out
+        forwards;
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+    }
+}
+
+
+/* =====================================================
+   UNLOCK MESSAGE
+===================================================== */
+
+.unlock-message {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.85);
+
+    width: 500px;
+
+    text-align: center;
+
+    z-index: 50;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.unlock-message .unlock-icon {
+    font-size: 38px;
+
+    color: #c28a19;
+
+    margin-bottom: 18px;
+}
+
+
+.unlock-message h2 {
+    font-size: 36px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #79500f;
+}
+
+
+.unlock-message p {
+    margin-top: 12px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    color: #a17427;
+}
+
+
+.show-unlock-message {
+    animation:
+        messageAppear
+        2.5s
+        ease
+        forwards;
+}
+
+
+@keyframes messageAppear {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.85);
+    }
+
+    20% {
+        opacity: 1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-55%)
+            scale(1.04);
+    }
+}
+
+
+/* =====================================================
+   COME INSIDE
+===================================================== */
+
+.come-inside {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 600px;
+
+    text-align: center;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.9);
+
+    opacity: 0;
+
+    z-index: 60;
+
+    pointer-events: none;
+}
+
+
+.come-inside .small-key {
+    font-size: 35px;
+
+    margin-bottom: 18px;
+
+    animation: tinyFloat 2s ease-in-out infinite;
+}
+
+
+.come-inside h2 {
+    font-size: 42px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #79500f;
+}
+
+
+.come-inside p {
+    margin-top: 14px;
+
+    font-family: Arial, sans-serif;
+
+    color: #9b712b;
+
+    font-size: 15px;
+}
+
+
+.show-come-inside {
+    animation:
+        comeInsideAppear
+        2.8s
+        ease
+        forwards;
+}
+
+
+@keyframes comeInsideAppear {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+    }
+
+    20% {
+        opacity: 1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-52%)
+            scale(1.03);
+    }
+}
+
+
+@keyframes tinyFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =====================================================
+   SECRET WORLD
+===================================================== */
+
+.secret-world {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 100;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
-
-    background: rgba(255, 248, 226, 0.92);
 
     opacity: 0;
 
-    visibility: hidden;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,244,200,.88),
+            rgba(255,235,170,.72)
+        );
+
+    transform: scale(1.08);
 
     transition:
-        opacity 0.5s ease,
-        visibility 0.5s ease;
+        opacity 2s ease,
+        transform 2.5s ease;
 }
 
 
-/* Show success */
-
-.success-screen.show {
+.secret-world.visible {
     opacity: 1;
 
-    visibility: visible;
+    pointer-events: auto;
+
+    transform: scale(1);
 }
 
 
-/* =========================================
-   SUCCESS BOX
-========================================= */
-
-.success-box {
+.world-content {
     text-align: center;
 
-    padding: 45px 55px;
+    max-width: 650px;
 
-    border-radius: 25px;
-
-    background: rgba(255, 252, 239, 0.96);
-
-    box-shadow:
-        0 15px 50px rgba(142, 105, 42, 0.18);
-
-    border: 1px solid rgba(170, 130, 55, 0.15);
+    padding: 30px;
 }
 
 
-.success-box .heart {
-    font-size: 60px;
+.world-symbol {
+    font-size: 50px;
 
-    color: #b68735;
+    color: #bd841b;
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 
-.success-box h1 {
-    font-family: Georgia, serif;
-
-    font-size: 38px;
-
-    font-weight: normal;
-
-    color: #805b25;
-
-    margin-bottom: 10px;
-}
-
-
-.success-box p {
+.little-label {
     font-family: Arial, sans-serif;
 
-    color: #97713a;
+    letter-spacing: 5px;
 
-    font-size: 17px;
+    font-size: 11px;
 
-    margin-bottom: 25px;
+    color: #a97a28;
+
+    margin-bottom: 18px;
 }
 
 
-/* =========================================
-   CONTINUE BUTTON
-========================================= */
+.world-content h2 {
+    font-size: 52px;
 
-#continueButton {
-    padding: 12px 30px;
+    line-height: 1.15;
 
-    border: none;
+    font-weight: 400;
 
-    border-radius: 20px;
+    font-style: italic;
 
-    background: #b68b42;
+    color: #75500f;
+}
 
-    color: white;
+
+.world-description {
+    margin-top: 22px;
+
+    font-family: Arial, sans-serif;
+
+    color: #96702f;
 
     font-size: 15px;
 
+    line-height: 1.7;
+}
+
+
+.enter-world {
+    margin-top: 32px;
+
+    padding: 14px 28px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(161,113,29,.3);
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff2bf,
+            #e9bd52
+        );
+
+    color: #754d0c;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
     cursor: pointer;
 
-    transition: 0.2s ease;
+    box-shadow:
+        0 6px 20px rgba(132,92,20,.15);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
-#continueButton:hover {
-    background: #9d722e;
 
-    transform: translateY(-2px);
+.enter-world:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(132,92,20,.2);
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
 @media (max-width: 600px) {
 
+    #lockScreen {
+        background-position: center;
+    }
+
+    .lock-area {
+        width: 100%;
+
+        transform: scale(.88);
+    }
+
+    .unlock-message,
+    .come-inside {
+        width: 90%;
+    }
+
+    .unlock-message h2 {
+        font-size: 30px;
+    }
+
+    .come-inside h2 {
+        font-size: 34px;
+    }
+
+    .world-content h2 {
+        font-size: 38px;
+    }
+
     .keypad {
-        width: 210px;
-
-        grid-template-columns: repeat(3, 64px);
-
-        grid-template-rows: repeat(4, 48px);
-
-        column-gap: 8px;
-
-        row-gap: 7px;
+        width: 250px;
     }
 
     .key {
-        width: 64px;
-        height: 48px;
+        height: 54px;
     }
-
-    .password-dots {
-        gap: 13px;
-    }
-
-    .password-dots span {
-        width: 9px;
-        height: 9px;
-    }
-
 }

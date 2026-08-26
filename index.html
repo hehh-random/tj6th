@@ -4,31 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>...</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <!-- EXACT BACKGROUND -->
-    <div class="background"></div>
-
-    <!-- Your content can go here -->
-    <div class="content">
-        
-        
-        <h1>For You ♡</h1>
-        <p>Enter the secret code...</p>
-    
-
-    </div>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>For You ♡</title>
 
     <link rel="stylesheet" href="style.css">
@@ -36,68 +11,167 @@
 
 <body>
 
-    <!-- Background -->
-    <div class="background"></div>
+    <!-- =========================================
+         MAIN SECRET LOCK SCREEN
+    ========================================== -->
+
+    <main id="lockScreen">
+
+        <!-- Background atmosphere -->
+        <div class="golden-glow"></div>
+        <div class="light-burst"></div>
+
+        <!-- Extra floating particles -->
+        <div id="particles"></div>
 
 
-    <!-- Password interface -->
-    <main class="password-screen">
+        <!-- =====================================
+             LOCK
+        ====================================== -->
 
-        <!-- Password dots -->
-        <div class="password-dots" id="passwordDots">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="lock-area" id="lockArea">
+
+            <div class="lock-wrapper">
+
+                <!-- Heart lock -->
+                <div class="heart-lock" id="heartLock">
+
+                    <div class="lock-shackle">
+                        <div class="shackle-inner"></div>
+                    </div>
+
+                    <div class="heart-body">
+
+                        <div class="keyhole">
+                            <div class="keyhole-circle"></div>
+                            <div class="keyhole-line"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Golden key -->
+                <div class="golden-key" id="goldenKey">
+
+                    <div class="key-ring"></div>
+
+                    <div class="key-shaft"></div>
+
+                    <div class="key-teeth">
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Text -->
+            <div class="lock-text">
+
+                <h1>For You <span>♡</span></h1>
+
+                <p id="instruction">
+                    Enter the secret code...
+                </p>
+
+                <div class="code-display" id="codeDisplay">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 KEYPAD
+            ====================================== -->
+
+            <div class="keypad" id="keypad">
+
+                <button class="key" data-number="1">1</button>
+                <button class="key" data-number="2">2</button>
+                <button class="key" data-number="3">3</button>
+
+                <button class="key" data-number="4">4</button>
+                <button class="key" data-number="5">5</button>
+                <button class="key" data-number="6">6</button>
+
+                <button class="key" data-number="7">7</button>
+                <button class="key" data-number="8">8</button>
+                <button class="key" data-number="9">9</button>
+
+                <button class="key empty"></button>
+                <button class="key" data-number="0">0</button>
+                <button class="key backspace" id="backspace">⌫</button>
+
+            </div>
+
         </div>
 
 
-        <!-- Invisible keypad -->
-        <div class="keypad">
+        <!-- =========================================
+             UNLOCK MESSAGE
+        ========================================== -->
 
-            <!-- Row 1 -->
-            <button class="key" data-number="1"></button>
-            <button class="key" data-number="2"></button>
-            <button class="key" data-number="3"></button>
+        <div class="unlock-message" id="unlockMessage">
 
-            <!-- Row 2 -->
-            <button class="key" data-number="4"></button>
-            <button class="key" data-number="5"></button>
-            <button class="key" data-number="6"></button>
+            <div class="unlock-icon">✦</div>
 
-            <!-- Row 3 -->
-            <button class="key" data-number="7"></button>
-            <button class="key" data-number="8"></button>
-            <button class="key" data-number="9"></button>
+            <h2>You found the key.</h2>
 
-            <!-- Row 4 -->
-            <button class="key empty"></button>
-            <button class="key" data-number="0"></button>
-            <button class="key" id="deleteButton"></button>
+            <p>Some things are worth unlocking.</p>
 
         </div>
+
+
+        <!-- =========================================
+             COME INSIDE
+        ========================================== -->
+
+        <div class="come-inside" id="comeInside">
+
+            <div class="small-key">🔑</div>
+
+            <h2>Come inside...</h2>
+
+            <p>There's something waiting for you.</p>
+
+        </div>
+
+
+        <!-- =========================================
+             SECRET WORLD
+        ========================================== -->
+
+        <section class="secret-world" id="secretWorld">
+
+            <div class="world-content">
+
+                <div class="world-symbol">☾</div>
+
+                <p class="little-label">WELCOME</p>
+
+                <h2>A little world<br>made just for you.</h2>
+
+                <p class="world-description">
+                    Every little corner holds something waiting to be discovered.
+                </p>
+
+                <button class="enter-world" id="enterWorld">
+                    Enter the garden ✦
+                </button>
+
+            </div>
+
+        </section>
 
     </main>
-
-
-    <!-- Success message -->
-    <div class="success-screen" id="successScreen">
-
-        <div class="success-box">
-
-            <div class="heart">♡</div>
-
-            <h1>Welcome ♡</h1>
-
-            <p>You found the secret.</p>
-
-            <button id="continueButton">
-                Continue
-            </button>
-
-        </div>
-
-    </div>
 
 
     <script src="script.js"></script>
