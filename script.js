@@ -48,12 +48,65 @@ const particles =
 
 
 /* =====================================================
+   GARDEN ELEMENTS
+===================================================== */
+
+const gardenCreatures =
+    document.getElementById("gardenCreatures");
+
+const secretCounter =
+    document.getElementById("secretCount");
+
+const creatureMessage =
+    document.getElementById("creatureMessage");
+
+const creatureMessageText =
+    document.getElementById("creatureMessageText");
+
+
+/* =====================================================
    STATE
 ===================================================== */
 
 let enteredCode = "";
 
 let isUnlocking = false;
+
+let secretsFound = 0;
+
+let specialIndexes = [];
+
+
+/* =====================================================
+   GARDEN SETTINGS
+===================================================== */
+
+const TOTAL_BUTTERFLIES = 10;
+
+const TOTAL_FIREFLIES = 10;
+
+const TOTAL_SPECIAL = 6;
+
+
+/* =====================================================
+   SECRET MESSAGES
+===================================================== */
+
+const secretMessages = [
+
+    "A tiny reminder that you're special. ✦",
+
+    "Some little moments deserve to be remembered forever.",
+
+    "If this little light found you, maybe you needed it today.",
+
+    "There are beautiful things hiding in the smallest moments.",
+
+    "Keep this little secret somewhere in your heart. ♡",
+
+    "You found something that wasn't meant to be found easily."
+
+];
 
 
 /* =====================================================
@@ -86,9 +139,13 @@ numberButtons.forEach(button => {
 
 function addNumber(number) {
 
-    if (enteredCode.length >= SECRET_CODE.length) {
+    if (
+        enteredCode.length >=
+        SECRET_CODE.length
+    ) {
         return;
     }
+
 
     enteredCode += number;
 
@@ -96,13 +153,19 @@ function addNumber(number) {
 
 
     /*
-        Automatically check once the
-        correct number of digits is entered.
+        Automatically check code when
+        enough digits have been entered.
     */
 
-    if (enteredCode.length === SECRET_CODE.length) {
+    if (
+        enteredCode.length ===
+        SECRET_CODE.length
+    ) {
 
-        setTimeout(checkCode, 250);
+        setTimeout(
+            checkCode,
+            250
+        );
 
     }
 
@@ -113,18 +176,27 @@ function addNumber(number) {
    BACKSPACE
 ===================================================== */
 
-document
-    .getElementById("backspace")
-    .addEventListener("click", () => {
+const backspace =
+    document.getElementById("backspace");
 
-        if (isUnlocking) return;
 
-        enteredCode =
-            enteredCode.slice(0, -1);
+if (backspace) {
 
-        updateDisplay();
+    backspace.addEventListener(
+        "click",
+        () => {
 
-    });
+            if (isUnlocking) return;
+
+            enteredCode =
+                enteredCode.slice(0, -1);
+
+            updateDisplay();
+
+        }
+    );
+
+}
 
 
 /* =====================================================
@@ -136,9 +208,13 @@ function updateDisplay() {
     const dots =
         codeDisplay.querySelectorAll("span");
 
+
     dots.forEach((dot, index) => {
 
-        if (index < enteredCode.length) {
+        if (
+            index <
+            enteredCode.length
+        ) {
 
             dot.classList.add("active");
 
@@ -159,7 +235,10 @@ function updateDisplay() {
 
 function checkCode() {
 
-    if (enteredCode === SECRET_CODE) {
+    if (
+        enteredCode ===
+        SECRET_CODE
+    ) {
 
         unlock();
 
@@ -178,7 +257,10 @@ function checkCode() {
 
 function wrongCode() {
 
-    lockArea.classList.remove("shake");
+    lockArea.classList.remove(
+        "shake"
+    );
+
 
     /*
         Force browser to restart animation.
@@ -186,7 +268,10 @@ function wrongCode() {
 
     void lockArea.offsetWidth;
 
-    lockArea.classList.add("shake");
+
+    lockArea.classList.add(
+        "shake"
+    );
 
 
     instruction.textContent =
@@ -203,8 +288,10 @@ function wrongCode() {
 
         updateDisplay();
 
+
         instruction.textContent =
             "Enter the secret code...";
+
 
         instruction.style.color =
             "";
@@ -226,10 +313,12 @@ function unlock() {
 
 
     /*
-        Add the main unlocking class.
+        Add unlocking class.
     */
 
-    lockScreen.classList.add("unlocking");
+    lockScreen.classList.add(
+        "unlocking"
+    );
 
 
     /*
@@ -240,8 +329,7 @@ function unlock() {
 
 
     /*
-        First message:
-        "You found the key."
+        First message.
     */
 
     setTimeout(() => {
@@ -254,8 +342,7 @@ function unlock() {
 
 
     /*
-        Second message:
-        "Come inside..."
+        Second message.
     */
 
     setTimeout(() => {
@@ -268,8 +355,7 @@ function unlock() {
 
 
     /*
-        Finally reveal the actual
-        secret world.
+        Reveal secret world.
     */
 
     setTimeout(() => {
@@ -292,7 +378,11 @@ function createParticles() {
     const amount = 70;
 
 
-    for (let i = 0; i < amount; i++) {
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
 
         const particle =
             document.createElement("div");
@@ -310,6 +400,7 @@ function createParticles() {
         particle.style.left =
             `calc(50% + ${random(-50, 50)}px)`;
 
+
         particle.style.top =
             `calc(40% + ${random(-50, 50)}px)`;
 
@@ -322,6 +413,7 @@ function createParticles() {
             "--x",
             `${random(-350, 350)}px`
         );
+
 
         particle.style.setProperty(
             "--y",
@@ -342,8 +434,10 @@ function createParticles() {
         const size =
             random(3, 7);
 
+
         particle.style.width =
             `${size}px`;
+
 
         particle.style.height =
             `${size}px`;
@@ -382,9 +476,8 @@ function random(min, max) {
 
 
 /* =====================================================
-   ENTER WORLD
+   ENTER SECRET WORLD
 ===================================================== */
-
 
 enterWorld.addEventListener(
     "click",
@@ -392,6 +485,7 @@ enterWorld.addEventListener(
 
         enterWorld.textContent =
             "The garden is waking...";
+
 
         gardenCreatures.classList.add(
             "garden-active"
@@ -402,94 +496,47 @@ enterWorld.addEventListener(
 
 
 /* =====================================================
-   MAGICAL GARDEN CREATURES
-===================================================== */
-
-
-/* =====================================================
-   SETTINGS
-===================================================== */
-
-const TOTAL_BUTTERFLIES = 10;
-const TOTAL_FIREFLIES = 10;
-
-const TOTAL_SPECIAL = 6;
-
-
-/* =====================================================
-   ELEMENTS
-===================================================== */
-
-const gardenCreatures =
-    document.getElementById("gardenCreatures");
-
-const secretCounter =
-    document.getElementById("secretCount");
-
-const creatureMessage =
-    document.getElementById("creatureMessage");
-
-const creatureMessageText =
-    document.getElementById("creatureMessageText");
-
-
-/* =====================================================
-   SECRET MESSAGES
-===================================================== */
-
-const secretMessages = [
-
-    "A tiny reminder that you're special. ✦",
-
-    "Some little moments deserve to be remembered forever.",
-
-    "If this little light found you, maybe you needed it today.",
-
-    "There are beautiful things hiding in the smallest moments.",
-
-    "Keep this little secret somewhere in your heart. ♡",
-
-    "You found something that wasn't meant to be found easily."
-
-];
-
-
-/* =====================================================
-   STATE
-===================================================== */
-
-let secretsFound = 0;
-
-let specialIndexes = [];
-
-
-/* =====================================================
-   CHOOSE 6 RANDOM SPECIAL CREATURES
+   CHOOSE SPECIAL CREATURES
 ===================================================== */
 
 function chooseSpecialCreatures(total) {
 
     const indexes = [];
 
-    while (indexes.length < TOTAL_SPECIAL) {
+
+    while (
+        indexes.length <
+        TOTAL_SPECIAL
+    ) {
 
         const randomIndex =
-            Math.floor(Math.random() * total);
+            Math.floor(
+                Math.random() * total
+            );
 
-        if (!indexes.includes(randomIndex)) {
 
-            indexes.push(randomIndex);
+        if (
+            !indexes.includes(
+                randomIndex
+            )
+        ) {
+
+            indexes.push(
+                randomIndex
+            );
 
         }
 
     }
 
+
     return indexes;
+
 }
 
 
 /* =====================================================
-   CREATE CREATURES
+   CREATE GARDEN CREATURES
 ===================================================== */
 
 function createGardenCreatures() {
@@ -499,8 +546,15 @@ function createGardenCreatures() {
         TOTAL_FIREFLIES;
 
 
+    /*
+        Choose which six creatures
+        will contain secrets.
+    */
+
     specialIndexes =
-        chooseSpecialCreatures(totalCreatures);
+        chooseSpecialCreatures(
+            totalCreatures
+        );
 
 
     let creatureIndex = 0;
@@ -516,8 +570,8 @@ function createGardenCreatures() {
         i++
     ) {
 
-const butterfly =
-    document.createElement("div");
+        const butterfly =
+            document.createElement("div");
 
 
         butterfly.classList.add(
@@ -525,58 +579,50 @@ const butterfly =
         );
 
 
-<<<<<<< HEAD
-/* =====================================================
-   BUTTERFLY PARTS
-===================================================== */
-=======
         /* ---------------------------------------------
            WINGS
         --------------------------------------------- */
->>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-const leftWing =
-    document.createElement("div");
-
-leftWing.classList.add(
-    "butterfly-wing",
-    "left"
-);
+        const leftWing =
+            document.createElement("div");
 
 
-const rightWing =
-    document.createElement("div");
-
-rightWing.classList.add(
-    "butterfly-wing",
-    "right"
-);
+        leftWing.classList.add(
+            "butterfly-wing",
+            "left"
+        );
 
 
-const body =
-    document.createElement("div");
+        const rightWing =
+            document.createElement("div");
 
-body.classList.add(
-    "butterfly-body"
-);
 
-<<<<<<< HEAD
+        rightWing.classList.add(
+            "butterfly-wing",
+            "right"
+        );
 
-butterfly.appendChild(leftWing);
-butterfly.appendChild(rightWing);
-butterfly.appendChild(body);
 
-        /*
-            Random position.
-        */
-=======
+        /* ---------------------------------------------
+           BODY
+        --------------------------------------------- */
+
+        const body =
+            document.createElement("div");
+
+
+        body.classList.add(
+            "butterfly-body"
+        );
+
+
         /* ---------------------------------------------
            ANTENNAE
         --------------------------------------------- */
->>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
         const leftAntenna =
             document.createElement("div");
+
 
         leftAntenna.classList.add(
             "antenna",
@@ -587,14 +633,36 @@ butterfly.appendChild(body);
         const rightAntenna =
             document.createElement("div");
 
+
         rightAntenna.classList.add(
             "antenna",
             "right"
         );
 
 
-        butterfly.appendChild(leftAntenna);
-        butterfly.appendChild(rightAntenna);
+        /* ---------------------------------------------
+           ADD PARTS
+        --------------------------------------------- */
+
+        butterfly.appendChild(
+            leftWing
+        );
+
+        butterfly.appendChild(
+            rightWing
+        );
+
+        butterfly.appendChild(
+            body
+        );
+
+        butterfly.appendChild(
+            leftAntenna
+        );
+
+        butterfly.appendChild(
+            rightAntenna
+        );
 
 
         /* ---------------------------------------------
@@ -643,18 +711,14 @@ butterfly.appendChild(body);
            RANDOM SIZE
         --------------------------------------------- */
 
-<<<<<<< HEAD
-const size =
-    random(.75, 1.25);
-=======
         const size =
             random(.75, 1.2);
->>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-butterfly.style.setProperty(
-    "--size",
-    size
-);
+
+        butterfly.style.setProperty(
+            "--size",
+            size
+        );
 
 
         /* ---------------------------------------------
@@ -667,17 +731,10 @@ butterfly.style.setProperty(
             )
         ) {
 
-<<<<<<< HEAD
-makeSpecial(
-    butterfly,
-    secretsFound
-);
-=======
             makeSpecial(
                 butterfly,
                 creatureIndex
             );
->>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
         }
 
@@ -760,37 +817,27 @@ makeSpecial(
         const size =
             random(.8, 1.35);
 
+
         firefly.style.scale =
             size;
 
 
-<<<<<<< HEAD
-=======
         /* ---------------------------------------------
            SPECIAL?
         --------------------------------------------- */
->>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-            if (
-                specialIndexes.includes(creatureIndex)
-) {
+        if (
+            specialIndexes.includes(
+                creatureIndex
+            )
+        ) {
 
-<<<<<<< HEAD
-    const specialNumber =
-        specialIndexes.indexOf(creatureIndex);
-=======
             makeSpecial(
                 firefly,
                 creatureIndex
             );
->>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-    makeSpecial(
-        butterfly,
-        specialNumber
-    );
-
-}
+        }
 
 
         gardenCreatures.appendChild(
@@ -824,8 +871,8 @@ function makeSpecial(
 
 
     /*
-       Each special creature gets its own
-       message instead of using secretsFound.
+        Give this creature its
+        own secret message.
     */
 
     creature.dataset.messageIndex =
@@ -879,7 +926,8 @@ function revealSecret(
 ) {
 
     if (
-        secretsFound >= TOTAL_SPECIAL
+        secretsFound >=
+        TOTAL_SPECIAL
     ) {
 
         return;
@@ -944,7 +992,8 @@ function revealSecret(
     --------------------------------------------- */
 
     if (
-        secretsFound === TOTAL_SPECIAL
+        secretsFound ===
+        TOTAL_SPECIAL
     ) {
 
         setTimeout(
@@ -987,6 +1036,3 @@ function allSecretsFound() {
 ===================================================== */
 
 createGardenCreatures();
-
-
-
