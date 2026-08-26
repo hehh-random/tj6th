@@ -385,24 +385,530 @@ function random(min, max) {
    ENTER WORLD
 ===================================================== */
 
+
 enterWorld.addEventListener(
     "click",
     () => {
 
-        /*
-            THIS is where your actual
-            website begins.
-
-            For now we're just changing
-            the text.
-
-            Later you can connect this
-            to your Memory Garden / Book /
-            Letters / etc.
-        */
-
         enterWorld.textContent =
             "The garden is waiting...";
 
+        /*
+            Start the magical creatures
+            when the garden is entered.
+        */
+
+        gardenCreatures.classList.add(
+            "garden-active"
+        );
+
     }
 );
+
+
+/* =====================================================
+   MAGICAL GARDEN CREATURES
+===================================================== */
+
+
+/* -----------------------------------------------------
+   SETTINGS
+----------------------------------------------------- */
+
+const TOTAL_BUTTERFLIES = 10;
+const TOTAL_FIREFLIES = 10;
+
+const TOTAL_SPECIAL = 6;
+
+
+/* -----------------------------------------------------
+   ELEMENTS
+----------------------------------------------------- */
+
+const gardenCreatures =
+    document.getElementById("gardenCreatures");
+
+const secretCounter =
+    document.getElementById("secretCount");
+
+const creatureMessage =
+    document.getElementById("creatureMessage");
+
+const creatureMessageText =
+    document.getElementById("creatureMessageText");
+
+
+/* -----------------------------------------------------
+   SECRET MESSAGES
+----------------------------------------------------- */
+
+const secretMessages = [
+
+    "A tiny reminder that you're special. ✦",
+
+    "Some little moments deserve to be remembered forever.",
+
+    "If this little light found you, maybe you needed it today.",
+
+    "There are beautiful things hiding in the smallest moments.",
+
+    "Keep this little secret somewhere in your heart. ♡",
+
+    "You found something that wasn't meant to be found easily."
+
+];
+
+
+/* -----------------------------------------------------
+   STATE
+----------------------------------------------------- */
+
+let secretsFound = 0;
+
+let specialIndexes = [];
+
+
+/* -----------------------------------------------------
+   PICK 6 RANDOM SPECIAL CREATURES
+----------------------------------------------------- */
+
+function chooseSpecialCreatures(total) {
+
+    const indexes = [];
+
+    while (indexes.length < TOTAL_SPECIAL) {
+
+        const randomIndex =
+            Math.floor(Math.random() * total);
+
+        if (!indexes.includes(randomIndex)) {
+
+            indexes.push(randomIndex);
+
+        }
+
+    }
+
+    return indexes;
+
+}
+
+
+/* -----------------------------------------------------
+   CREATE CREATURES
+----------------------------------------------------- */
+
+function createGardenCreatures() {
+
+    const totalCreatures =
+        TOTAL_BUTTERFLIES +
+        TOTAL_FIREFLIES;
+
+
+    specialIndexes =
+        chooseSpecialCreatures(totalCreatures);
+
+
+    let creatureIndex = 0;
+
+
+    /* ---------------------------------------------
+       BUTTERFLIES
+    --------------------------------------------- */
+
+    for (
+        let i = 0;
+        i < TOTAL_BUTTERFLIES;
+        i++
+    ) {
+
+        const butterfly =
+            document.createElement("div");
+
+
+        butterfly.classList.add(
+            "butterfly"
+        );
+
+
+        /*
+            Create wings.
+        */
+
+        const leftWing =
+            document.createElement("div");
+
+        leftWing.classList.add(
+            "butterfly-wing",
+            "left"
+        );
+
+
+        const rightWing =
+            document.createElement("div");
+
+        rightWing.classList.add(
+            "butterfly-wing",
+            "right"
+        );
+
+
+        butterfly.appendChild(leftWing);
+        butterfly.appendChild(rightWing);
+
+
+        /*
+            Random position.
+        */
+
+        butterfly.style.top =
+            `${random(10, 85)}%`;
+
+
+        butterfly.style.setProperty(
+            "--start-y",
+            `${random(-50, 50)}px`
+        );
+
+
+        butterfly.style.setProperty(
+            "--end-y",
+            `${random(-120, 120)}px`
+        );
+
+
+        butterfly.style.setProperty(
+            "--angle",
+            `${random(-12, 12)}deg`
+        );
+
+
+        /*
+            Random movement speed.
+        */
+
+        butterfly.style.setProperty(
+            "--fly-duration",
+            `${random(16, 28)}s`
+        );
+
+
+        butterfly.style.setProperty(
+            "--delay",
+            `${random(-25, 0)}s`
+        );
+
+
+        /*
+            Random size.
+        */
+
+        const size =
+            random(.65, 1.15);
+
+        butterfly.style.scale =
+            size;
+
+
+        /*
+            Decide whether special.
+        */
+
+        if (
+            specialIndexes.includes(
+                creatureIndex
+            )
+        ) {
+
+            makeSpecial(
+                butterfly,
+                secretsFound
+            );
+
+        }
+
+
+        gardenCreatures.appendChild(
+            butterfly
+        );
+
+
+        creatureIndex++;
+
+    }
+
+
+    /* ---------------------------------------------
+       FIREFLIES
+    --------------------------------------------- */
+
+    for (
+        let i = 0;
+        i < TOTAL_FIREFLIES;
+        i++
+    ) {
+
+        const firefly =
+            document.createElement("div");
+
+
+        firefly.classList.add(
+            "firefly"
+        );
+
+
+        /*
+            Random position.
+        */
+
+        firefly.style.top =
+            `${random(15, 90)}%`;
+
+
+        firefly.style.setProperty(
+            "--start-y",
+            `${random(-60, 60)}px`
+        );
+
+
+        firefly.style.setProperty(
+            "--end-y",
+            `${random(-140, 140)}px`
+        );
+
+
+        /*
+            Random movement.
+        */
+
+        firefly.style.setProperty(
+            "--fly-duration",
+            `${random(18, 32)}s`
+        );
+
+
+        firefly.style.setProperty(
+            "--glow-duration",
+            `${random(1.5, 3.5)}s`
+        );
+
+
+        firefly.style.setProperty(
+            "--delay",
+            `${random(-30, 0)}s`
+        );
+
+
+        /*
+            Random size.
+        */
+
+        const size =
+            random(.6, 1.3);
+
+        firefly.style.scale =
+            size;
+
+
+        /*
+            Special?
+        */
+
+        if (
+            specialIndexes.includes(
+                creatureIndex
+            )
+        ) {
+
+            makeSpecial(
+                firefly,
+                secretsFound
+            );
+
+        }
+
+
+        gardenCreatures.appendChild(
+            firefly
+        );
+
+
+        creatureIndex++;
+
+    }
+
+}
+
+
+/* -----------------------------------------------------
+   MAKE SPECIAL
+----------------------------------------------------- */
+
+function makeSpecial(
+    creature,
+    messageIndex
+) {
+
+    creature.classList.add(
+        "special-creature"
+    );
+
+
+    creature.dataset.special =
+        "true";
+
+
+    /*
+        Clicking special creature.
+    */
+
+    creature.addEventListener(
+        "click",
+        () => {
+
+            if (
+                creature.classList.contains(
+                    "creature-found"
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            revealSecret(
+                creature,
+                messageIndex
+            );
+
+        }
+    );
+
+}
+
+
+/* -----------------------------------------------------
+   REVEAL SECRET
+----------------------------------------------------- */
+
+function revealSecret(
+    creature,
+    messageIndex
+) {
+
+    if (
+        secretsFound >= TOTAL_SPECIAL
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+        Increase counter.
+    */
+
+    secretsFound++;
+
+
+    secretCounter.textContent =
+        secretsFound;
+
+
+    /*
+        Glow + disappear.
+    */
+
+    creature.classList.add(
+        "creature-found"
+    );
+
+
+    /*
+        Choose message.
+    */
+
+    const message =
+        secretMessages[
+            messageIndex %
+            secretMessages.length
+        ];
+
+
+    creatureMessageText.textContent =
+        message;
+
+
+    /*
+        Restart message animation.
+    */
+
+    creatureMessage.classList.remove(
+        "show"
+    );
+
+
+    void creatureMessage.offsetWidth;
+
+
+    creatureMessage.classList.add(
+        "show"
+    );
+
+
+    /*
+        When all six are discovered.
+    */
+
+    if (
+        secretsFound === TOTAL_SPECIAL
+    ) {
+
+        setTimeout(
+            allSecretsFound,
+            4000
+        );
+
+    }
+
+}
+
+
+/* -----------------------------------------------------
+   ALL SECRETS FOUND
+----------------------------------------------------- */
+
+function allSecretsFound() {
+
+    creatureMessageText.textContent =
+        "You found all six little secrets... ✦";
+
+
+    creatureMessage.classList.remove(
+        "show"
+    );
+
+
+    void creatureMessage.offsetWidth;
+
+
+    creatureMessage.classList.add(
+        "show"
+    );
+
+
+    /*
+        Later we can use this to unlock
+        the next part of your garden.
+    */
+
+}
+
+
+/* -----------------------------------------------------
+   START CREATURES
+----------------------------------------------------- */
+
+createGardenCreatures();
