@@ -2006,86 +2006,87 @@ body {
 }
 
 
+
 /* =====================================================
-   CREATURE MESSAGE
+   CREATURE MESSAGE - VISIBLE POPUP
 ===================================================== */
 
 #creatureMessage {
-
     position: fixed;
 
     left: 50%;
     top: 50%;
 
-    width: min(520px, 86vw);
+    width: min(520px, 85vw);
 
-    padding: 30px 32px;
+    padding: 32px 30px;
 
-    transform:
-        translate(-50%, -50%)
-        scale(.85);
+    transform: translate(-50%, -50%) scale(0.8);
 
     text-align: center;
 
-    z-index: 9999;
+    z-index: 99999;
 
     opacity: 0;
 
+    visibility: hidden;
+
     pointer-events: none;
 
-    border-radius: 22px;
+    border-radius: 24px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(55, 34, 7, .94),
-            rgba(100, 62, 10, .92)
-        );
+    background: rgba(45, 27, 5, 0.96);
 
-    border:
-        1px solid rgba(255,225,130,.55);
+    border: 2px solid rgba(255, 221, 120, 0.75);
 
     box-shadow:
-        0 25px 70px rgba(20,12,2,.45),
-        0 0 35px rgba(255,210,70,.2),
-        inset 0 1px 0 rgba(255,245,190,.25);
+        0 20px 70px rgba(0, 0, 0, 0.55),
+        0 0 30px rgba(255, 210, 70, 0.35),
+        inset 0 1px 0 rgba(255, 245, 190, 0.3);
 
     backdrop-filter: blur(12px);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        visibility 0.35s ease;
 }
 
 
 /* =====================================================
-   SHOW MESSAGE
+   MESSAGE VISIBLE
 ===================================================== */
 
 #creatureMessage.show {
+    opacity: 1;
 
-    animation:
-        creatureMessageAppear
-        3.8s
-        ease forwards;
+    visibility: visible;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
 }
 
 
 /* =====================================================
-   MESSAGE SPARKLE
+   MESSAGE SYMBOL
 ===================================================== */
 
 .message-sparkle {
+    display: block;
 
-    font-size: 27px;
+    font-size: 32px;
 
-    color: #ffe88a;
+    color: #ffe47a;
 
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 
     text-shadow:
-        0 0 10px rgba(255,220,90,.8);
+        0 0 8px rgba(255, 225, 100, 0.9),
+        0 0 20px rgba(255, 200, 50, 0.6);
 
     animation:
-        messageSparkle
-        1.5s
-        ease-in-out infinite;
+        messageSparkle 1.4s ease-in-out infinite;
 }
 
 
@@ -2094,6 +2095,7 @@ body {
 ===================================================== */
 
 #creatureMessageText {
+    margin: 0;
 
     font-family:
         Georgia,
@@ -2106,61 +2108,10 @@ body {
 
     font-style: italic;
 
-    color: #fff3c4;
+    color: #fff4c9;
 
     text-shadow:
-        0 1px 2px rgba(0,0,0,.5);
-}
-
-
-/* =====================================================
-   MESSAGE ANIMATION
-===================================================== */
-
-@keyframes creatureMessageAppear {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            translate(-50%, -50%)
-            scale(.82);
-    }
-
-    15% {
-
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(1.03);
-    }
-
-    25% {
-
-        transform:
-            translate(-50%, -50%)
-            scale(1);
-    }
-
-    78% {
-
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(1);
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translate(-50%, -53%)
-            scale(.96);
-    }
+        0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 
@@ -2171,84 +2122,41 @@ body {
 @keyframes messageSparkle {
 
     0%, 100% {
-        transform:
-            translateY(0)
-            scale(1);
+        transform: scale(1);
+        opacity: 0.8;
     }
 
     50% {
-        transform:
-            translateY(-5px)
-            scale(1.12);
+        transform: scale(1.15);
+        opacity: 1;
     }
 }
 
 
 /* =====================================================
-   MOBILE
+   MOBILE MESSAGE
 ===================================================== */
 
 @media (max-width: 600px) {
 
-    #secretCounter {
-
-        top: 15px;
-        right: 15px;
-
-        font-size: 10px;
-
-        padding: 8px 12px;
-    }
-
-
-    .butterfly {
-
-        width: 64px;
-        height: 54px;
-    }
-
-
-    .butterfly-wing {
-
-        width: 32px;
-        height: 45px;
-    }
-
-
-    .butterfly-body {
-
-        width: 8px;
-        height: 34px;
-    }
-
-
-    .firefly {
-
-        width: 12px;
-        height: 12px;
-    }
-
-
-    .firefly::before {
-
-        width: 52px;
-        height: 52px;
-    }
-
-
     #creatureMessage {
-
         width: 84vw;
 
-        padding: 25px 20px;
-    }
+        padding: 27px 20px;
 
+        border-radius: 20px;
+    }
 
     #creatureMessageText {
-
         font-size: 18px;
+        line-height: 1.55;
+    }
+
+    .message-sparkle {
+        font-size: 28px;
     }
 }
+
 
 /* =====================================================
    REDUCED MOTION
