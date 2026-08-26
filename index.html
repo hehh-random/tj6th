@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,56 +12,99 @@
 
 <body>
 
-    <!-- =========================================
+    <!-- =====================================================
          MAIN SECRET LOCK SCREEN
-    ========================================== -->
+    ====================================================== -->
 
     <main id="lockScreen">
 
-        <!-- Background atmosphere -->
+        <!-- =================================================
+             ATMOSPHERE
+        ================================================== -->
+
         <div class="golden-glow"></div>
+
         <div class="light-burst"></div>
 
-        <!-- Extra floating particles -->
         <div id="particles"></div>
 
 
-        <!-- =========================================
-     MAGICAL GARDEN CREATURES
-========================================== -->
+        <!-- =================================================
+             MAGICAL GARDEN CREATURES
+        ================================================== -->
 
-<div id="gardenCreatures"></div>
-
-<div id="secretCounter">
-    ✦ Secrets discovered: <span id="secretCount">0</span> / 6
-</div>
-
-<div id="creatureMessage">
-    <div class="message-sparkle">✦</div>
-    <p id="creatureMessageText"></p>
-</div>
+        <div id="gardenCreatures"></div>
 
 
-        <!-- =====================================
-             LOCK
-        ====================================== -->
+        <!-- =================================================
+             SECRET COUNTER
+        ================================================== -->
 
-        <div class="lock-area" id="lockArea">
+        <div id="secretCounter">
+            ✦ Secrets discovered:
+            <span id="secretCount">0</span> / 6
+        </div>
+
+
+        <!-- =================================================
+             CREATURE MESSAGE
+        ================================================== -->
+
+        <div id="creatureMessage">
+
+            <div class="message-sparkle">
+                ✦
+            </div>
+
+            <p id="creatureMessageText"></p>
+
+        </div>
+
+
+        <!-- =================================================
+             LOCK AREA
+        ================================================== -->
+
+        <div
+            class="lock-area"
+            id="lockArea"
+        >
+
+            <!-- =================================================
+                 LOCK + KEY
+            ================================================== -->
 
             <div class="lock-wrapper">
 
-                <!-- Heart lock -->
-                <div class="heart-lock" id="heartLock">
+
+                <!-- HEART LOCK -->
+
+                <div
+                    class="heart-lock"
+                    id="heartLock"
+                >
+
+                    <!-- Shackle -->
 
                     <div class="lock-shackle">
+
                         <div class="shackle-inner"></div>
+
                     </div>
+
+
+                    <!-- Heart -->
 
                     <div class="heart-body">
 
+                        <!-- Keyhole -->
+
                         <div class="keyhole">
+
                             <div class="keyhole-circle"></div>
+
                             <div class="keyhole-line"></div>
+
                         </div>
 
                     </div>
@@ -68,16 +112,24 @@
                 </div>
 
 
-                <!-- Golden key -->
-                <div class="golden-key" id="goldenKey">
+                <!-- =================================================
+                     GOLDEN KEY
+                ================================================== -->
+
+                <div
+                    class="golden-key"
+                    id="goldenKey"
+                >
 
                     <div class="key-ring"></div>
 
                     <div class="key-shaft"></div>
 
                     <div class="key-teeth">
+
                         <span></span>
                         <span></span>
+
                     </div>
 
                 </div>
@@ -85,101 +137,241 @@
             </div>
 
 
-            <!-- Text -->
+            <!-- =================================================
+                 LOCK TEXT
+            ================================================== -->
+
             <div class="lock-text">
 
-                <h1>For You <span>♡</span></h1>
+                <h1>
+                    For You <span>♡</span>
+                </h1>
 
                 <p id="instruction">
                     Enter the secret code...
                 </p>
 
-                <div class="code-display" id="codeDisplay">
+
+                <!-- Code dots -->
+
+                <div
+                    class="code-display"
+                    id="codeDisplay"
+                >
+
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </div>
 
             </div>
 
 
-            <!-- =====================================
+            <!-- =================================================
                  KEYPAD
-            ====================================== -->
+            ================================================== -->
 
-            <div class="keypad" id="keypad">
+            <div
+                class="keypad"
+                id="keypad"
+            >
 
-                <button class="key" data-number="1">1</button>
-                <button class="key" data-number="2">2</button>
-                <button class="key" data-number="3">3</button>
+                <!-- Row 1 -->
 
-                <button class="key" data-number="4">4</button>
-                <button class="key" data-number="5">5</button>
-                <button class="key" data-number="6">6</button>
+                <button
+                    class="key"
+                    data-number="1"
+                    type="button"
+                >
+                    1
+                </button>
 
-                <button class="key" data-number="7">7</button>
-                <button class="key" data-number="8">8</button>
-                <button class="key" data-number="9">9</button>
+                <button
+                    class="key"
+                    data-number="2"
+                    type="button"
+                >
+                    2
+                </button>
 
-                <button class="key empty"></button>
-                <button class="key" data-number="0">0</button>
-                <button class="key backspace" id="backspace">⌫</button>
+                <button
+                    class="key"
+                    data-number="3"
+                    type="button"
+                >
+                    3
+                </button>
+
+
+                <!-- Row 2 -->
+
+                <button
+                    class="key"
+                    data-number="4"
+                    type="button"
+                >
+                    4
+                </button>
+
+                <button
+                    class="key"
+                    data-number="5"
+                    type="button"
+                >
+                    5
+                </button>
+
+                <button
+                    class="key"
+                    data-number="6"
+                    type="button"
+                >
+                    6
+                </button>
+
+
+                <!-- Row 3 -->
+
+                <button
+                    class="key"
+                    data-number="7"
+                    type="button"
+                >
+                    7
+                </button>
+
+                <button
+                    class="key"
+                    data-number="8"
+                    type="button"
+                >
+                    8
+                </button>
+
+                <button
+                    class="key"
+                    data-number="9"
+                    type="button"
+                >
+                    9
+                </button>
+
+
+                <!-- Row 4 -->
+
+                <button
+                    class="key empty"
+                    type="button"
+                    aria-hidden="true"
+                    tabindex="-1"
+                ></button>
+
+                <button
+                    class="key"
+                    data-number="0"
+                    type="button"
+                >
+                    0
+                </button>
+
+                <button
+                    class="key backspace"
+                    id="backspace"
+                    type="button"
+                    aria-label="Backspace"
+                >
+                    ⌫
+                </button>
 
             </div>
 
         </div>
 
 
-        <!-- =========================================
+        <!-- =====================================================
              UNLOCK MESSAGE
-        ========================================== -->
+        ====================================================== -->
 
-        <div class="unlock-message" id="unlockMessage">
+        <div
+            class="unlock-message"
+            id="unlockMessage"
+        >
 
-            <div class="unlock-icon">✦</div>
+            <div class="unlock-icon">
+                ✦
+            </div>
 
-            <h2>You found the key.</h2>
+            <h2>
+                You found the key.
+            </h2>
 
-            <p>Some things are worth unlocking.</p>
-
-        </div>
-
-
-        <!-- =========================================
-             COME INSIDE
-        ========================================== -->
-
-        <div class="come-inside" id="comeInside">
-
-            <div class="small-key">🔑</div>
-
-            <h2>Come inside...</h2>
-
-            <p>There's something waiting for you.</p>
+            <p>
+                Some things are worth unlocking.
+            </p>
 
         </div>
 
 
-        <!-- =========================================
+        <!-- =====================================================
+             COME INSIDE MESSAGE
+        ====================================================== -->
+
+        <div
+            class="come-inside"
+            id="comeInside"
+        >
+
+            <div class="small-key">
+                🔑
+            </div>
+
+            <h2>
+                Come inside...
+            </h2>
+
+            <p>
+                There's something waiting for you.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
              SECRET WORLD
-        ========================================== -->
+        ====================================================== -->
 
-        <section class="secret-world" id="secretWorld">
+        <section
+            class="secret-world"
+            id="secretWorld"
+        >
 
             <div class="world-content">
 
-                <div class="world-symbol">☾</div>
+                <div class="world-symbol">
+                    ☾
+                </div>
 
-                <p class="little-label">WELCOME</p>
-
-                <h2>A little world<br>made just for you.</h2>
-
-                <p class="world-description">
-                    Every little corner holds something waiting to be discovered.
+                <p class="little-label">
+                    WELCOME
                 </p>
 
-                <button class="enter-world" id="enterWorld">
+                <h2>
+                    A little world<br>
+                    made just for you.
+                </h2>
+
+                <p class="world-description">
+                    Every little corner holds something
+                    waiting to be discovered.
+                </p>
+
+                <button
+                    class="enter-world"
+                    id="enterWorld"
+                    type="button"
+                >
                     Enter the garden ✦
                 </button>
 
@@ -190,7 +382,12 @@
     </main>
 
 
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
