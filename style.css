@@ -483,9 +483,9 @@ body {
 ===================================================== */
 
 .keypad {
-    margin-top: 32px;
+    margin-top: 22px;
 
-    width: 270px;
+    width: 100px;
 
     display: grid;
 
