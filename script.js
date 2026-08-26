@@ -516,8 +516,8 @@ function createGardenCreatures() {
         i++
     ) {
 
-        const butterfly =
-            document.createElement("div");
+const butterfly =
+    document.createElement("div");
 
 
         butterfly.classList.add(
@@ -525,35 +525,55 @@ function createGardenCreatures() {
         );
 
 
+<<<<<<< HEAD
+/* =====================================================
+   BUTTERFLY PARTS
+===================================================== */
+=======
         /* ---------------------------------------------
            WINGS
         --------------------------------------------- */
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-        const leftWing =
-            document.createElement("div");
+const leftWing =
+    document.createElement("div");
 
-        leftWing.classList.add(
-            "butterfly-wing",
-            "left"
-        );
-
-
-        const rightWing =
-            document.createElement("div");
-
-        rightWing.classList.add(
-            "butterfly-wing",
-            "right"
-        );
+leftWing.classList.add(
+    "butterfly-wing",
+    "left"
+);
 
 
-        butterfly.appendChild(leftWing);
-        butterfly.appendChild(rightWing);
+const rightWing =
+    document.createElement("div");
+
+rightWing.classList.add(
+    "butterfly-wing",
+    "right"
+);
 
 
+const body =
+    document.createElement("div");
+
+body.classList.add(
+    "butterfly-body"
+);
+
+<<<<<<< HEAD
+
+butterfly.appendChild(leftWing);
+butterfly.appendChild(rightWing);
+butterfly.appendChild(body);
+
+        /*
+            Random position.
+        */
+=======
         /* ---------------------------------------------
            ANTENNAE
         --------------------------------------------- */
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
         const leftAntenna =
             document.createElement("div");
@@ -623,11 +643,18 @@ function createGardenCreatures() {
            RANDOM SIZE
         --------------------------------------------- */
 
+<<<<<<< HEAD
+const size =
+    random(.75, 1.25);
+=======
         const size =
             random(.75, 1.2);
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-        butterfly.style.scale =
-            size;
+butterfly.style.setProperty(
+    "--size",
+    size
+);
 
 
         /* ---------------------------------------------
@@ -640,10 +667,17 @@ function createGardenCreatures() {
             )
         ) {
 
+<<<<<<< HEAD
+makeSpecial(
+    butterfly,
+    secretsFound
+);
+=======
             makeSpecial(
                 butterfly,
                 creatureIndex
             );
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
         }
 
@@ -730,22 +764,33 @@ function createGardenCreatures() {
             size;
 
 
+<<<<<<< HEAD
+=======
         /* ---------------------------------------------
            SPECIAL?
         --------------------------------------------- */
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-        if (
-            specialIndexes.includes(
-                creatureIndex
-            )
-        ) {
+            if (
+                specialIndexes.includes(creatureIndex)
+) {
 
+<<<<<<< HEAD
+    const specialNumber =
+        specialIndexes.indexOf(creatureIndex);
+=======
             makeSpecial(
                 firefly,
                 creatureIndex
             );
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-        }
+    makeSpecial(
+        butterfly,
+        specialNumber
+    );
+
+}
 
 
         gardenCreatures.appendChild(

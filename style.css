@@ -534,6 +534,7 @@ body {
 }
 
 
+
 .key:hover {
     transform: translateY(-2px);
 
@@ -1241,21 +1242,34 @@ body {
     opacity: 1;
 }
 
+<<<<<<< HEAD
 
+
+
+=======
+
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 /* =====================================================
-   BUTTERFLY
+   REALISTIC GOLDEN BUTTERFLIES
 ===================================================== */
 
 .butterfly {
     position: absolute;
 
+<<<<<<< HEAD
+    width: 64px;
+    height: 52px;
+=======
     width: 58px;
     height: 48px;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
     pointer-events: auto;
-
     cursor: pointer;
 
+<<<<<<< HEAD
+    z-index: 38;
+=======
     opacity: .95;
 
     z-index: 40;
@@ -1268,16 +1282,37 @@ body {
 
     animation:
         butterflyFly var(--fly-duration) linear infinite;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    opacity: 1;
+=======
     animation-delay: var(--delay);
 }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    transform-style: preserve-3d;
+=======
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    filter:
+        drop-shadow(0 0 5px rgba(255, 205, 60, .45))
+        drop-shadow(0 0 14px rgba(255, 190, 35, .18));
+=======
 /* =====================================================
    BUTTERFLY CLICK AREA
    Makes butterflies MUCH easier to click
 ===================================================== */
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    animation:
+        butterflyFly var(--fly-duration) linear infinite;
+
+    animation-delay: var(--delay);
+=======
 .butterfly::before {
     content: "";
 
@@ -1296,49 +1331,101 @@ body {
     background: transparent;
 
     z-index: 20;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
+/* =====================================================
+   BUTTERFLY CLICK AREA
+===================================================== */
+
+<<<<<<< HEAD
+.butterfly::marker {
+    display: none;
+}
+=======
+/* =====================================================
+   BUTTERFLY BODY
+===================================================== */
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
+
+.butterfly {
+    padding: 12px;
+    margin: -12px;
+}
 
 /* =====================================================
    BUTTERFLY BODY
 ===================================================== */
 
-.butterfly::after {
-    content: "";
-
+.butterfly-body {
     position: absolute;
 
     left: 50%;
+<<<<<<< HEAD
+    top: 50%;
+=======
     top: 7px;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    width: 6px;
+    height: 34px;
+=======
     width: 6px;
     height: 35px;
 
     transform: translateX(-50%);
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-    border-radius: 50%;
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 60%;
 
     background:
         linear-gradient(
+<<<<<<< HEAD
+            to right,
+            #3b2609,
+            #8b5a12 35%,
+            #3c2608 65%,
+            #1e1405
+=======
             to right,
             #3b270b,
             #8a5b13 35%,
             #4b3008 65%,
             #241805
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
         );
 
+<<<<<<< HEAD
+    box-shadow:
+        0 0 3px rgba(255, 205, 80, .45);
+
+    z-index: 10;
+=======
     box-shadow:
         inset 1px 0 rgba(255,220,120,.35),
         1px 1px 2px rgba(0,0,0,.35);
 
     z-index: 10;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
 
 /* =====================================================
+<<<<<<< HEAD
+   ANTENNAE
+=======
    BUTTERFLY ANTENNAE
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 ===================================================== */
 
+<<<<<<< HEAD
+.butterfly-body::before,
+.butterfly-body::after {
+=======
 .butterfly .antenna {
     position: absolute;
 
@@ -1398,12 +1485,25 @@ body {
 
 .butterfly-wing {
     position: absolute;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    content: "";
+=======
     top: 0;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    position: absolute;
+=======
     width: 30px;
     height: 40px;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    width: 18px;
+    height: 13px;
+=======
     z-index: 5;
 
     overflow: hidden;
@@ -1417,15 +1517,32 @@ body {
             rgba(194,126,15,.96) 72%,
             rgba(117,69,7,.98) 100%
         );
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    top: -8px;
+
+    border-top: 1px solid rgba(65, 40, 8, .9);
+=======
     box-shadow:
         inset 1px 1px 2px rgba(255,255,220,.8),
         inset -3px -4px 7px rgba(87,47,4,.3),
         0 1px 4px rgba(73,43,5,.25);
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    border-radius: 50%;
+}
+=======
     transform-origin: 100% 55%;
 }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+.butterfly-body::before {
+    right: 1px;
+    transform: rotate(-30deg);
+=======
 
 /* =====================================================
    WING VEINS
@@ -1464,8 +1581,14 @@ body {
         );
 
     opacity: .75;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
+<<<<<<< HEAD
+.butterfly-body::after {
+    left: 1px;
+    transform: rotate(30deg);
+=======
 
 /* =====================================================
    WING SPOTS
@@ -1513,48 +1636,118 @@ body {
 
     animation:
         realisticWingLeft .34s ease-in-out infinite;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
 
+<<<<<<< HEAD
+/* =====================================================
+   WINGS
+===================================================== */
+=======
 /* =====================================================
    RIGHT WING
 ===================================================== */
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+.butterfly-wing {
+=======
 .butterfly-wing.right {
     right: 1px;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    position: absolute;
+=======
     border-radius:
         35% 85%
         45% 60%;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    top: 50%;
+=======
     transform-origin: 0% 55%;
 
     animation:
         realisticWingRight .34s ease-in-out infinite;
 }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+    width: 32px;
+    height: 48px;
 
+<<<<<<< HEAD
+    transform-origin: center right;
+=======
 /* =====================================================
    REALISTIC WING FLAP
 ===================================================== */
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    overflow: hidden;
+=======
 @keyframes realisticWingLeft {
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    z-index: 5;
+=======
     0%,100% {
         transform:
             rotate(-8deg)
             scaleX(1);
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    background:
+        radial-gradient(
+            ellipse at 60% 30%,
+            rgba(255, 244, 165, .98) 0%,
+            rgba(255, 220, 80, .95) 22%,
+            rgba(218, 157, 27, .96) 52%,
+            rgba(119, 70, 8, .98) 82%,
+            rgba(53, 31, 4, 1) 100%
+        );
+=======
     50% {
         transform:
             rotate(-34deg)
             scaleX(.45);
     }
 }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    border: 1px solid rgba(255, 224, 105, .55);
+=======
 @keyframes realisticWingRight {
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    box-shadow:
+        inset 4px 3px 8px rgba(255, 249, 185, .42),
+        inset -5px -5px 10px rgba(68, 37, 4, .5),
+        0 0 7px rgba(255, 204, 52, .32);
+
+    /* Natural wing shape */
+    clip-path: polygon(
+        50% 50%,
+        43% 35%,
+        28% 17%,
+        8% 7%,
+        0% 20%,
+        4% 43%,
+        17% 57%,
+        8% 76%,
+        19% 94%,
+        37% 88%,
+        48% 68%
+    );
+=======
     0%,100% {
         transform:
             rotate(8deg)
@@ -1566,15 +1759,27 @@ body {
             rotate(34deg)
             scaleX(.45);
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
 
 /* =====================================================
+<<<<<<< HEAD
+   WING VEINS / NATURAL PATTERN
+=======
    BUTTERFLY FLIGHT
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 ===================================================== */
 
+<<<<<<< HEAD
+.butterfly-wing::before {
+=======
 @keyframes butterflyFly {
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    content: "";
+=======
     0% {
         left: -90px;
 
@@ -1585,7 +1790,11 @@ body {
             )
             rotate(var(--angle));
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    position: absolute;
+=======
     20% {
         transform:
             translate(
@@ -1594,7 +1803,11 @@ body {
             )
             rotate(calc(var(--angle) + 3deg));
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    inset: 0;
+=======
     40% {
         transform:
             translate(
@@ -1603,7 +1816,11 @@ body {
             )
             rotate(calc(var(--angle) - 4deg));
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    background:
+=======
     60% {
         transform:
             translate(
@@ -1612,7 +1829,30 @@ body {
             )
             rotate(calc(var(--angle) + 4deg));
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+        linear-gradient(
+            48deg,
+            transparent 46%,
+            rgba(91, 53, 7, .55) 48%,
+            rgba(91, 53, 7, .55) 50%,
+            transparent 52%
+        ),
+
+        linear-gradient(
+            110deg,
+            transparent 47%,
+            rgba(105, 61, 7, .42) 49%,
+            transparent 51%
+        ),
+
+        radial-gradient(
+            ellipse at 25% 18%,
+            rgba(255, 248, 185, .8),
+            transparent 18%
+        ),
+=======
     80% {
         transform:
             translate(
@@ -1621,10 +1861,22 @@ body {
             )
             rotate(calc(var(--angle) - 3deg));
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+        radial-gradient(
+            ellipse at 15% 73%,
+            rgba(255, 232, 105, .55),
+            transparent 16%
+        );
+=======
     100% {
         left: calc(100vw + 90px);
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    opacity: .85;
+=======
         transform:
             translate(
                 100vw,
@@ -1632,18 +1884,34 @@ body {
             )
             rotate(var(--angle));
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
 
 /* =====================================================
+<<<<<<< HEAD
+   WING HIGHLIGHTS
+=======
    FIREFLY
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 ===================================================== */
 
-.firefly {
+.butterfly-wing::after {
+
+    content: "";
+
     position: absolute;
 
+<<<<<<< HEAD
+    width: 15px;
+    height: 24px;
+=======
     width: 10px;
     height: 10px;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
+
+    left: 5px;
+    top: 7px;
 
     border-radius: 50%;
 
@@ -1655,27 +1923,60 @@ body {
 
     background:
         radial-gradient(
+<<<<<<< HEAD
+            ellipse,
+            rgba(255, 250, 190, .55),
+            transparent 70%
+=======
             circle,
             #fffde1 0%,
             #fff4a0 18%,
             #ffe45d 38%,
             #f5c42d 60%,
             transparent 75%
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
         );
 
+<<<<<<< HEAD
+    filter: blur(2px);
+=======
     box-shadow:
         0 0 6px #fff4a0,
         0 0 14px #ffe45d,
         0 0 28px rgba(255,215,60,.85),
         0 0 45px rgba(255,200,30,.35);
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    opacity: .8;
+}
+
+
+/* =====================================================
+   LEFT WING
+===================================================== */
+=======
     animation:
         fireflyMove var(--fly-duration) linear infinite,
         fireflyGlow var(--glow-duration) ease-in-out infinite;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+.butterfly-wing.left {
+=======
     animation-delay: var(--delay);
 }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    left: 0;
+
+    transform-origin: 100% 50%;
+
+    animation:
+        realisticFlapLeft .34s
+        ease-in-out infinite alternate;
+=======
 
 /* =====================================================
    FIREFLY LARGE CLICK AREA
@@ -1699,10 +2000,14 @@ body {
     background: transparent;
 
     z-index: 50;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
 
 /* =====================================================
+<<<<<<< HEAD
+   RIGHT WING
+=======
    FIREFLY NATURAL MOVEMENT
 ===================================================== */
 
@@ -1760,16 +2065,24 @@ body {
 
 /* =====================================================
    FIREFLY GLOW
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 ===================================================== */
 
-@keyframes fireflyGlow {
+.butterfly-wing.right {
 
+<<<<<<< HEAD
+    right: 0;
+=======
     0%,100% {
         opacity: .35;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
-        transform: scale(.65);
-    }
+    transform:
+        scaleX(-1);
 
+<<<<<<< HEAD
+    transform-origin: 0% 50%;
+=======
     20% {
         opacity: .8;
 
@@ -1778,7 +2091,13 @@ body {
 
     45% {
         opacity: 1;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    animation:
+        realisticFlapRight .34s
+        ease-in-out infinite alternate;
+=======
         transform: scale(1.45);
     }
 
@@ -1793,23 +2112,49 @@ body {
 
         transform: scale(1.25);
     }
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
 
 /* =====================================================
+<<<<<<< HEAD
+   REALISTIC WING FLAP
+=======
    SPECIAL CREATURE
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 ===================================================== */
 
+<<<<<<< HEAD
+@keyframes realisticFlapLeft {
+=======
 .special-creature {
     z-index: 60;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    0% {
+        transform:
+            rotateY(8deg)
+            rotateZ(-3deg)
+            scaleX(.98);
+    }
+=======
     filter:
         drop-shadow(0 0 10px rgba(255,231,105,.95))
         drop-shadow(0 0 25px rgba(255,207,40,.75))
         drop-shadow(0 0 45px rgba(255,190,20,.35));
 }
 
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+    100% {
+        transform:
+            rotateY(67deg)
+            rotateZ(-5deg)
+            scaleX(.72);
+    }
+=======
 /* =====================================================
    SPECIAL FIREFLY
 ===================================================== */
@@ -1823,13 +2168,20 @@ body {
         0 0 18px #ffe86a,
         0 0 35px #ffd42e,
         0 0 60px rgba(255,200,30,.75);
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
 
+<<<<<<< HEAD
+@keyframes realisticFlapRight {
+=======
 /* =====================================================
    SPECIAL BUTTERFLY
 ===================================================== */
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 
+<<<<<<< HEAD
+=======
 .butterfly.special-creature {
     opacity: 1;
 
@@ -1850,13 +2202,24 @@ body {
 
 @keyframes creatureFound {
 
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
     0% {
+<<<<<<< HEAD
+        transform:
+            scaleX(-1)
+            rotateY(8deg)
+            rotateZ(3deg)
+            scaleX(.98);
+=======
         opacity: 1;
 
         transform:
             scale(1);
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
     }
 
+<<<<<<< HEAD
+=======
     30% {
         opacity: 1;
 
@@ -1871,25 +2234,36 @@ body {
             scale(1.7);
     }
 
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
     100% {
+<<<<<<< HEAD
+        transform:
+            scaleX(-1)
+            rotateY(67deg)
+            rotateZ(5deg)
+            scaleX(.72);
+=======
         opacity: 0;
 
         transform:
             scale(0);
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
     }
 }
 
 
 /* =====================================================
-   SECRET COUNTER
+   BUTTERFLY BODY GLOW
 ===================================================== */
 
-#secretCounter {
-    position: absolute;
+.butterfly:hover {
 
-    top: 25px;
-    right: 28px;
+    filter:
+        drop-shadow(0 0 8px rgba(255, 220, 80, .8))
+        drop-shadow(0 0 22px rgba(255, 190, 30, .4));
 
+<<<<<<< HEAD
+=======
     z-index: 90;
 
     padding: 9px 15px;
@@ -1918,27 +2292,30 @@ body {
     opacity: .85;
 
     pointer-events: none;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
 }
 
 
 /* =====================================================
-   HIDDEN MESSAGE
+   BUTTERFLY MOVEMENT
 ===================================================== */
 
-#creatureMessage {
-    position: absolute;
+@keyframes butterflyFly {
 
-    left: 50%;
-    top: 50%;
+    0% {
 
-    transform:
-        translate(-50%,-50%)
-        scale(.8);
+        left: -90px;
 
-    width: min(430px, 85vw);
+        transform:
+            translateY(var(--start-y))
+            rotate(var(--angle))
+            scale(var(--size));
+    }
 
-    padding: 28px 35px;
+    25% {
 
+<<<<<<< HEAD
+=======
     text-align: center;
 
     z-index: 150;
@@ -2005,47 +2382,70 @@ body {
     0% {
         opacity: 0;
 
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
         transform:
-            translate(-50%,-50%)
-            scale(.8);
-    }
-
-    15% {
-        opacity: 1;
-
-        transform:
-            translate(-50%,-50%)
-            scale(1);
-    }
-
-    75% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(-50%,-54%)
-            scale(1.04);
-    }
-}
-
-
-@keyframes messageSparkle {
-
-    0%,100% {
-        transform: scale(1);
-
-        opacity: .6;
+            translateY(
+                calc(var(--start-y) + -35px)
+            )
+            rotate(
+                calc(var(--angle) + 4deg)
+            )
+            scale(var(--size));
     }
 
     50% {
-        transform: scale(1.25);
 
+        transform:
+            translateY(
+                calc(var(--start-y) + 20px)
+            )
+            rotate(
+                calc(var(--angle) - 5deg)
+            )
+            scale(var(--size));
+    }
+
+    75% {
+<<<<<<< HEAD
+
+        transform:
+            translateY(
+                calc(var(--end-y) - 25px)
+            )
+            rotate(
+                calc(var(--angle) + 3deg)
+            )
+            scale(var(--size));
+=======
         opacity: 1;
+>>>>>>> 4f47ece7425dddc6091b00f24856fab5200d2163
+    }
+
+    100% {
+
+        left: calc(100vw + 90px);
+
+        transform:
+            translateY(var(--end-y))
+            rotate(var(--angle))
+            scale(var(--size));
     }
 }
+
+
+/* =====================================================
+   SPECIAL BUTTERFLY
+===================================================== */
+
+.butterfly.special-creature {
+
+    filter:
+        drop-shadow(0 0 8px rgba(255, 225, 90, .95))
+        drop-shadow(0 0 18px rgba(255, 195, 40, .65))
+        drop-shadow(0 0 35px rgba(255, 180, 20, .25));
+}
+
+
 
 
 /* =====================================================
