@@ -1218,8 +1218,6 @@ body {
     }
 }
 
-
-
 /* =====================================================
    MAGICAL GARDEN CREATURES
 ===================================================== */
@@ -1233,6 +1231,14 @@ body {
     overflow: hidden;
 
     pointer-events: none;
+
+    opacity: 0;
+
+    transition: opacity 2s ease;
+}
+
+#gardenCreatures.garden-active {
+    opacity: 1;
 }
 
 
@@ -1243,40 +1249,70 @@ body {
 .butterfly {
     position: absolute;
 
-    width: 42px;
-    height: 34px;
+    width: 58px;
+    height: 48px;
 
     pointer-events: auto;
 
     cursor: pointer;
 
-    animation:
-        butterflyFly var(--fly-duration) linear infinite,
-        butterflyFloat 3s ease-in-out infinite;
+    opacity: .95;
 
-    animation-delay: var(--delay);
-
-    opacity: .9;
-
-    filter:
-        drop-shadow(0 0 5px rgba(255,211,70,.35));
+    z-index: 40;
 
     transform-origin: center;
+
+    filter:
+        drop-shadow(0 2px 3px rgba(60,35,5,.25))
+        drop-shadow(0 0 7px rgba(255,214,75,.18));
+
+    animation:
+        butterflyFly var(--fly-duration) linear infinite;
+
+    animation-delay: var(--delay);
 }
 
 
-/* Butterfly body */
+/* =====================================================
+   BUTTERFLY CLICK AREA
+   Makes butterflies MUCH easier to click
+===================================================== */
+
+.butterfly::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 75px;
+    height: 70px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    z-index: 20;
+}
+
+
+/* =====================================================
+   BUTTERFLY BODY
+===================================================== */
 
 .butterfly::after {
     content: "";
 
     position: absolute;
 
-    width: 5px;
-    height: 28px;
-
     left: 50%;
-    top: 3px;
+    top: 7px;
+
+    width: 6px;
+    height: 35px;
 
     transform: translateX(-50%);
 
@@ -1284,194 +1320,441 @@ body {
 
     background:
         linear-gradient(
-            to bottom,
-            #9b6814,
-            #4e350d
+            to right,
+            #3b270b,
+            #8a5b13 35%,
+            #4b3008 65%,
+            #241805
         );
 
-    z-index: 5;
+    box-shadow:
+        inset 1px 0 rgba(255,220,120,.35),
+        1px 1px 2px rgba(0,0,0,.35);
+
+    z-index: 10;
 }
 
 
 /* =====================================================
-   BUTTERFLY WINGS
+   BUTTERFLY ANTENNAE
+===================================================== */
+
+.butterfly .antenna {
+    position: absolute;
+
+    width: 20px;
+    height: 16px;
+
+    top: -4px;
+
+    border-top: 1px solid rgba(63,39,8,.8);
+
+    z-index: 12;
+}
+
+.butterfly .antenna.left {
+    left: 19px;
+
+    transform:
+        rotate(-27deg)
+        skewX(-15deg);
+}
+
+.butterfly .antenna.right {
+    right: 19px;
+
+    transform:
+        rotate(27deg)
+        skewX(15deg);
+}
+
+.butterfly .antenna::after {
+    content: "";
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #5b3909;
+
+    top: -2px;
+}
+
+.butterfly .antenna.left::after {
+    left: -1px;
+}
+
+.butterfly .antenna.right::after {
+    right: -1px;
+}
+
+
+/* =====================================================
+   REALISTIC WINGS
 ===================================================== */
 
 .butterfly-wing {
     position: absolute;
 
-    width: 23px;
-    height: 29px;
+    top: 0;
 
-    top: 1px;
+    width: 30px;
+    height: 40px;
+
+    z-index: 5;
+
+    overflow: hidden;
 
     background:
         radial-gradient(
-            circle at 65% 30%,
-            #fff4a8 0%,
-            #ffd95c 25%,
-            #eeb52d 60%,
-            #b87a13 100%
+            ellipse at 45% 28%,
+            rgba(255,251,190,.95) 0%,
+            rgba(255,230,105,.92) 18%,
+            rgba(246,192,48,.92) 45%,
+            rgba(194,126,15,.96) 72%,
+            rgba(117,69,7,.98) 100%
         );
 
-    border-radius:
-        70% 30%
-        70% 30%;
+    box-shadow:
+        inset 1px 1px 2px rgba(255,255,220,.8),
+        inset -3px -4px 7px rgba(87,47,4,.3),
+        0 1px 4px rgba(73,43,5,.25);
+
+    transform-origin: 100% 55%;
+}
+
+
+/* =====================================================
+   WING VEINS
+===================================================== */
+
+.butterfly-wing::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            110deg,
+            transparent 44%,
+            rgba(91,51,5,.55) 45%,
+            rgba(91,51,5,.55) 47%,
+            transparent 48%
+        ),
+
+        linear-gradient(
+            25deg,
+            transparent 48%,
+            rgba(103,60,7,.4) 49%,
+            rgba(103,60,7,.4) 51%,
+            transparent 52%
+        ),
+
+        linear-gradient(
+            155deg,
+            transparent 53%,
+            rgba(105,62,7,.35) 54%,
+            rgba(105,62,7,.35) 56%,
+            transparent 57%
+        );
+
+    opacity: .75;
+}
+
+
+/* =====================================================
+   WING SPOTS
+===================================================== */
+
+.butterfly-wing::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    right: 4px;
+    top: 5px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,249,178,.95),
+            rgba(218,157,28,.7) 55%,
+            transparent 70%
+        );
 
     box-shadow:
-        inset 0 0 4px rgba(255,255,220,.8),
-        0 0 5px rgba(255,210,70,.4);
-
-    transform-origin: 100% 50%;
-
-    z-index: 2;
+        -7px 12px 0 -2px rgba(255,235,123,.75),
+        -2px 24px 0 -2px rgba(111,62,6,.5);
 }
 
 
-/* Left wing */
+/* =====================================================
+   LEFT WING
+===================================================== */
 
 .butterfly-wing.left {
-    left: 0;
+    left: 1px;
 
-    transform:
-        rotate(-18deg)
-        scaleX(.95);
+    border-radius:
+        85% 35%
+        60% 45%;
+
+    transform-origin: 100% 55%;
 
     animation:
-        wingFlapLeft .42s ease-in-out infinite;
+        realisticWingLeft .34s ease-in-out infinite;
 }
 
 
-/* Right wing */
+/* =====================================================
+   RIGHT WING
+===================================================== */
 
 .butterfly-wing.right {
-    right: 0;
+    right: 1px;
 
-    transform:
-        scaleX(-1)
-        rotate(-18deg)
-        scaleX(.95);
+    border-radius:
+        35% 85%
+        45% 60%;
+
+    transform-origin: 0% 55%;
 
     animation:
-        wingFlapRight .42s ease-in-out infinite;
+        realisticWingRight .34s ease-in-out infinite;
 }
 
 
 /* =====================================================
-   WING FLAPPING
+   REALISTIC WING FLAP
 ===================================================== */
 
-@keyframes wingFlapLeft {
+@keyframes realisticWingLeft {
 
     0%,100% {
         transform:
-            rotate(-18deg)
-            scaleX(.95);
+            rotate(-8deg)
+            scaleX(1);
     }
 
     50% {
         transform:
-            rotate(-48deg)
-            scaleX(.72);
+            rotate(-34deg)
+            scaleX(.45);
     }
 }
 
-
-@keyframes wingFlapRight {
+@keyframes realisticWingRight {
 
     0%,100% {
         transform:
-            scaleX(-1)
-            rotate(-18deg)
-            scaleX(.95);
+            rotate(8deg)
+            scaleX(1);
     }
 
     50% {
         transform:
-            scaleX(-1)
-            rotate(-48deg)
-            scaleX(.72);
-    }
-}
-
-
-/* =====================================================
-   BUTTERFLY FLOAT
-===================================================== */
-
-@keyframes butterflyFloat {
-
-    0%,100% {
-        margin-top: 0;
-    }
-
-    50% {
-        margin-top: -18px;
+            rotate(34deg)
+            scaleX(.45);
     }
 }
 
 
 /* =====================================================
-   BUTTERFLY MOVEMENT
+   BUTTERFLY FLIGHT
 ===================================================== */
 
 @keyframes butterflyFly {
 
     0% {
-        left: -70px;
+        left: -90px;
 
         transform:
-            translateY(var(--start-y))
+            translate(
+                0,
+                var(--start-y)
+            )
             rotate(var(--angle));
     }
 
+    20% {
+        transform:
+            translate(
+                20vw,
+                calc(var(--start-y) - 30px)
+            )
+            rotate(calc(var(--angle) + 3deg));
+    }
+
+    40% {
+        transform:
+            translate(
+                40vw,
+                calc(var(--start-y) + 45px)
+            )
+            rotate(calc(var(--angle) - 4deg));
+    }
+
+    60% {
+        transform:
+            translate(
+                60vw,
+                calc(var(--start-y) - 25px)
+            )
+            rotate(calc(var(--angle) + 4deg));
+    }
+
+    80% {
+        transform:
+            translate(
+                80vw,
+                calc(var(--start-y) + 35px)
+            )
+            rotate(calc(var(--angle) - 3deg));
+    }
+
     100% {
-        left: calc(100vw + 70px);
+        left: calc(100vw + 90px);
 
         transform:
-            translateY(var(--end-y))
+            translate(
+                100vw,
+                var(--end-y)
+            )
             rotate(var(--angle));
     }
 }
 
 
 /* =====================================================
-   FIRELFY
+   FIREFLY
 ===================================================== */
 
 .firefly {
     position: absolute;
 
-    width: 7px;
-    height: 7px;
+    width: 10px;
+    height: 10px;
 
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #fffbd0 0%,
-            #ffe86b 30%,
-            #eab52b 65%,
-            transparent 100%
-        );
-
-    box-shadow:
-        0 0 5px #ffe66a,
-        0 0 14px rgba(255,220,70,.8),
-        0 0 28px rgba(255,205,40,.35);
 
     pointer-events: auto;
 
     cursor: pointer;
+
+    z-index: 38;
+
+    background:
+        radial-gradient(
+            circle,
+            #fffde1 0%,
+            #fff4a0 18%,
+            #ffe45d 38%,
+            #f5c42d 60%,
+            transparent 75%
+        );
+
+    box-shadow:
+        0 0 6px #fff4a0,
+        0 0 14px #ffe45d,
+        0 0 28px rgba(255,215,60,.85),
+        0 0 45px rgba(255,200,30,.35);
 
     animation:
         fireflyMove var(--fly-duration) linear infinite,
         fireflyGlow var(--glow-duration) ease-in-out infinite;
 
     animation-delay: var(--delay);
+}
 
-    opacity: .75;
+
+/* =====================================================
+   FIREFLY LARGE CLICK AREA
+===================================================== */
+
+.firefly::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 42px;
+    height: 42px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    z-index: 50;
+}
+
+
+/* =====================================================
+   FIREFLY NATURAL MOVEMENT
+===================================================== */
+
+@keyframes fireflyMove {
+
+    0% {
+        left: -30px;
+
+        transform:
+            translateY(var(--start-y))
+            translateX(0);
+    }
+
+    20% {
+        transform:
+            translateY(
+                calc(var(--start-y) - 35px)
+            )
+            translateX(10vw);
+    }
+
+    40% {
+        transform:
+            translateY(
+                calc(var(--start-y) + 55px)
+            )
+            translateX(25vw);
+    }
+
+    60% {
+        transform:
+            translateY(
+                calc(var(--start-y) - 25px)
+            )
+            translateX(45vw);
+    }
+
+    80% {
+        transform:
+            translateY(
+                calc(var(--start-y) + 40px)
+            )
+            translateX(70vw);
+    }
+
+    100% {
+        left: calc(100vw + 30px);
+
+        transform:
+            translateY(var(--end-y))
+            translateX(100vw);
+    }
 }
 
 
@@ -1482,43 +1765,33 @@ body {
 @keyframes fireflyGlow {
 
     0%,100% {
-        opacity: .2;
+        opacity: .35;
 
         transform: scale(.65);
     }
 
-    40% {
+    20% {
+        opacity: .8;
+
+        transform: scale(.95);
+    }
+
+    45% {
         opacity: 1;
 
-        transform: scale(1.35);
+        transform: scale(1.45);
     }
 
     60% {
-        opacity: .85;
+        opacity: .75;
 
         transform: scale(1);
     }
-}
 
+    80% {
+        opacity: .95;
 
-/* =====================================================
-   FIREFLY MOVEMENT
-===================================================== */
-
-@keyframes fireflyMove {
-
-    0% {
-        left: -20px;
-
-        transform:
-            translateY(var(--start-y));
-    }
-
-    100% {
-        left: calc(100vw + 20px);
-
-        transform:
-            translateY(var(--end-y));
+        transform: scale(1.25);
     }
 }
 
@@ -1528,44 +1801,81 @@ body {
 ===================================================== */
 
 .special-creature {
-    filter:
-        drop-shadow(0 0 8px rgba(255,220,70,.8))
-        drop-shadow(0 0 20px rgba(255,205,40,.45));
+    z-index: 60;
 
-    z-index: 40;
+    filter:
+        drop-shadow(0 0 10px rgba(255,231,105,.95))
+        drop-shadow(0 0 25px rgba(255,207,40,.75))
+        drop-shadow(0 0 45px rgba(255,190,20,.35));
 }
 
 
 /* =====================================================
-   CREATURE CLICK EFFECT
+   SPECIAL FIREFLY
+===================================================== */
+
+.firefly.special-creature {
+    width: 13px;
+    height: 13px;
+
+    box-shadow:
+        0 0 8px #fffbd0,
+        0 0 18px #ffe86a,
+        0 0 35px #ffd42e,
+        0 0 60px rgba(255,200,30,.75);
+}
+
+
+/* =====================================================
+   SPECIAL BUTTERFLY
+===================================================== */
+
+.butterfly.special-creature {
+    opacity: 1;
+
+    transform: scale(1.08);
+}
+
+
+/* =====================================================
+   CREATURE FOUND
 ===================================================== */
 
 .creature-found {
     pointer-events: none;
 
     animation:
-        creatureFound .8s ease forwards !important;
+        creatureFound .9s ease forwards !important;
 }
-
 
 @keyframes creatureFound {
 
     0% {
         opacity: 1;
 
-        transform: scale(1);
+        transform:
+            scale(1);
     }
 
-    40% {
+    30% {
         opacity: 1;
 
-        transform: scale(1.8);
+        transform:
+            scale(1.35);
+    }
+
+    60% {
+        opacity: .75;
+
+        transform:
+            scale(1.7);
     }
 
     100% {
         opacity: 0;
 
-        transform: scale(0);
+        transform:
+            scale(0);
     }
 }
 
@@ -1605,7 +1915,7 @@ body {
     box-shadow:
         0 4px 15px rgba(100,70,15,.08);
 
-    opacity: .75;
+    opacity: .85;
 
     pointer-events: none;
 }
@@ -1654,12 +1964,10 @@ body {
         inset 0 1px 0 rgba(255,255,255,.9);
 }
 
-
 #creatureMessage.show {
     animation:
         creatureMessageAppear 3.8s ease forwards;
 }
-
 
 .message-sparkle {
     font-size: 24px;
@@ -1671,7 +1979,6 @@ body {
     animation:
         messageSparkle 1.5s ease-in-out infinite;
 }
-
 
 #creatureMessageText {
     font-family:
@@ -1688,6 +1995,10 @@ body {
     color: #76500f;
 }
 
+
+/* =====================================================
+   MESSAGE ANIMATION
+===================================================== */
 
 @keyframes creatureMessageAppear {
 
@@ -1709,10 +2020,6 @@ body {
 
     75% {
         opacity: 1;
-
-        transform:
-            translate(-50%,-50%)
-            scale(1);
     }
 
     100% {
@@ -1757,7 +2064,18 @@ body {
     }
 
     .butterfly {
-        transform: scale(.75);
+        width: 48px;
+        height: 40px;
+    }
+
+    .butterfly-wing {
+        width: 25px;
+        height: 34px;
+    }
+
+    .firefly {
+        width: 9px;
+        height: 9px;
     }
 
     #creatureMessage {
@@ -1769,16 +2087,4 @@ body {
     #creatureMessageText {
         font-size: 17px;
     }
-
-}
-
-#gardenCreatures {
-    opacity: 0;
-
-    transition:
-        opacity 2s ease;
-}
-
-#gardenCreatures.garden-active {
-    opacity: 1;
 }
