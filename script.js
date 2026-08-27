@@ -487,28 +487,21 @@ enterWorld.addEventListener(
     "click",
     () => {
 
-        secretWorld.classList.remove(
-            "visible"
+        enterWorld.textContent =
+            "The garden is waking...";
+
+        gardenCreatures.classList.add(
+            "garden-active"
         );
 
+        setTimeout(() => {
 
-        setTimeout(
-            () => {
+            showTulipGarden();
 
-                gardenPage.classList.add(
-                    "visible"
-                );
-
-
-                createGarden();
-
-            },
-            900
-        );
+        }, 1800);
 
     }
 );
-
 
 /* =====================================================
    CREATE GARDEN
@@ -1104,3 +1097,213 @@ function createFireflies() {
     }
 
 }
+
+/* =====================================================
+   TULIP GARDEN
+===================================================== */
+
+const tulipGarden =
+    document.getElementById("tulipGarden");
+
+const tulipCards =
+    document.querySelectorAll(".tulip-card");
+
+const videoPopup =
+    document.getElementById("videoPopup");
+
+const memoryVideo =
+    document.getElementById("memoryVideo");
+
+const videoMessage =
+    document.getElementById("videoMessage");
+
+const closeVideo =
+    document.getElementById("closeVideo");
+
+const tulipProgress =
+    document.getElementById("tulipProgress");
+
+const finalPage =
+    document.getElementById("finalPage");
+
+
+let tulipsDiscovered = 0;
+
+const discoveredTulips =
+    new Set();
+
+
+/* =====================================================
+   SHOW TULIP GARDEN
+===================================================== */
+
+function showTulipGarden() {
+
+    tulipGarden.classList.add("visible");
+
+}
+
+
+/* =====================================================
+   CLICK TULIP
+===================================================== */
+
+tulipCards.forEach((tulip, index) => {
+
+    tulip.addEventListener("click", () => {
+
+        const videoFile =
+            tulip.dataset.video;
+
+        const message =
+            tulip.dataset.message;
+
+
+        /* ---------------------------------------------
+           LOAD VIDEO
+        --------------------------------------------- */
+
+        memoryVideo.src =
+            "./" + videoFile;
+
+
+        memoryVideo.load();
+
+
+        /* ---------------------------------------------
+           MESSAGE
+        --------------------------------------------- */
+
+        videoMessage.textContent =
+            message;
+
+
+        /* ---------------------------------------------
+           SHOW POPUP
+        --------------------------------------------- */
+
+        videoPopup.classList.add("show");
+
+
+        /* ---------------------------------------------
+           MARK DISCOVERED
+        --------------------------------------------- */
+
+        if (
+            !discoveredTulips.has(index)
+        ) {
+
+            discoveredTulips.add(index);
+
+            tulipsDiscovered++;
+
+            tulip.classList.add(
+                "discovered"
+            );
+
+
+            tulipProgress.textContent =
+                `${tulipsDiscovered} / 6 discovered`;
+
+        }
+
+
+        /* ---------------------------------------------
+           PLAY
+        --------------------------------------------- */
+
+        memoryVideo.play().catch(() => {});
+
+    });
+
+});
+
+
+/* =====================================================
+   CLOSE VIDEO
+===================================================== */
+
+function closeMemoryVideo() {
+
+    memoryVideo.pause();
+
+    memoryVideo.currentTime = 0;
+
+    memoryVideo.removeAttribute("src");
+
+    memoryVideo.load();
+
+    videoPopup.classList.remove("show");
+
+
+    /*
+        If all six have been discovered,
+        show final page after closing.
+    */
+
+    if (
+        tulipsDiscovered === 6
+    ) {
+
+        setTimeout(() => {
+
+            tulipGarden.classList.remove(
+                "visible"
+            );
+
+            finalPage.classList.add(
+                "visible"
+            );
+
+        }, 600);
+
+    }
+
+}
+
+
+closeVideo.addEventListener(
+    "click",
+    closeMemoryVideo
+);
+
+
+/* =====================================================
+   CLICK OUTSIDE VIDEO
+===================================================== */
+
+videoPopup.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target === videoPopup
+        ) {
+
+            closeMemoryVideo();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ESCAPE KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            videoPopup.classList.contains("show")
+        ) {
+
+            closeMemoryVideo();
+
+        }
+
+    }
+);

@@ -3530,3 +3530,691 @@ body {
     }
 
 }
+
+
+/* =====================================================
+   TULIP GARDEN
+===================================================== */
+
+#tulipGarden {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 120;
+
+    overflow-y: auto;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: scale(1.04);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,245,215,.94),
+            rgba(255,225,180,.92)
+        );
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+
+    padding:
+        60px
+        30px
+        80px;
+}
+
+
+#tulipGarden.visible {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform: scale(1);
+
+}
+
+
+/* =====================================================
+   TULIP TITLE
+===================================================== */
+
+.tulip-title {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+}
+
+
+.tulip-title p {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #a66d65;
+
+    margin-bottom: 14px;
+
+}
+
+
+.tulip-title h2 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 43px;
+
+    line-height: 1.15;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #744b42;
+
+}
+
+
+.tulip-title span {
+
+    display: block;
+
+    margin-top: 16px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    color: #a47770;
+
+}
+
+
+/* =====================================================
+   TULIP GRID
+===================================================== */
+
+.tulip-grid {
+
+    width: min(950px, 95vw);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+}
+
+
+/* =====================================================
+   TULIP CARD
+===================================================== */
+
+.tulip-card {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 3 / 4;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background: transparent;
+
+    box-shadow:
+        0 8px 25px
+        rgba(91,45,25,.18);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+.tulip-card:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.025);
+
+    box-shadow:
+        0 15px 35px
+        rgba(91,45,25,.28);
+
+}
+
+
+/* =====================================================
+   THE ACTUAL IMAGE
+===================================================== */
+
+.tulip-card img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    transition:
+        transform .6s ease,
+        filter .4s ease;
+
+}
+
+
+.tulip-card:hover img {
+
+    transform: scale(1.06);
+
+    filter:
+        brightness(1.05);
+
+}
+
+
+/* =====================================================
+   SOFT GLOW
+===================================================== */
+
+.tulip-glow {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 50%,
+            rgba(50,20,15,.22)
+        );
+
+}
+
+
+/* =====================================================
+   DISCOVERED TULIP
+===================================================== */
+
+.tulip-card.discovered {
+
+    opacity: .58;
+
+}
+
+
+.tulip-card.discovered::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    right: 12px;
+
+    top: 12px;
+
+    width: 30px;
+
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,245,225,.9);
+
+    color: #9b5e56;
+
+    font-size: 17px;
+
+    box-shadow:
+        0 3px 10px rgba(50,20,10,.2);
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.tulip-progress {
+
+    text-align: center;
+
+    margin-top: 30px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    color: #95665e;
+
+}
+
+
+/* =====================================================
+   VIDEO POPUP
+===================================================== */
+
+.video-popup {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(30,15,12,.78);
+
+    backdrop-filter:
+        blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+
+}
+
+
+.video-popup.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+/* =====================================================
+   VIDEO BOX
+===================================================== */
+
+.video-box {
+
+    position: relative;
+
+    width: min(750px, 92vw);
+
+    padding: 18px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,244,224,.98);
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.45);
+
+    transform:
+        scale(.9);
+
+    transition:
+        transform .4s ease;
+
+}
+
+
+.video-popup.show .video-box {
+
+    transform:
+        scale(1);
+
+}
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+#memoryVideo {
+
+    width: 100%;
+
+    max-height: 65vh;
+
+    display: block;
+
+    border-radius: 16px;
+
+    background: #201511;
+
+}
+
+
+/* =====================================================
+   VIDEO MESSAGE
+===================================================== */
+
+#videoMessage {
+
+    margin:
+
+        18px
+        10px
+        8px;
+
+    text-align: center;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    font-style: italic;
+
+    color: #795047;
+
+}
+
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+
+.close-video {
+
+    position: absolute;
+
+    right: -12px;
+
+    top: -12px;
+
+    width: 36px;
+
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #fff2dc;
+
+    color: #74463e;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,.25);
+
+}
+
+
+.close-video:hover {
+
+    transform: scale(1.08);
+
+}
+
+
+/* =====================================================
+   FINAL PAGE
+===================================================== */
+
+.final-page {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 300;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,246,220,.98),
+            rgba(255,224,185,.98)
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: scale(1.04);
+
+    transition:
+        opacity 1.8s ease,
+        transform 1.8s ease;
+
+}
+
+
+.final-page.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform: scale(1);
+
+}
+
+
+.final-content {
+
+    max-width: 650px;
+
+    padding: 30px;
+
+}
+
+
+.final-sparkle {
+
+    font-size: 45px;
+
+    color: #c17c72;
+
+    margin-bottom: 20px;
+
+}
+
+
+.final-small {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #a16c64;
+
+    margin-bottom: 18px;
+
+}
+
+
+.final-content h2 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 50px;
+
+    line-height: 1.15;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #71473f;
+
+}
+
+
+.final-message {
+
+    margin-top: 25px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    color: #967069;
+
+}
+
+
+.final-heart {
+
+    margin-top: 25px;
+
+    font-size: 35px;
+
+    color: #bd7169;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    #tulipGarden {
+
+        padding:
+            45px
+            18px
+            60px;
+
+    }
+
+
+    .tulip-title h2 {
+
+        font-size: 34px;
+
+    }
+
+
+    .tulip-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 15px;
+
+    }
+
+
+    .final-content h2 {
+
+        font-size: 38px;
+
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .tulip-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .tulip-title h2 {
+
+        font-size: 30px;
+
+    }
+
+}
