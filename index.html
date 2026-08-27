@@ -2,13 +2,23 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>For You ♡</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
@@ -17,6 +27,7 @@
     ====================================================== -->
 
     <main id="lockScreen">
+
 
         <!-- =================================================
              ATMOSPHERE
@@ -31,9 +42,56 @@
 
         <!-- =================================================
              MAGICAL GARDEN CREATURES
+             
+             IMPORTANT:
+             Butterflies + fireflies are ONLY decorative.
+             They are NOT clickable.
         ================================================== -->
 
         <div id="gardenCreatures"></div>
+
+
+        <!-- =================================================
+             SECRET COUNTER
+             
+             Kept hidden/unused now because the six
+             discoveries are the tulips.
+        ================================================== -->
+
+        <div
+            id="secretCounter"
+            style="display: none;"
+        >
+
+            ✦ Secrets discovered:
+
+            <span id="secretCount">
+                0
+            </span>
+
+            / 6
+
+        </div>
+
+
+        <!-- =================================================
+             CREATURE MESSAGE
+             
+             Not used anymore.
+        ================================================== -->
+
+        <div
+            id="creatureMessage"
+            style="display: none;"
+        >
+
+            <div class="message-sparkle">
+                ✦
+            </div>
+
+            <p id="creatureMessageText"></p>
+
+        </div>
 
 
         <!-- =================================================
@@ -45,11 +103,13 @@
             id="lockArea"
         >
 
+
             <!-- =================================================
                  LOCK + KEY
             ================================================== -->
 
             <div class="lock-wrapper">
+
 
                 <!-- HEART LOCK -->
 
@@ -58,15 +118,27 @@
                     id="heartLock"
                 >
 
+                    <!-- Shackle -->
+
                     <div class="lock-shackle">
+
                         <div class="shackle-inner"></div>
+
                     </div>
+
+
+                    <!-- Heart -->
 
                     <div class="heart-body">
 
+                        <!-- Keyhole -->
+
                         <div class="keyhole">
+
                             <div class="keyhole-circle"></div>
+
                             <div class="keyhole-line"></div>
+
                         </div>
 
                     </div>
@@ -74,7 +146,9 @@
                 </div>
 
 
-                <!-- GOLDEN KEY -->
+                <!-- =================================================
+                     GOLDEN KEY
+                ================================================== -->
 
                 <div
                     class="golden-key"
@@ -86,8 +160,11 @@
                     <div class="key-shaft"></div>
 
                     <div class="key-teeth">
+
                         <span></span>
+
                         <span></span>
+
                     </div>
 
                 </div>
@@ -109,6 +186,8 @@
                     Enter the secret code...
                 </p>
 
+
+                <!-- Code dots -->
 
                 <div
                     class="code-display"
@@ -133,6 +212,9 @@
                 class="keypad"
                 id="keypad"
             >
+
+
+                <!-- ROW 1 -->
 
                 <button
                     class="key"
@@ -159,6 +241,8 @@
                 </button>
 
 
+                <!-- ROW 2 -->
+
                 <button
                     class="key"
                     data-number="4"
@@ -183,6 +267,8 @@
                     6
                 </button>
 
+
+                <!-- ROW 3 -->
 
                 <button
                     class="key"
@@ -209,12 +295,15 @@
                 </button>
 
 
+                <!-- ROW 4 -->
+
                 <button
                     class="key empty"
                     type="button"
                     aria-hidden="true"
                     tabindex="-1"
-                ></button>
+                >
+                </button>
 
                 <button
                     class="key"
@@ -327,64 +416,36 @@
 
         </section>
 
-        <!-- =====================================================
-     FINAL CUTE MESSAGE PAGE
-===================================================== -->
-
-<section id="finalMessagePage">
-
-    <div class="final-message-content">
-
-        <div class="final-sparkles">✦ ♡ ✦</div>
-
-        <p class="final-label">
-            YOU FOUND EVERYTHING
-        </p>
-
-        <h2>
-            And now...
-        </h2>
-
-        <p class="final-main-message">
-            I hope these little pieces<br>
-            made you smile. ♡
-        </p>
-
-        <p class="final-small-message">
-            Some things are better when they're
-            discovered one little moment at a time.
-        </p>
-
-        <div class="final-heart">
-            ♡
-        </div>
-
-    </div>
-
-</section>
 
         <!-- =====================================================
              TULIP GARDEN
+             
+             These are the SIX things the user discovers.
+             
+             IMPORTANT:
+             Replace video1.mp4 etc. with your actual
+             video filenames.
         ====================================================== -->
 
         <section
-            class="tulip-garden"
             id="tulipGarden"
+            class="tulip-garden"
         >
 
-            <div class="garden-heading">
+
+            <!-- =================================================
+                 GARDEN TITLE
+            ================================================== -->
+
+            <div class="tulip-garden-title">
 
                 <p>
-                    A LITTLE GARDEN
+                    A LITTLE SOMETHING FOR YOU
                 </p>
 
                 <h2>
-                    Six little moments
+                    Find the six little moments... ♡
                 </h2>
-
-                <span>
-                    Choose one... 🌷
-                </span>
 
             </div>
 
@@ -393,184 +454,244 @@
                  TULIP 1
             ================================================== -->
 
-            <button
-                class="tulip-card"
+            <div
+                class="garden-tulip"
                 data-video="video1.mp4"
-                data-message="A little moment, saved just for you. ♡"
-                type="button"
             >
 
-                <img
-                    src="tulip1.jpg"
-                    alt="Pink tulip"
-                >
+                <div class="tulip-flower">
 
-                <span class="tulip-shine"></span>
+                    <div class="tulip-petal petal-left"></div>
 
-            </button>
+                    <div class="tulip-petal petal-center"></div>
+
+                    <div class="tulip-petal petal-right"></div>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
 
 
             <!-- =================================================
                  TULIP 2
             ================================================== -->
 
-            <button
-                class="tulip-card"
+            <div
+                class="garden-tulip"
                 data-video="video2.mp4"
-                data-message="Some memories are better when you can watch them again. ✦"
-                type="button"
             >
 
-                <img
-                    src="tulip2.jpg"
-                    alt="Pink tulip"
-                >
+                <div class="tulip-flower">
 
-                <span class="tulip-shine"></span>
+                    <div class="tulip-petal petal-left"></div>
 
-            </button>
+                    <div class="tulip-petal petal-center"></div>
+
+                    <div class="tulip-petal petal-right"></div>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
 
 
             <!-- =================================================
                  TULIP 3
             ================================================== -->
 
-            <button
-                class="tulip-card"
+            <div
+                class="garden-tulip"
                 data-video="video3.mp4"
-                data-message="A tiny piece of happiness, kept here for you."
-                type="button"
             >
 
-                <img
-                    src="tulip3.jpg"
-                    alt="Pink tulip"
-                >
+                <div class="tulip-flower">
 
-                <span class="tulip-shine"></span>
+                    <div class="tulip-petal petal-left"></div>
 
-            </button>
+                    <div class="tulip-petal petal-center"></div>
+
+                    <div class="tulip-petal petal-right"></div>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
 
 
             <!-- =================================================
                  TULIP 4
             ================================================== -->
 
-            <button
-                class="tulip-card"
+            <div
+                class="garden-tulip"
                 data-video="video4.mp4"
-                data-message="This little moment belongs in our garden. ♡"
-                type="button"
             >
 
-                <img
-                    src="tulip4.jpg"
-                    alt="Pink tulip"
-                >
+                <div class="tulip-flower">
 
-                <span class="tulip-shine"></span>
+                    <div class="tulip-petal petal-left"></div>
 
-            </button>
+                    <div class="tulip-petal petal-center"></div>
+
+                    <div class="tulip-petal petal-right"></div>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
 
 
             <!-- =================================================
                  TULIP 5
             ================================================== -->
 
-            <button
-                class="tulip-card"
+            <div
+                class="garden-tulip"
                 data-video="video5.mp4"
-                data-message="Some things don't need many words."
-                type="button"
             >
 
-                <img
-                    src="tulip5.jpg"
-                    alt="Pink tulip"
-                >
+                <div class="tulip-flower">
 
-                <span class="tulip-shine"></span>
+                    <div class="tulip-petal petal-left"></div>
 
-            </button>
+                    <div class="tulip-petal petal-center"></div>
+
+                    <div class="tulip-petal petal-right"></div>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
 
 
             <!-- =================================================
                  TULIP 6
             ================================================== -->
 
-            <button
-                class="tulip-card"
+            <div
+                class="garden-tulip"
                 data-video="video6.mp4"
-                data-message="And this one is just for you. ✦"
-                type="button"
             >
 
-                <img
-                    src="tulip6.jpg"
-                    alt="Pink tulip"
-                >
+                <div class="tulip-flower">
 
-                <span class="tulip-shine"></span>
+                    <div class="tulip-petal petal-left"></div>
 
-            </button>
+                    <div class="tulip-petal petal-center"></div>
+
+                    <div class="tulip-petal petal-right"></div>
+
+                </div>
+
+                <div class="tulip-stem"></div>
+
+                <div class="tulip-leaf leaf-left"></div>
+
+                <div class="tulip-leaf leaf-right"></div>
+
+            </div>
+
+
+            <!-- =================================================
+                 OPTIONAL VIDEO COUNTER
+            ================================================== -->
+
+            <div
+                id="videoProgress"
+                class="video-progress"
+            >
+                0 / 6
+            </div>
 
         </section>
 
 
         <!-- =====================================================
-             VIDEO POPUP
+             FINAL CUTE MESSAGE PAGE
+             
+             Appears after all six tulips have been opened.
         ====================================================== -->
 
-        <div
-            class="video-modal"
-            id="videoModal"
+        <section
+            id="finalMessagePage"
         >
 
-            <div
-                class="video-backdrop"
-                id="videoBackdrop"
-            ></div>
+            <div class="final-message-content">
 
 
-            <div class="video-box">
+                <!-- Sparkles -->
 
-                <button
-                    class="close-video"
-                    id="closeVideo"
-                    type="button"
-                    aria-label="Close video"
-                >
-                    ×
-                </button>
-
-
-                <div class="video-frame">
-
-                    <video
-                        id="gardenVideo"
-                        controls
-                        playsinline
-                    >
-                        <source
-                            id="videoSource"
-                            src=""
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support video.
-                    </video>
-
+                <div class="final-sparkles">
+                    ✦ ♡ ✦
                 </div>
 
 
-                <p
-                    class="video-message"
-                    id="videoMessage"
-                ></p>
+                <!-- Small label -->
+
+                <p class="final-label">
+                    YOU FOUND EVERYTHING
+                </p>
+
+
+                <!-- Heading -->
+
+                <h2>
+                    And now...
+                </h2>
+
+
+                <!-- Main message -->
+
+                <p class="final-main-message">
+                    I hope these little pieces<br>
+                    made you smile. ♡
+                </p>
+
+
+                <!-- Smaller message -->
+
+                <p class="final-small-message">
+                    Some things are better when they're
+                    discovered one little moment at a time.
+                </p>
+
+
+                <!-- Final heart -->
+
+                <div class="final-heart">
+                    ♡
+                </div>
 
             </div>
 
-        </div>
+        </section>
+
 
     </main>
 
