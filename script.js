@@ -1,170 +1,350 @@
 /* =====================================================
-   SECRET CODE
+   GARDEN PAGE
 ===================================================== */
 
-const SECRET_CODE = "1234";
+.garden-page {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 200;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(255, 241, 198, .12),
+            rgba(255, 241, 198, .12)
+        ),
+        url("background22.png");
+
+    background-size: cover;
+    background-position: center;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+
+}
+
+
+.garden-page.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
 
 
 /* =====================================================
-   ELEMENTS — LOCK SCREEN
+   GARDEN CREATURES
 ===================================================== */
 
-const lockScreen =
-    document.getElementById("lockScreen");
+#gardenCreatures {
 
-const lockArea =
-    document.getElementById("lockArea");
+    position: absolute;
 
-const keypad =
-    document.getElementById("keypad");
+    inset: 0;
 
-const codeDisplay =
-    document.getElementById("codeDisplay");
+    z-index: 1;
 
-const instruction =
-    document.getElementById("instruction");
+    overflow: hidden;
 
-const heartLock =
-    document.getElementById("heartLock");
+    pointer-events: none;
 
-const unlockMessage =
-    document.getElementById("unlockMessage");
-
-const comeInside =
-    document.getElementById("comeInside");
-
-const secretWorld =
-    document.getElementById("secretWorld");
-
-const enterWorld =
-    document.getElementById("enterWorld");
-
-const particles =
-    document.getElementById("particles");
-
-const gardenCreatures =
-    document.getElementById("gardenCreatures");
-
-const finalMessagePage =
-    document.getElementById("finalMessagePage");
+}
 
 
 /* =====================================================
-   STATE — LOCK
+   GARDEN TITLE
 ===================================================== */
 
-let enteredCode = "";
+.garden-title {
 
-let isUnlocking = false;
+    position: absolute;
+
+    top: 8%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+
+    text-align: center;
+
+    z-index: 10;
+
+}
+
+
+.garden-title p {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #8b5c13;
+
+    margin-bottom: 12px;
+
+}
+
+
+.garden-title h2 {
+
+    font-family: Georgia, serif;
+
+    font-size: 39px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #68440b;
+
+}
+
+
+.garden-title span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    color: #916a25;
+
+}
 
 
 /* =====================================================
-   STATE — GARDEN
+   TULIP CONTAINER
 ===================================================== */
 
-let videosWatched = 0;
+.tulip-container {
 
-const TOTAL_VIDEOS = 6;
+    position: absolute;
+
+    left: 50%;
+
+    top: 53%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(900px, 90vw);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 35px;
+
+    justify-items: center;
+
+    z-index: 20;
+
+}
 
 
 /* =====================================================
-   SECRET / VIDEO MESSAGES
+   TULIP
 ===================================================== */
 
-/*
-    Change these messages to whatever you want.
+.tulip {
 
-    Message 0 = Tulip 1
-    Message 1 = Tulip 2
-    etc.
-*/
+    position: relative;
 
-const videoMessages = [
+    width: 180px;
 
-    "A little moment just for you. ♡",
+    height: 230px;
 
-    "I hope this made you smile, even just a little.",
+    border: none;
 
-    "Some memories deserve their own little place. ✦",
+    padding: 0;
 
-    "Here's another tiny piece of something special. ♡",
+    background: transparent;
 
-    "Just a little reminder to keep this moment close.",
+    cursor: pointer;
 
-    "And one last little thing... ✦"
+    transition:
+        transform .35s ease,
+        filter .35s ease;
 
-];
+    animation:
+        tulipFloat
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+.tulip:nth-child(2) {
+    animation-delay: .5s;
+}
+
+.tulip:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.tulip:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.tulip:nth-child(5) {
+    animation-delay: 2s;
+}
+
+.tulip:nth-child(6) {
+    animation-delay: 2.5s;
+}
+
+
+.tulip:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.06);
+
+    filter:
+        drop-shadow(
+            0 10px 18px rgba(105, 62, 8, .25)
+        );
+
+}
 
 
 /* =====================================================
-   KEYPAD
+   ACTUAL TULIP IMAGE
 ===================================================== */
 
-const numberButtons =
-    document.querySelectorAll("[data-number]");
+.tulip img {
 
+    width: 100%;
 
-numberButtons.forEach(button => {
+    height: 100%;
 
-    button.addEventListener("click", () => {
+    object-fit: contain;
 
-        if (isUnlocking) {
-            return;
-        }
+    display: block;
 
-        const number =
-            button.dataset.number;
+    pointer-events: none;
 
-        addNumber(number);
-
-    });
-
-});
+}
 
 
 /* =====================================================
-   ADD NUMBER
+   TULIP LABEL
 ===================================================== */
 
-function addNumber(number) {
+.tulip-label {
 
-    if (isUnlocking) {
-        return;
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 2px;
+
+    transform: translateX(-50%);
+
+    padding: 6px 13px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(61, 35, 5, .75);
+
+    color: #fff0bd;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    transition:
+        opacity .3s ease;
+
+    pointer-events: none;
+
+}
+
+
+.tulip:hover .tulip-label {
+
+    opacity: 1;
+
+}
+
+
+/* =====================================================
+   TULIP INSTRUCTION
+===================================================== */
+
+.tulip-instruction {
+
+    position: absolute;
+
+    bottom: 6%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 30;
+
+    width: 90%;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    color: #876126;
+
+    letter-spacing: .5px;
+
+}
+
+
+/* =====================================================
+   TULIP FLOAT
+===================================================== */
+
+@keyframes tulipFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
     }
 
-    /*
-        Don't allow more digits than
-        the secret code requires.
-    */
+    50% {
 
-    if (
-        enteredCode.length >=
-        SECRET_CODE.length
-    ) {
-        return;
-    }
-
-
-    enteredCode += number;
-
-    updateDisplay();
-
-
-    /*
-        Automatically check code
-        when all digits are entered.
-    */
-
-    if (
-        enteredCode.length ===
-        SECRET_CODE.length
-    ) {
-
-        setTimeout(() => {
-
-            checkCode();
-
-        }, 250);
+        transform:
+            translateY(-8px);
 
     }
 
@@ -172,80 +352,374 @@ function addNumber(number) {
 
 
 /* =====================================================
-   BACKSPACE
+   VIDEO OVERLAY
 ===================================================== */
 
-const backspace =
-    document.getElementById("backspace");
+.video-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 25px;
+
+    background:
+        rgba(22, 12, 2, .78);
+
+    backdrop-filter:
+        blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
+
+}
 
 
-if (backspace) {
+.video-overlay.visible {
 
-    backspace.addEventListener(
-        "click",
-        () => {
+    opacity: 1;
 
-            if (isUnlocking) {
-                return;
-            }
+    visibility: visible;
 
-            enteredCode =
-                enteredCode.slice(0, -1);
-
-            updateDisplay();
-
-        }
-    );
+    pointer-events: auto;
 
 }
 
 
 /* =====================================================
-   UPDATE CODE DISPLAY
+   VIDEO BOX
 ===================================================== */
 
-function updateDisplay() {
+.video-box {
 
-    const dots =
-        codeDisplay.querySelectorAll("span");
+    position: relative;
+
+    width: min(720px, 92vw);
+
+    padding: 24px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff8df,
+            #f2d998
+        );
+
+    border:
+        1px solid rgba(155, 105, 17, .35);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55);
+
+    transform:
+        scale(.9)
+        translateY(20px);
+
+    transition:
+        transform .45s ease;
+
+}
 
 
-    dots.forEach((dot, index) => {
+.video-overlay.visible .video-box {
 
-        if (
-            index <
-            enteredCode.length
-        ) {
-
-            dot.classList.add("active");
-
-        } else {
-
-            dot.classList.remove("active");
-
-        }
-
-    });
+    transform:
+        scale(1)
+        translateY(0);
 
 }
 
 
 /* =====================================================
-   CHECK CODE
+   CLOSE BUTTON
 ===================================================== */
 
-function checkCode() {
+.close-video {
 
-    if (
-        enteredCode ===
-        SECRET_CODE
-    ) {
+    position: absolute;
 
-        unlock();
+    right: 12px;
 
-    } else {
+    top: 10px;
 
-        wrongCode();
+    width: 38px;
+
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(76, 45, 5, .85);
+
+    color: #fff4cb;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition:
+        transform .2s ease;
+
+}
+
+
+.close-video:hover {
+
+    transform:
+        rotate(90deg)
+        scale(1.05);
+
+}
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+#secretVideo {
+
+    width: 100%;
+
+    max-height: 62vh;
+
+    display: block;
+
+    border-radius: 16px;
+
+    background: #1b1004;
+
+}
+
+
+/* =====================================================
+   VIDEO TOP SPARKLE
+===================================================== */
+
+.video-flower {
+
+    text-align: center;
+
+    color: #b57b18;
+
+    font-size: 24px;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =====================================================
+   VIDEO MESSAGE
+===================================================== */
+
+.video-message {
+
+    margin:
+
+        18px
+        10px
+        4px;
+
+    text-align: center;
+
+    min-height: 25px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+
+    color: #704a0d;
+
+}
+
+
+/* =====================================================
+   FINAL PAGE
+===================================================== */
+
+.final-page {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,248,218,.96),
+            rgba(240,211,145,.96)
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        scale(1.05);
+
+    transition:
+        opacity 1.8s ease,
+        transform 2s ease,
+        visibility 1.8s ease;
+
+}
+
+
+.final-page.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        scale(1);
+
+}
+
+
+.final-content {
+
+    max-width: 650px;
+
+    padding: 35px;
+
+}
+
+
+.final-sparkle {
+
+    font-size: 40px;
+
+    color: #b77c16;
+
+    margin-bottom: 18px;
+
+    animation:
+        finalSparkle
+        2s
+        ease-in-out
+        infinite;
+
+}
+
+
+.final-small {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #a37529;
+
+    margin-bottom: 18px;
+
+}
+
+
+.final-content h2 {
+
+    font-size: 45px;
+
+    line-height: 1.2;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #704a0c;
+
+}
+
+
+.final-message {
+
+    margin-top: 24px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    color: #916d2c;
+
+}
+
+
+.final-heart {
+
+    margin-top: 25px;
+
+    font-size: 32px;
+
+    color: #b47b16;
+
+}
+
+
+@keyframes finalSparkle {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+        opacity: .7;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.18);
+
+        opacity: 1;
 
     }
 
@@ -253,868 +727,77 @@ function checkCode() {
 
 
 /* =====================================================
-   WRONG CODE
+   MOBILE
 ===================================================== */
 
-function wrongCode() {
+@media (max-width: 650px) {
 
-    if (isUnlocking) {
-        return;
+    .garden-title {
+
+        top: 7%;
+
     }
 
 
-    /*
-        Restart shake animation.
-    */
+    .garden-title h2 {
 
-    lockArea.classList.remove("shake");
+        font-size: 30px;
 
-    void lockArea.offsetWidth;
-
-    lockArea.classList.add("shake");
-
-
-    /*
-        Change instruction.
-    */
-
-    instruction.textContent =
-        "That's not the right key...";
-
-    instruction.style.color =
-        "#a34e32";
-
-
-    /*
-        Reset after short delay.
-    */
-
-    setTimeout(() => {
-
-        enteredCode = "";
-
-        updateDisplay();
-
-        instruction.textContent =
-            "Enter the secret code...";
-
-        instruction.style.color = "";
-
-    }, 900);
-
-}
-
-
-/* =====================================================
-   UNLOCK
-===================================================== */
-
-function unlock() {
-
-    if (isUnlocking) {
-        return;
     }
 
-    isUnlocking = true;
+
+    .garden-title span {
+
+        font-size: 12px;
+
+    }
 
 
-    /*
-        Start unlocking animation.
-    */
+    .tulip-container {
 
-    lockScreen.classList.add(
-        "unlocking"
-    );
+        top: 52%;
 
+        width: 94vw;
 
-    /*
-        Create magical particles.
-    */
+        grid-template-columns:
+            repeat(2, 1fr);
 
-    createParticles();
+        gap: 12px;
+
+    }
 
 
-    /* =================================================
-       MESSAGE 1
-    ================================================= */
+    .tulip {
 
-    setTimeout(() => {
+        width: 145px;
 
-        unlockMessage.classList.add(
-            "show-unlock-message"
-        );
+        height: 180px;
 
-    }, 2500);
+    }
 
 
-    /* =================================================
-       MESSAGE 2
-    ================================================= */
+    .tulip-instruction {
 
-    setTimeout(() => {
+        bottom: 4%;
 
-        comeInside.classList.add(
-            "show-come-inside"
-        );
+        font-size: 11px;
 
-    }, 5100);
+    }
 
 
-    /* =================================================
-       SECRET WORLD
-    ================================================= */
+    .video-box {
 
-    setTimeout(() => {
+        padding: 15px;
 
-        secretWorld.classList.add(
-            "visible"
-        );
+        border-radius: 20px;
 
-    }, 7600);
-
-}
+    }
 
 
-/* =====================================================
-   GOLDEN PARTICLES
-===================================================== */
+    .final-content h2 {
 
-function createParticles() {
-
-    const amount = 70;
-
-
-    for (
-        let i = 0;
-        i < amount;
-        i++
-    ) {
-
-        const particle =
-            document.createElement("div");
-
-
-        particle.classList.add(
-            "particle"
-        );
-
-
-        /* ---------------------------------------------
-           START POSITION
-        --------------------------------------------- */
-
-        particle.style.left =
-            `calc(50% + ${random(-50, 50)}px)`;
-
-
-        particle.style.top =
-            `calc(40% + ${random(-50, 50)}px)`;
-
-
-        /* ---------------------------------------------
-           RANDOM DIRECTION
-        --------------------------------------------- */
-
-        particle.style.setProperty(
-            "--x",
-            `${random(-350, 350)}px`
-        );
-
-
-        particle.style.setProperty(
-            "--y",
-            `${random(-300, 250)}px`
-        );
-
-
-        /* ---------------------------------------------
-           RANDOM SPEED
-        --------------------------------------------- */
-
-        particle.style.setProperty(
-            "--duration",
-            `${random(1.5, 3.5)}s`
-        );
-
-
-        /* ---------------------------------------------
-           RANDOM SIZE
-        --------------------------------------------- */
-
-        const size =
-            random(3, 7);
-
-
-        particle.style.width =
-            `${size}px`;
-
-        particle.style.height =
-            `${size}px`;
-
-
-        particles.appendChild(
-            particle
-        );
-
-
-        /* ---------------------------------------------
-           REMOVE PARTICLE
-        --------------------------------------------- */
-
-        setTimeout(() => {
-
-            particle.remove();
-
-        }, 4000);
+        font-size: 34px;
 
     }
 
 }
-
-
-/* =====================================================
-   RANDOM NUMBER
-===================================================== */
-
-function random(min, max) {
-
-    return Math.random() *
-        (max - min) + min;
-
-}
-
-
-/* =====================================================
-   ENTER THE SECRET WORLD
-===================================================== */
-
-if (enterWorld) {
-
-    enterWorld.addEventListener(
-        "click",
-        () => {
-
-            enterWorld.textContent =
-                "The garden is waking...";
-
-
-            /*
-                Reveal butterflies + fireflies.
-            */
-
-            gardenCreatures.classList.add(
-                "garden-active"
-            );
-
-
-            /*
-                Start / reveal tulips.
-            */
-
-            createTulipSystem();
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   CREATE TULIP SYSTEM
-===================================================== */
-
-/*
-    This function looks for your six tulips.
-
-    Your HTML tulips should have:
-
-        class="garden-tulip"
-
-    and each one should have:
-
-        data-video="video1.mp4"
-
-    Example:
-
-        <div
-            class="garden-tulip"
-            data-video="video1.mp4"
-        ></div>
-
-    The JavaScript automatically gives each
-    tulip its matching message.
-*/
-
-function createTulipSystem() {
-
-    const tulips =
-        document.querySelectorAll(
-            ".garden-tulip"
-        );
-
-
-    if (!tulips.length) {
-
-        console.warn(
-            "No .garden-tulip elements were found."
-        );
-
-        return;
-
-    }
-
-
-    tulips.forEach(
-        (tulip, index) => {
-
-            /*
-                Prevent duplicate event listeners
-                if the garden is entered again.
-            */
-
-            if (
-                tulip.dataset.initialized ===
-                "true"
-            ) {
-
-                return;
-
-            }
-
-
-            tulip.dataset.initialized =
-                "true";
-
-
-            /*
-                Store which video this tulip uses.
-            */
-
-            tulip.dataset.videoIndex =
-                index;
-
-
-            /*
-                Make tulip clickable.
-            */
-
-            tulip.addEventListener(
-                "click",
-                () => {
-
-                    openVideo(
-                        tulip,
-                        index
-                    );
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   CREATE VIDEO POPUP
-===================================================== */
-
-function createVideoPopup() {
-
-    /*
-        Don't create it twice.
-    */
-
-    if (
-        document.getElementById(
-            "gardenVideoPopup"
-        )
-    ) {
-
-        return;
-    }
-
-
-    const popup =
-        document.createElement("div");
-
-
-    popup.id =
-        "gardenVideoPopup";
-
-
-    popup.innerHTML = `
-
-        <div class="video-popup-inner">
-
-            <button
-                class="video-close"
-                id="videoClose"
-                type="button"
-                aria-label="Close video"
-            >
-                ×
-            </button>
-
-            <div class="video-wrapper">
-
-                <video
-                    id="gardenVideo"
-                    controls
-                    playsinline
-                ></video>
-
-            </div>
-
-            <p
-                id="videoMessage"
-                class="video-message"
-            ></p>
-
-        </div>
-
-    `;
-
-
-    document.body.appendChild(
-        popup
-    );
-
-
-    /*
-        Close button.
-    */
-
-    const closeButton =
-        document.getElementById(
-            "videoClose"
-        );
-
-
-    closeButton.addEventListener(
-        "click",
-        closeVideo
-    );
-
-
-    /*
-        Clicking the dark background
-        also closes the popup.
-    */
-
-    popup.addEventListener(
-        "click",
-        event => {
-
-            if (
-                event.target === popup
-            ) {
-
-                closeVideo();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   OPEN VIDEO
-===================================================== */
-
-function openVideo(
-    tulip,
-    index
-) {
-
-    /*
-        Make sure popup exists.
-    */
-
-    createVideoPopup();
-
-
-    const popup =
-        document.getElementById(
-            "gardenVideoPopup"
-        );
-
-
-    const video =
-        document.getElementById(
-            "gardenVideo"
-        );
-
-
-    const message =
-        document.getElementById(
-            "videoMessage"
-        );
-
-
-    /*
-        Get video file from tulip.
-    */
-
-    const videoFile =
-        tulip.dataset.video;
-
-
-    if (!videoFile) {
-
-        console.warn(
-            "This tulip does not have a data-video attribute."
-        );
-
-        return;
-
-    }
-
-
-    /*
-        Set video.
-    */
-
-    video.src =
-        videoFile;
-
-
-    /*
-        Set matching message.
-    */
-
-    message.textContent =
-        videoMessages[
-            index % videoMessages.length
-        ];
-
-
-    /*
-        Show popup.
-    */
-
-    popup.classList.add(
-        "visible"
-    );
-
-
-    document.body.classList.add(
-        "video-open"
-    );
-
-
-    /*
-        Start video.
-    */
-
-    video.currentTime = 0;
-
-    const playPromise =
-        video.play();
-
-
-    /*
-        Some browsers may block
-        automatic playback.
-
-        Controls are still available.
-    */
-
-    if (
-        playPromise !== undefined
-    ) {
-
-        playPromise.catch(() => {
-
-            console.log(
-                "Video requires user interaction to play."
-            );
-
-        });
-
-    }
-
-
-    /*
-        IMPORTANT:
-
-        Count the video only once.
-    */
-
-    if (
-        tulip.dataset.watched !==
-        "true"
-    ) {
-
-        tulip.dataset.watched =
-            "true";
-
-
-        videosWatched++;
-
-
-        /*
-            Visually mark the tulip
-            as discovered.
-        */
-
-        tulip.classList.add(
-            "watched"
-        );
-
-
-        updateVideoProgress();
-
-
-        /*
-            If all six have been watched,
-            prepare final page.
-        */
-
-        if (
-            videosWatched >=
-            TOTAL_VIDEOS
-        ) {
-
-            allVideosWatched();
-
-        }
-
-    }
-
-}
-
-
-/* =====================================================
-   CLOSE VIDEO
-===================================================== */
-
-function closeVideo() {
-
-    const popup =
-        document.getElementById(
-            "gardenVideoPopup"
-        );
-
-
-    const video =
-        document.getElementById(
-            "gardenVideo"
-        );
-
-
-    if (!popup) {
-        return;
-    }
-
-
-    /*
-        Stop video.
-    */
-
-    if (video) {
-
-        video.pause();
-
-        video.currentTime = 0;
-
-    }
-
-
-    popup.classList.remove(
-        "visible"
-    );
-
-
-    document.body.classList.remove(
-        "video-open"
-    );
-
-}
-
-
-/* =====================================================
-   UPDATE VIDEO PROGRESS
-===================================================== */
-
-function updateVideoProgress() {
-
-    /*
-        Optional counter.
-
-        If you have an element with:
-
-            id="videoProgress"
-
-        it will automatically show:
-
-            1 / 6
-            2 / 6
-            etc.
-    */
-
-    const progress =
-        document.getElementById(
-            "videoProgress"
-        );
-
-
-    if (progress) {
-
-        progress.textContent =
-            `${videosWatched} / ${TOTAL_VIDEOS}`;
-
-    }
-
-}
-
-
-/* =====================================================
-   ALL VIDEOS WATCHED
-===================================================== */
-
-function allVideosWatched() {
-
-    /*
-        Don't show final page immediately.
-
-        Let the sixth video finish being
-        opened / viewed first.
-    */
-
-    setTimeout(() => {
-
-        /*
-            If the video is still open,
-            close it first.
-        */
-
-        closeVideo();
-
-
-        /*
-            Wait a little so the garden
-            has a moment to breathe.
-        */
-
-        setTimeout(() => {
-
-            showFinalMessage();
-
-        }, 1500);
-
-    }, 500);
-
-}
-
-
-/* =====================================================
-   SHOW FINAL MESSAGE
-===================================================== */
-
-function showFinalMessage() {
-
-    if (!finalMessagePage) {
-
-        console.warn(
-            "Final message page was not found."
-        );
-
-        return;
-
-    }
-
-
-    /*
-        Fade out the garden slightly.
-    */
-
-    gardenCreatures.style.transition =
-        "opacity 2s ease";
-
-
-    gardenCreatures.style.opacity =
-        "0";
-
-
-    /*
-        Show final page.
-    */
-
-    setTimeout(() => {
-
-        finalMessagePage.classList.add(
-            "visible"
-        );
-
-    }, 700);
-
-}
-
-
-/* =====================================================
-   OPTIONAL KEYBOARD SUPPORT
-===================================================== */
-
-/*
-    Lets the user press numbers on the keyboard
-    instead of clicking the keypad.
-*/
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (isUnlocking) {
-            return;
-        }
-
-
-        /*
-            Number keys.
-        */
-
-        if (
-            event.key >= "0" &&
-            event.key <= "9"
-        ) {
-
-            addNumber(event.key);
-
-        }
-
-
-        /*
-            Backspace.
-        */
-
-        if (
-            event.key ===
-            "Backspace"
-        ) {
-
-            enteredCode =
-                enteredCode.slice(0, -1);
-
-            updateDisplay();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   CREATE VIDEO POPUP WHEN PAGE LOADS
-===================================================== */
-
-/*
-    We create the popup now,
-    but it remains invisible until
-    a tulip is clicked.
-*/
-
-createVideoPopup();
