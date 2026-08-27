@@ -47,24 +47,6 @@ const particles =
     document.getElementById("particles");
 
 
-/* =====================================================
-   ELEMENTS — MAGICAL GARDEN
-===================================================== */
-
-const gardenCreatures =
-    document.getElementById("gardenCreatures");
-
-const secretCounter =
-    document.getElementById("secretCounter");
-
-const secretCount =
-    document.getElementById("secretCount");
-
-const creatureMessage =
-    document.getElementById("creatureMessage");
-
-const creatureMessageText =
-    document.getElementById("creatureMessageText");
 
 
 /* =====================================================
@@ -500,6 +482,17 @@ function createParticles() {
 
 }
 
+const gardenCreatures =
+    document.getElementById("gardenCreatures");
+
+const secretCounter =
+    document.getElementById("secretCount");
+
+const creatureMessage =
+    document.getElementById("creatureMessage");
+
+const creatureMessageText =
+    document.getElementById("creatureMessageText");
 
 /* =====================================================
    ENTER THE SECRET WORLD
