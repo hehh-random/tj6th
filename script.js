@@ -1115,14 +1115,3 @@ function allSecretsFound() {
     #gardenCreatures gets .garden-active
 */
 
-createGardenCreatures();
-
-
-setTimeout(() => {
-
-    creatureMessageText.textContent =
-        "TEST MESSAGE — IT WORKS ✦";
-
-    creatureMessage.classList.add("show");
-
-}, 2000);
