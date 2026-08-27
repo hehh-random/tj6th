@@ -1,262 +1,592 @@
 /* =====================================================
-   SECRET CODE
+   RESET
 ===================================================== */
 
-/*
-    CHANGE THIS TO WHATEVER CODE YOU WANT.
-*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-const SECRET_CODE = "1234";
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
 
 
 /* =====================================================
-   ELEMENTS — LOCK SCREEN
+   MAIN SCREEN
 ===================================================== */
 
-const lockScreen =
-    document.getElementById("lockScreen");
+#lockScreen {
 
-const lockArea =
-    document.getElementById("lockArea");
+    position: relative;
 
-const keypad =
-    document.getElementById("keypad");
+    width: 100vw;
+    height: 100vh;
 
-const codeDisplay =
-    document.getElementById("codeDisplay");
+    overflow: hidden;
 
-const instruction =
-    document.getElementById("instruction");
+    background-image:
+        url("background22.png");
 
-const heartLock =
-    document.getElementById("heartLock");
+    background-size: cover;
+    background-position: center;
 
-const unlockMessage =
-    document.getElementById("unlockMessage");
+    display: flex;
 
-const comeInside =
-    document.getElementById("comeInside");
-
-const secretWorld =
-    document.getElementById("secretWorld");
-
-const enterWorld =
-    document.getElementById("enterWorld");
-
-const particles =
-    document.getElementById("particles");
-
-
+    justify-content: center;
+    align-items: center;
+}
 
 
 /* =====================================================
-   STATE — LOCK
+   GOLDEN ATMOSPHERIC LIGHT
 ===================================================== */
 
-let enteredCode = "";
+.golden-glow {
 
-let isUnlocking = false;
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 221, 112, .12),
+            transparent 45%
+        );
+
+    pointer-events: none;
+
+    transition:
+        opacity 2s ease,
+        transform 3s ease;
+
+    z-index: 1;
+}
 
 
 /* =====================================================
-   STATE — GARDEN
+   LOCK AREA
 ===================================================== */
 
-let secretsFound = 0;
+.lock-area {
 
-let specialIndexes = [];
+    position: relative;
+
+    z-index: 10;
+
+    width: 420px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.5s ease,
+        filter 1s ease;
+}
 
 
 /* =====================================================
-   SETTINGS — GARDEN
+   LOCK
 ===================================================== */
 
-const TOTAL_BUTTERFLIES = 10;
+.lock-wrapper {
 
-const TOTAL_FIREFLIES = 10;
+    position: relative;
 
-const TOTAL_CREATURES =
-    TOTAL_BUTTERFLIES +
-    TOTAL_FIREFLIES;
+    width: 180px;
+    height: 220px;
 
-const TOTAL_SPECIAL = 6;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
 
 
 /* =====================================================
-   SECRET MESSAGES
+   HEART LOCK
 ===================================================== */
 
-const secretMessages = [
+.heart-lock {
 
-    "A tiny reminder that you're special. ✦",
+    position: relative;
 
-    "Some little moments deserve to be remembered forever.",
+    width: 115px;
+    height: 115px;
 
-    "If this little light found you, maybe you needed it today.",
+    z-index: 4;
 
-    "There are beautiful things hiding in the smallest moments.",
+    transform: rotate(-45deg);
 
-    "Keep this little secret somewhere in your heart. ♡",
+    filter:
+        drop-shadow(
+            0 8px 10px rgba(126, 83, 15, .22)
+        );
 
-    "You found something that wasn't meant to be found easily."
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        filter 1s ease;
+}
 
-];
+
+/* =====================================================
+   HEART BODY
+===================================================== */
+
+.heart-body {
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    left: 8px;
+    top: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffe9a3,
+            #e8a91f
+        );
+
+    border-radius:
+        15px
+        15px
+        20px
+        15px;
+
+    box-shadow:
+        inset 3px 3px 8px rgba(255,255,255,.55),
+        inset -5px -5px 12px rgba(142,92,5,.18);
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   HEART SHAPE
+===================================================== */
+
+.heart-body::before,
+.heart-body::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffe9a3,
+            #e8a91f
+        );
+
+    top: -30px;
+}
+
+.heart-body::before {
+    left: 0;
+}
+
+.heart-body::after {
+    right: 0;
+}
+
+
+/* =====================================================
+   LOCK SHACKLE
+===================================================== */
+
+.lock-shackle {
+
+    position: absolute;
+
+    width: 65px;
+    height: 80px;
+
+    left: 32px;
+    top: -48px;
+
+    border: 11px solid #c8901d;
+
+    border-bottom: none;
+
+    border-radius:
+        50px 50px 0 0;
+
+    z-index: 2;
+
+    transform: rotate(45deg);
+
+    background: transparent;
+
+    box-shadow:
+        inset 2px 2px 4px rgba(255,255,255,.5);
+}
+
+
+.shackle-inner {
+
+    position: absolute;
+
+    width: 38px;
+    height: 55px;
+
+    left: 2px;
+    top: 8px;
+
+    border:
+        4px solid rgba(255,235,160,.55);
+
+    border-bottom: none;
+
+    border-radius:
+        30px 30px 0 0;
+}
+
+
+/* =====================================================
+   KEYHOLE
+===================================================== */
+
+.keyhole {
+
+    position: absolute;
+
+    left: 38px;
+    top: 35px;
+
+    width: 27px;
+    height: 35px;
+
+    z-index: 10;
+
+    transform: rotate(45deg);
+}
+
+
+.keyhole-circle {
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    left: 2px;
+
+    border-radius: 50%;
+
+    background: #70450d;
+}
+
+
+.keyhole-line {
+
+    position: absolute;
+
+    width: 10px;
+    height: 20px;
+
+    left: 8px;
+    top: 14px;
+
+    background: #70450d;
+
+    border-radius: 2px;
+}
+
+
+/* =====================================================
+   GOLDEN KEY
+===================================================== */
+
+.golden-key {
+
+    position: absolute;
+
+    right: -15px;
+    top: 5px;
+
+    width: 115px;
+    height: 60px;
+
+    transform: rotate(30deg);
+
+    z-index: 8;
+
+    filter:
+        drop-shadow(
+            0 5px 5px rgba(125,80,0,.2)
+        );
+}
+
+
+.key-ring {
+
+    position: absolute;
+
+    width: 38px;
+    height: 38px;
+
+    border:
+        7px solid #d59c1e;
+
+    border-radius: 50%;
+
+    left: 0;
+    top: 8px;
+}
+
+
+.key-shaft {
+
+    position: absolute;
+
+    width: 72px;
+    height: 10px;
+
+    left: 30px;
+    top: 22px;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffe69a,
+            #d89d20
+        );
+}
+
+
+.key-teeth {
+
+    position: absolute;
+
+    right: 0;
+    top: 22px;
+
+    width: 25px;
+    height: 25px;
+}
+
+
+.key-teeth span {
+
+    position: absolute;
+
+    width: 12px;
+    height: 13px;
+
+    background: #d89d20;
+
+    right: 0;
+}
+
+.key-teeth span:first-child {
+    top: 0;
+}
+
+.key-teeth span:last-child {
+    top: 10px;
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.lock-text {
+
+    text-align: center;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+
+.lock-text h1 {
+
+    font-size: 29px;
+
+    font-weight: 500;
+
+    font-style: italic;
+
+    color: #805615;
+}
+
+
+.lock-text h1 span {
+    font-size: 25px;
+}
+
+
+.lock-text p {
+
+    margin-top: 16px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    color: #976a1b;
+}
+
+
+/* =====================================================
+   CODE DISPLAY
+===================================================== */
+
+.code-display {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    margin-top: 18px;
+
+    height: 12px;
+}
+
+
+.code-display span {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    border:
+        1px solid rgba(155,108,29,.5);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+.code-display span.active {
+
+    background: #a36d13;
+
+    transform: scale(1.25);
+
+    box-shadow:
+        0 0 7px rgba(215,157,40,.45);
+}
 
 
 /* =====================================================
    KEYPAD
 ===================================================== */
 
-const numberButtons =
-    document.querySelectorAll("[data-number]");
+.keypad {
 
+    margin-top: 28px;
 
-numberButtons.forEach(button => {
+    width: 250px;
 
-    button.addEventListener("click", () => {
+    display: grid;
 
-        if (isUnlocking) {
-            return;
-        }
+    grid-template-columns:
+        repeat(3, 1fr);
 
-        const number =
-            button.dataset.number;
+    gap: 7px;
 
-        addNumber(number);
-
-    });
-
-});
-
-
-/* =====================================================
-   ADD NUMBER
-===================================================== */
-
-function addNumber(number) {
-
-    if (isUnlocking) {
-        return;
-    }
-
-
-    /*
-        Don't allow more digits than
-        the secret code requires.
-    */
-
-    if (
-        enteredCode.length >=
-        SECRET_CODE.length
-    ) {
-        return;
-    }
-
-
-    enteredCode += number;
-
-    updateDisplay();
-
-
-    /*
-        Automatically check the code
-        when all digits have been entered.
-    */
-
-    if (
-        enteredCode.length ===
-        SECRET_CODE.length
-    ) {
-
-        setTimeout(() => {
-
-            checkCode();
-
-        }, 250);
-
-    }
-
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
 }
 
 
-/* =====================================================
-   BACKSPACE
-===================================================== */
+.key {
 
-const backspace =
-    document.getElementById("backspace");
+    height: 58px;
 
+    border:
+        1px solid rgba(180,130,50,.18);
 
-if (backspace) {
+    border-radius: 7px;
 
-    backspace.addEventListener(
-        "click",
-        () => {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,250,234,.92),
+            rgba(245,229,194,.85)
+        );
 
-            if (isUnlocking) {
-                return;
-            }
+    color: #93651a;
 
-            enteredCode =
-                enteredCode.slice(0, -1);
+    font-size: 22px;
 
-            updateDisplay();
+    font-family: Georgia, serif;
 
-        }
-    );
+    cursor: pointer;
 
+    box-shadow:
+        0 3px 8px rgba(115,75,10,.13),
+        inset 0 1px 0 rgba(255,255,255,.8);
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
 }
 
 
-/* =====================================================
-   UPDATE CODE DISPLAY
-===================================================== */
+.key:hover {
 
-function updateDisplay() {
+    transform:
+        translateY(-2px);
 
-    const dots =
-        codeDisplay.querySelectorAll("span");
-
-
-    dots.forEach((dot, index) => {
-
-        if (
-            index <
-            enteredCode.length
-        ) {
-
-            dot.classList.add("active");
-
-        } else {
-
-            dot.classList.remove("active");
-
-        }
-
-    });
-
+    box-shadow:
+        0 6px 12px rgba(115,75,10,.18);
 }
 
 
-/* =====================================================
-   CHECK CODE
-===================================================== */
+.key:active {
 
-function checkCode() {
+    transform:
+        translateY(1px)
+        scale(.96);
+}
 
-    if (
-        enteredCode ===
-        SECRET_CODE
-    ) {
 
-        unlock();
+.key.empty {
+    visibility: hidden;
+}
 
-    } else {
 
-        wrongCode();
-
-    }
-
+.key.backspace {
+    font-size: 21px;
 }
 
 
@@ -264,854 +594,1824 @@ function checkCode() {
    WRONG CODE
 ===================================================== */
 
-function wrongCode() {
+.shake {
+    animation:
+        shake .45s ease;
+}
 
-    if (isUnlocking) {
-        return;
+
+@keyframes shake {
+
+    0%, 100% {
+        transform: translateX(0);
     }
 
+    20% {
+        transform: translateX(-8px);
+    }
 
-    /*
-        Restart shake animation.
-    */
+    40% {
+        transform: translateX(8px);
+    }
 
-    lockArea.classList.remove("shake");
+    60% {
+        transform: translateX(-6px);
+    }
 
-    void lockArea.offsetWidth;
-
-    lockArea.classList.add("shake");
-
-
-    /*
-        Change instruction.
-    */
-
-    instruction.textContent =
-        "That's not the right key...";
-
-    instruction.style.color =
-        "#a34e32";
-
-
-    /*
-        Reset after a short delay.
-    */
-
-    setTimeout(() => {
-
-        enteredCode = "";
-
-        updateDisplay();
-
-        instruction.textContent =
-            "Enter the secret code...";
-
-        instruction.style.color = "";
-
-    }, 900);
-
+    80% {
+        transform: translateX(6px);
+    }
 }
 
 
 /* =====================================================
-   UNLOCK
+   UNLOCKING
 ===================================================== */
 
-function unlock() {
+.unlocking .golden-glow {
 
-    if (isUnlocking) {
-        return;
-    }
+    opacity: 1;
 
-    isUnlocking = true;
-
-
-    /*
-        Main unlocking animation.
-    */
-
-    lockScreen.classList.add(
-        "unlocking"
-    );
+    transform: scale(1.4);
+}
 
 
-    /*
-        Create magical golden particles.
-    */
+.unlocking .golden-key {
 
-    createParticles();
-
-
-    /* =================================================
-       MESSAGE 1
-       "You found the key."
-    ================================================== */
-
-    setTimeout(() => {
-
-        unlockMessage.classList.add(
-            "show-unlock-message"
-        );
-
-    }, 2500);
+    animation:
+        keyUnlock 1.8s forwards;
+}
 
 
-    /* =================================================
-       MESSAGE 2
-       "Come inside..."
-    ================================================== */
+.unlocking .heart-lock {
 
-    setTimeout(() => {
-
-        comeInside.classList.add(
-            "show-come-inside"
-        );
-
-    }, 5100);
+    animation:
+        lockGlow 1.6s ease forwards,
+        lockOpen 2s 1.3s ease forwards;
+}
 
 
-    /* =================================================
-       SECRET WORLD
-    ================================================== */
+.unlocking .keypad,
+.unlocking .lock-text {
 
-    setTimeout(() => {
+    opacity: 0;
 
-        secretWorld.classList.add(
-            "visible"
-        );
+    transform:
+        translateY(25px);
 
-    }, 7600);
-
+    pointer-events: none;
 }
 
 
 /* =====================================================
-   GOLDEN PARTICLES
+   KEY ANIMATION
 ===================================================== */
 
-function createParticles() {
+@keyframes keyUnlock {
 
-    const amount = 70;
-
-
-    for (
-        let i = 0;
-        i < amount;
-        i++
-    ) {
-
-        const particle =
-            document.createElement("div");
-
-
-        particle.classList.add(
-            "particle"
-        );
-
-
-        /* ---------------------------------------------
-           START POSITION
-        --------------------------------------------- */
-
-        particle.style.left =
-            `calc(50% + ${random(-50, 50)}px)`;
-
-
-        particle.style.top =
-            `calc(40% + ${random(-50, 50)}px)`;
-
-
-        /* ---------------------------------------------
-           RANDOM DIRECTION
-        --------------------------------------------- */
-
-        particle.style.setProperty(
-            "--x",
-            `${random(-350, 350)}px`
-        );
-
-
-        particle.style.setProperty(
-            "--y",
-            `${random(-300, 250)}px`
-        );
-
-
-        /* ---------------------------------------------
-           RANDOM SPEED
-        --------------------------------------------- */
-
-        particle.style.setProperty(
-            "--duration",
-            `${random(1.5, 3.5)}s`
-        );
-
-
-        /* ---------------------------------------------
-           RANDOM SIZE
-        --------------------------------------------- */
-
-        const size =
-            random(3, 7);
-
-
-        particle.style.width =
-            `${size}px`;
-
-
-        particle.style.height =
-            `${size}px`;
-
-
-        particles.appendChild(
-            particle
-        );
-
-
-        /* ---------------------------------------------
-           REMOVE PARTICLE
-        --------------------------------------------- */
-
-        setTimeout(() => {
-
-            particle.remove();
-
-        }, 4000);
-
+    0% {
+        transform: rotate(30deg);
     }
 
-}
-
-const gardenCreatures =
-    document.getElementById("gardenCreatures");
-
-const secretCounter =
-    document.getElementById("secretCount");
-
-const creatureMessage =
-    document.getElementById("creatureMessage");
-
-const creatureMessageText =
-    document.getElementById("creatureMessageText");
-
-/* =====================================================
-   ENTER THE SECRET WORLD
-===================================================== */
-
-enterWorld.addEventListener(
-    "click",
-    () => {
-
-        enterWorld.textContent =
-            "The garden is waking...";
-
-
-        /*
-            Reveal the magical creatures.
-        */
-
-        gardenCreatures.classList.add(
-            "garden-active"
-        );
-
+    35% {
+        transform:
+            rotate(30deg)
+            translateX(-20px);
     }
-);
 
+    65% {
+        transform:
+            rotate(30deg)
+            translateX(-20px)
+            rotate(-20deg);
+    }
 
-/* =====================================================
-   RANDOM NUMBER
-===================================================== */
-
-function random(min, max) {
-
-    return Math.random() *
-        (max - min) + min;
-
+    100% {
+        transform:
+            rotate(30deg)
+            translateX(-20px)
+            rotate(-20deg)
+            translateX(80px);
+    }
 }
 
 
 /* =====================================================
-   CHOOSE SPECIAL CREATURES
+   LOCK GLOW
 ===================================================== */
 
-/*
-    Randomly chooses 6 different creatures
-    out of all 20 creatures.
+@keyframes lockGlow {
 
-    10 butterflies
-    +
-    10 fireflies
-    =
-    20 total
-
-    Exactly 6 become secret creatures.
-*/
-
-function chooseSpecialCreatures(total) {
-
-    const indexes = [];
-
-
-    while (
-        indexes.length <
-        TOTAL_SPECIAL
-    ) {
-
-        const randomIndex =
-            Math.floor(
-                Math.random() * total
+    0% {
+        filter:
+            drop-shadow(
+                0 8px 10px rgba(126,83,15,.22)
             );
+    }
 
-
-        if (
-            !indexes.includes(
-                randomIndex
+    50% {
+        filter:
+            drop-shadow(
+                0 0 18px rgba(255,210,70,.8)
             )
-        ) {
-
-            indexes.push(
-                randomIndex
+            drop-shadow(
+                0 0 45px rgba(255,196,35,.5)
             );
-
-        }
-
     }
 
-
-    return indexes;
-
+    100% {
+        filter:
+            drop-shadow(
+                0 0 35px rgba(255,216,90,.95)
+            );
+    }
 }
 
 
 /* =====================================================
-   CREATE MAGICAL GARDEN
+   LOCK OPEN
 ===================================================== */
 
-function createGardenCreatures() {
+@keyframes lockOpen {
+
+    0% {
+        transform: rotate(-45deg);
+    }
+
+    40% {
+        transform:
+            rotate(-45deg)
+            scale(1.12);
+    }
+
+    100% {
+        transform:
+            rotate(-45deg)
+            scale(0)
+            translateY(-40px);
+
+        opacity: 0;
+    }
+}
 
 
-    /*
-        Choose the 6 secret creatures
-        before creating anything.
+/* =====================================================
+   LIGHT BURST
+===================================================== */
+
+.light-burst {
+
+    position: absolute;
+
+    left: 50%;
+    top: 40%;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,239,172,.9);
+
+    transform:
+        translate(-50%,-50%)
+        scale(0);
+
+    opacity: 0;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+
+.unlocking .light-burst {
+
+    animation:
+        burst 2.4s 1.7s ease forwards;
+}
+
+
+@keyframes burst {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: .7;
+
+        transform:
+            translate(-50%,-50%)
+            scale(35);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(60);
+    }
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+#particles {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 25;
+
+    pointer-events: none;
+}
+
+
+.particle {
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #e9b62d;
+
+    box-shadow:
+        0 0 8px rgba(255,211,79,.8);
+
+    animation:
+        particleFloat
+        var(--duration)
+        ease-out
+        forwards;
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+    }
+}
+
+
+/* =====================================================
+   UNLOCK MESSAGE
+===================================================== */
+
+.unlock-message {
+
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.85);
+
+    width: 500px;
+
+    text-align: center;
+
+    z-index: 50;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.unlock-message .unlock-icon {
+
+    font-size: 38px;
+
+    color: #c28a19;
+
+    margin-bottom: 18px;
+}
+
+
+.unlock-message h2 {
+
+    font-size: 36px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #79500f;
+}
+
+
+.unlock-message p {
+
+    margin-top: 12px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    color: #a17427;
+}
+
+
+.show-unlock-message {
+
+    animation:
+        messageAppear
+        2.5s
+        ease
+        forwards;
+}
+
+
+@keyframes messageAppear {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.85);
+    }
+
+    20% {
+        opacity: 1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-55%)
+            scale(1.04);
+    }
+}
+
+
+/* =====================================================
+   COME INSIDE
+===================================================== */
+
+.come-inside {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 600px;
+
+    text-align: center;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.9);
+
+    opacity: 0;
+
+    z-index: 60;
+
+    pointer-events: none;
+}
+
+
+.come-inside .small-key {
+
+    font-size: 35px;
+
+    margin-bottom: 18px;
+
+    animation:
+        tinyFloat
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+.come-inside h2 {
+
+    font-size: 42px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #79500f;
+}
+
+
+.come-inside p {
+
+    margin-top: 14px;
+
+    font-family: Arial, sans-serif;
+
+    color: #9b712b;
+
+    font-size: 15px;
+}
+
+
+.show-come-inside {
+
+    animation:
+        comeInsideAppear
+        2.8s
+        ease
+        forwards;
+}
+
+
+@keyframes comeInsideAppear {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+    }
+
+    20% {
+        opacity: 1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-52%)
+            scale(1.03);
+    }
+}
+
+
+@keyframes tinyFloat {
+
+    0%, 100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+/* =====================================================
+   SECRET WORLD
+===================================================== */
+
+.secret-world {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,244,200,.88),
+            rgba(255,235,170,.72)
+        );
+
+    transform: scale(1.08);
+
+    transition:
+        opacity 2s ease,
+        transform 2.5s ease;
+}
+
+
+.secret-world.visible {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform: scale(1);
+}
+
+
+.world-content {
+
+    text-align: center;
+
+    max-width: 650px;
+
+    padding: 30px;
+}
+
+
+.world-symbol {
+
+    font-size: 50px;
+
+    color: #bd841b;
+
+    margin-bottom: 15px;
+}
+
+
+.little-label {
+
+    font-family: Arial, sans-serif;
+
+    letter-spacing: 5px;
+
+    font-size: 11px;
+
+    color: #a97a28;
+
+    margin-bottom: 18px;
+}
+
+
+.world-content h2 {
+
+    font-size: 52px;
+
+    line-height: 1.15;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #75500f;
+}
+
+
+.world-description {
+
+    margin-top: 22px;
+
+    font-family: Arial, sans-serif;
+
+    color: #96702f;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.enter-world {
+
+    margin-top: 32px;
+
+    padding: 14px 28px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid rgba(161,113,29,.3);
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff2bf,
+            #e9bd52
+        );
+
+    color: #754d0c;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 20px rgba(132,92,20,.15);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.enter-world:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(132,92,20,.2);
+}
+
+
+/* =====================================================
+   GARDEN CREATURES
+===================================================== */
+
+#gardenCreatures {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 35;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition:
+        opacity 2s ease;
+}
+
+
+#gardenCreatures.garden-active {
+    opacity: 1;
+}
+
+
+/* =====================================================
+   BUTTERFLY
+===================================================== */
+
+.butterfly {
+
+    position: absolute;
+
+    left: -120px;
+
+    width: 70px;
+    height: 55px;
+
+    z-index: 40;
+
+    /* IMPORTANT:
+       butterflies are NOT clickable anymore
     */
 
-    specialIndexes =
-        chooseSpecialCreatures(
-            TOTAL_CREATURES
+    pointer-events: none;
+
+    transform:
+        translateY(var(--start-y))
+        scale(var(--size));
+
+    animation:
+        butterflyFly
+        var(--fly-duration)
+        linear
+        infinite;
+
+    animation-delay:
+        var(--delay);
+
+    filter:
+        drop-shadow(
+            0 5px 6px rgba(40,25,5,.28)
         );
 
-
-    let creatureIndex = 0;
-
-
-    /* =================================================
-       CREATE BUTTERFLIES
-    ================================================== */
-
-    for (
-        let i = 0;
-        i < TOTAL_BUTTERFLIES;
-        i++
-    ) {
-
-        const butterfly =
-            document.createElement("div");
-
-
-        butterfly.classList.add(
-            "butterfly"
-        );
-
-
-        /* ---------------------------------------------
-           WINGS
-        --------------------------------------------- */
-
-        const leftWing =
-            document.createElement("div");
-
-
-        leftWing.classList.add(
-            "butterfly-wing",
-            "left"
-        );
-
-
-        const rightWing =
-            document.createElement("div");
-
-
-        rightWing.classList.add(
-            "butterfly-wing",
-            "right"
-        );
-
-
-        /* ---------------------------------------------
-           BODY
-        --------------------------------------------- */
-
-        const body =
-            document.createElement("div");
-
-
-        body.classList.add(
-            "butterfly-body"
-        );
-
-
-        /* ---------------------------------------------
-           ANTENNAE
-        --------------------------------------------- */
-
-        const leftAntenna =
-            document.createElement("div");
-
-
-        leftAntenna.classList.add(
-            "antenna",
-            "left"
-        );
-
-
-        const rightAntenna =
-            document.createElement("div");
-
-
-        rightAntenna.classList.add(
-            "antenna",
-            "right"
-        );
-
-
-        /* ---------------------------------------------
-           ADD PARTS
-        --------------------------------------------- */
-
-        butterfly.appendChild(
-            leftWing
-        );
-
-
-        butterfly.appendChild(
-            rightWing
-        );
-
-
-        butterfly.appendChild(
-            body
-        );
-
-
-        butterfly.appendChild(
-            leftAntenna
-        );
-
-
-        butterfly.appendChild(
-            rightAntenna
-        );
-
-
-        /* ---------------------------------------------
-           POSITION
-        --------------------------------------------- */
-
-        butterfly.style.top =
-            `${random(8, 88)}%`;
-
-
-        butterfly.style.setProperty(
-            "--start-y",
-            `${random(-80, 80)}px`
-        );
-
-
-        butterfly.style.setProperty(
-            "--end-y",
-            `${random(-100, 100)}px`
-        );
-
-
-        butterfly.style.setProperty(
-            "--angle",
-            `${random(-10, 10)}deg`
-        );
-
-
-        /* ---------------------------------------------
-           FLIGHT SPEED
-        --------------------------------------------- */
-
-        butterfly.style.setProperty(
-            "--fly-duration",
-            `${random(18, 30)}s`
-        );
-
-
-        butterfly.style.setProperty(
-            "--delay",
-            `${random(-30, 0)}s`
-        );
-
-
-        /* ---------------------------------------------
-           RANDOM SIZE
-        --------------------------------------------- */
-
-        const size =
-            random(.75, 1.2);
-
-
-        butterfly.style.setProperty(
-            "--size",
-            size
-        );
-
-
-        /* ---------------------------------------------
-           SPECIAL CREATURE?
-        --------------------------------------------- */
-
-        if (
-            specialIndexes.includes(
-                creatureIndex
-            )
-        ) {
-
-            makeSpecial(
-                butterfly,
-                creatureIndex
-            );
-
-        }
-
-
-        /* ---------------------------------------------
-           ADD TO GARDEN
-        --------------------------------------------- */
-
-        gardenCreatures.appendChild(
-            butterfly
-        );
-
-
-        creatureIndex++;
-
-    }
-
-
-    /* =================================================
-       CREATE FIREFLIES
-    ================================================== */
-
-    for (
-        let i = 0;
-        i < TOTAL_FIREFLIES;
-        i++
-    ) {
-
-        const firefly =
-            document.createElement("div");
-
-
-        firefly.classList.add(
-            "firefly"
-        );
-
-
-        /* ---------------------------------------------
-           POSITION
-        --------------------------------------------- */
-
-        firefly.style.top =
-            `${random(12, 92)}%`;
-
-
-        firefly.style.setProperty(
-            "--start-y",
-            `${random(-80, 80)}px`
-        );
-
-
-        firefly.style.setProperty(
-            "--end-y",
-            `${random(-120, 120)}px`
-        );
-
-
-        /* ---------------------------------------------
-           MOVEMENT SPEED
-        --------------------------------------------- */
-
-        firefly.style.setProperty(
-            "--fly-duration",
-            `${random(20, 34)}s`
-        );
-
-
-        /* ---------------------------------------------
-           GLOW SPEED
-        --------------------------------------------- */
-
-        firefly.style.setProperty(
-            "--glow-duration",
-            `${random(1.8, 3.8)}s`
-        );
-
-
-        /* ---------------------------------------------
-           ANIMATION DELAY
-        --------------------------------------------- */
-
-        firefly.style.setProperty(
-            "--delay",
-            `${random(-35, 0)}s`
-        );
-
-
-        /* ---------------------------------------------
-           RANDOM SIZE
-        --------------------------------------------- */
-
-        const size =
-            random(.8, 1.35);
-
-
-        firefly.style.scale =
-            size;
-
-
-        /* ---------------------------------------------
-           SPECIAL CREATURE?
-        --------------------------------------------- */
-
-        if (
-            specialIndexes.includes(
-                creatureIndex
-            )
-        ) {
-
-            makeSpecial(
-                firefly,
-                creatureIndex
-            );
-
-        }
-
-
-        /* ---------------------------------------------
-           ADD TO GARDEN
-        --------------------------------------------- */
-
-        gardenCreatures.appendChild(
-            firefly
-        );
-
-
-        creatureIndex++;
-
-    }
-
+    transform-origin: center;
 }
 
 
 /* =====================================================
-   MAKE SPECIAL CREATURE
+   BUTTERFLY WINGS
 ===================================================== */
 
-function makeSpecial(
-    creature,
-    creatureIndex
-) {
+.butterfly-wing {
 
-    creature.classList.add(
-        "special-creature"
-    );
+    position: absolute;
+
+    width: 31px;
+    height: 46px;
+
+    top: 4px;
+
+    border-radius:
+        70% 35% 65% 35%;
+
+    /* DARKER GOLD */
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffeaa0 0%,
+            #d49a22 22%,
+            #80500d 58%,
+            #351a03 100%
+        );
+
+    border:
+        2px solid rgba(55,28,3,.82);
+
+    box-shadow:
+        inset 2px 2px 5px rgba(255,255,255,.35),
+        inset -4px -5px 8px rgba(45,20,2,.4),
+        0 2px 5px rgba(45,25,5,.3);
+
+    transform-origin:
+        center bottom;
+}
 
 
-    creature.dataset.special =
-        "true";
+.butterfly-wing.left {
+
+    left: 4px;
+
+    transform:
+        rotate(-25deg);
+
+    animation:
+        leftWingFlap
+        .42s
+        ease-in-out
+        infinite alternate;
+}
 
 
-    /*
-        Determine which secret message
-        belongs to this creature.
+.butterfly-wing.right {
 
-        Example:
+    right: 4px;
 
-        first special creature  = message 0
-        second special creature = message 1
-        etc.
+    transform:
+        scaleX(-1)
+        rotate(-25deg);
+
+    animation:
+        rightWingFlap
+        .42s
+        ease-in-out
+        infinite alternate;
+}
+
+
+/* =====================================================
+   WING PATTERNS
+===================================================== */
+
+.butterfly-wing::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 13px;
+    height: 13px;
+
+    right: 5px;
+    top: 7px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff3b0 0%,
+            #b97915 45%,
+            #4d2805 100%
+        );
+}
+
+
+.butterfly-wing::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    left: 6px;
+    bottom: 9px;
+
+    border-radius: 50%;
+
+    background: #ffe58a;
+
+    box-shadow:
+        0 0 5px rgba(255,215,75,.45);
+}
+
+
+/* =====================================================
+   BUTTERFLY BODY
+===================================================== */
+
+.butterfly-body {
+
+    position: absolute;
+
+    width: 10px;
+    height: 37px;
+
+    left: 30px;
+    top: 9px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            to right,
+            #1b0d02,
+            #4c2907,
+            #1b0d02
+        );
+
+    z-index: 10;
+}
+
+
+.butterfly-body::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    left: -1px;
+    top: -6px;
+
+    border-radius: 50%;
+
+    background: #2b1403;
+}
+
+
+/* =====================================================
+   ANTENNAE
+===================================================== */
+
+.antenna {
+
+    position: absolute;
+
+    width: 22px;
+    height: 14px;
+
+    top: 1px;
+
+    border-top:
+        1.5px solid #321704;
+
+    z-index: 12;
+}
+
+
+.antenna.left {
+
+    left: 17px;
+
+    transform:
+        rotate(-28deg);
+}
+
+
+.antenna.right {
+
+    right: 17px;
+
+    transform:
+        rotate(28deg);
+}
+
+
+/* =====================================================
+   BUTTERFLY FLIGHT
+===================================================== */
+
+@keyframes butterflyFly {
+
+    0% {
+
+        left: -100px;
+
+        transform:
+            translateY(var(--start-y))
+            scale(var(--size))
+            rotate(-5deg);
+    }
+
+    20% {
+
+        transform:
+            translateY(
+                calc(var(--start-y) - 40px)
+            )
+            scale(var(--size))
+            rotate(4deg);
+    }
+
+    40% {
+
+        transform:
+            translateY(
+                calc(var(--start-y) + 45px)
+            )
+            scale(var(--size))
+            rotate(-3deg);
+    }
+
+    60% {
+
+        transform:
+            translateY(
+                calc(var(--start-y) - 30px)
+            )
+            scale(var(--size))
+            rotate(5deg);
+    }
+
+    80% {
+
+        transform:
+            translateY(
+                calc(var(--start-y) + 35px)
+            )
+            scale(var(--size))
+            rotate(-4deg);
+    }
+
+    100% {
+
+        left:
+            calc(100vw + 100px);
+
+        transform:
+            translateY(var(--end-y))
+            scale(var(--size))
+            rotate(3deg);
+    }
+}
+
+
+/* =====================================================
+   WING FLAPPING
+===================================================== */
+
+@keyframes leftWingFlap {
+
+    from {
+        transform:
+            rotate(-25deg)
+            rotateY(5deg);
+    }
+
+    to {
+        transform:
+            rotate(-25deg)
+            rotateY(-55deg);
+    }
+}
+
+
+@keyframes rightWingFlap {
+
+    from {
+        transform:
+            scaleX(-1)
+            rotate(-25deg)
+            rotateY(5deg);
+    }
+
+    to {
+        transform:
+            scaleX(-1)
+            rotate(-25deg)
+            rotateY(-55deg);
+    }
+}
+
+
+/* =====================================================
+   FIREFLIES
+===================================================== */
+
+.firefly {
+
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    z-index: 45;
+
+    /* IMPORTANT:
+       fireflies are NOT clickable
     */
 
-    creature.dataset.messageIndex =
-        specialIndexes.indexOf(
-            creatureIndex
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffe27a 0%,
+            #a9680c 28%,
+            #492704 60%,
+            #160b01 100%
         );
 
+    border:
+        2px solid rgba(45,23,2,.9);
 
-    /* =================================================
-       CLICK EVENT
-    ================================================== */
+    box-shadow:
+        0 0 5px rgba(255,205,60,.65),
+        0 0 14px rgba(166,103,8,.5),
+        0 0 25px rgba(75,40,2,.4);
 
-    creature.addEventListener(
-        "click",
-        function(event) {
+    animation:
+        fireflyMove
+        var(--fly-duration)
+        linear
+        infinite,
 
-            event.stopPropagation();
+        fireflyGlow
+        var(--glow-duration)
+        ease-in-out
+        infinite;
 
-
-            /*
-                Don't allow the same creature
-                to be discovered twice.
-            */
-
-            if (
-                creature.classList.contains(
-                    "creature-found"
-                )
-            ) {
-
-                return;
-
-            }
+    animation-delay:
+        var(--delay);
+}
 
 
-            revealSecret(
-                creature,
-                Number(
-                    creature.dataset.messageIndex
-                )
+/* =====================================================
+   FIREFLY MOVEMENT
+===================================================== */
+
+@keyframes fireflyMove {
+
+    0% {
+
+        left: -40px;
+
+        transform:
+            translate(
+                0,
+                var(--start-y)
             );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   REVEAL SECRET
-===================================================== */
-
-function revealSecret(creature, messageIndex) {
-
-    if (secretsFound >= TOTAL_SPECIAL) {
-        return;
     }
 
-    /* ---------------------------------------------
-       INCREASE COUNTER
-    --------------------------------------------- */
+    20% {
 
-    secretsFound++;
+        transform:
+            translate(
+                10vw,
+                calc(var(--start-y) - 35px)
+            );
+    }
 
-    secretCounter.textContent = secretsFound;
+    40% {
 
+        transform:
+            translate(
+                25vw,
+                calc(var(--start-y) + 50px)
+            );
+    }
 
-    /* ---------------------------------------------
-       CREATURE DISAPPEARS
-    --------------------------------------------- */
+    60% {
 
-    creature.classList.add("creature-found");
+        transform:
+            translate(
+                45vw,
+                calc(var(--start-y) - 25px)
+            );
+    }
 
+    80% {
 
-    /* ---------------------------------------------
-       GET MESSAGE
-    --------------------------------------------- */
+        transform:
+            translate(
+                70vw,
+                calc(var(--start-y) + 40px)
+            );
+    }
 
-    const message =
-        secretMessages[
-            messageIndex % secretMessages.length
-        ];
+    100% {
 
+        left:
+            calc(100vw + 40px);
 
-    /* ---------------------------------------------
-       PUT MESSAGE ON SCREEN
-    --------------------------------------------- */
-
-    creatureMessageText.textContent = message;
-
-
-    /* ---------------------------------------------
-       SHOW MESSAGE
-    --------------------------------------------- */
-
-    creatureMessage.classList.remove("show");
-
-    void creatureMessage.offsetWidth;
-
-    creatureMessage.classList.add("show");
-
-
-    /* ---------------------------------------------
-       HIDE AFTER 3.8 SECONDS
-    --------------------------------------------- */
-
-    setTimeout(() => {
-
-        creatureMessage.classList.remove("show");
-
-    }, 3800);
-
-
-    /* ---------------------------------------------
-       ALL SIX FOUND
-    --------------------------------------------- */
-
-    if (secretsFound === TOTAL_SPECIAL) {
-
-        setTimeout(() => {
-
-            creatureMessageText.textContent =
-                "You found all six little secrets... ✦";
-
-            creatureMessage.classList.remove("show");
-
-            void creatureMessage.offsetWidth;
-
-            creatureMessage.classList.add("show");
-
-        }, 4000);
-
+        transform:
+            translate(
+                100vw,
+                var(--end-y)
+            );
     }
 }
 
 
 /* =====================================================
-   ALL SIX SECRETS FOUND
+   FIREFLY GLOW
 ===================================================== */
 
-function allSecretsFound() {
+@keyframes fireflyGlow {
 
-    creatureMessageText.textContent =
-        "You found all six little secrets... ✦";
+    0%, 100% {
 
+        opacity: .6;
 
-    creatureMessage.classList.remove(
-        "show"
-    );
+        box-shadow:
+            0 0 5px rgba(255,210,65,.5),
+            0 0 12px rgba(145,88,5,.35);
+    }
 
+    50% {
 
-    void creatureMessage.offsetWidth;
+        opacity: 1;
 
-
-    creatureMessage.classList.add(
-        "show"
-    );
-
+        box-shadow:
+            0 0 8px rgba(255,222,90,.8),
+            0 0 18px rgba(164,101,7,.6),
+            0 0 30px rgba(80,42,2,.45);
+    }
 }
 
 
 /* =====================================================
-   START GARDEN CREATURES
+   TULIP GARDEN
 ===================================================== */
 
-/*
-    Create them immediately.
+.tulip-garden {
 
-    They remain invisible until:
-    #gardenCreatures gets .garden-active
-*/
+    position: absolute;
 
+    inset: 0;
+
+    z-index: 90;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 170px);
+
+    grid-template-rows:
+        repeat(2, 210px);
+
+    justify-content: center;
+
+    align-content: center;
+
+    gap: 30px 45px;
+
+    padding: 80px 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(72,38,5,.18),
+            rgba(20,10,2,.58)
+        );
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        scale(1.05);
+
+    transition:
+        opacity 1.8s ease,
+        transform 2s ease;
+}
+
+
+.tulip-garden.visible {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        scale(1);
+}
+
+
+/* =====================================================
+   GARDEN HEADING
+===================================================== */
+
+.garden-heading {
+
+    position: absolute;
+
+    top: 35px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    z-index: 95;
+
+    width: 100%;
+}
+
+
+.garden-heading p {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #ffe5a0;
+
+    margin-bottom: 8px;
+}
+
+
+.garden-heading h2 {
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #fff0c5;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.6);
+}
+
+
+.garden-heading span {
+
+    display: block;
+
+    margin-top: 7px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    color: #e6c985;
+}
+
+
+/* =====================================================
+   TULIP CARD
+===================================================== */
+
+.tulip-card {
+
+    position: relative;
+
+    width: 170px;
+    height: 210px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 100px 100px 35px 35px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background: #241304;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.5),
+        0 0 0 1px rgba(255,220,130,.2);
+
+    transform:
+        translateY(25px)
+        scale(.92);
+
+    opacity: 0;
+
+    animation:
+        tulipAppear
+        .9s
+        ease forwards;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* staggered entrance */
+
+.tulip-card:nth-of-type(2) {
+    animation-delay: .1s;
+}
+
+.tulip-card:nth-of-type(3) {
+    animation-delay: .2s;
+}
+
+.tulip-card:nth-of-type(4) {
+    animation-delay: .3s;
+}
+
+.tulip-card:nth-of-type(5) {
+    animation-delay: .4s;
+}
+
+.tulip-card:nth-of-type(6) {
+    animation-delay: .5s;
+}
+
+.tulip-card:nth-of-type(7) {
+    animation-delay: .6s;
+}
+
+
+@keyframes tulipAppear {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   TULIP IMAGE
+===================================================== */
+
+.tulip-card img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+}
+
+
+.tulip-card:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.03);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.6),
+        0 0 25px rgba(255,205,100,.18);
+}
+
+
+.tulip-card:hover img {
+
+    transform:
+        scale(1.08);
+
+    filter:
+        brightness(1.08)
+        saturate(1.1);
+}
+
+
+/* =====================================================
+   TULIP SHINE
+===================================================== */
+
+.tulip-shine {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 30%,
+            rgba(255,255,255,.3) 50%,
+            transparent 70%
+        );
+
+    transform:
+        translateX(-120%);
+
+    transition:
+        transform .8s ease;
+
+    pointer-events: none;
+}
+
+
+.tulip-card:hover .tulip-shine {
+
+    transform:
+        translateX(120%);
+}
+
+
+/* =====================================================
+   VIDEO MODAL
+===================================================== */
+
+.video-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .4s ease,
+        visibility .4s ease;
+}
+
+
+.video-modal.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =====================================================
+   VIDEO BACKDROP
+===================================================== */
+
+.video-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(12,7,1,.82);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+/* =====================================================
+   VIDEO BOX
+===================================================== */
+
+.video-box {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(760px, 90vw);
+
+    padding: 18px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(63,36,6,.98),
+            rgba(27,14,2,.98)
+        );
+
+    border:
+        1px solid rgba(255,222,130,.35);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.75),
+        0 0 40px rgba(255,207,90,.12);
+
+    transform:
+        scale(.88)
+        translateY(20px);
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.video-modal.show .video-box {
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+
+.close-video {
+
+    position: absolute;
+
+    right: -14px;
+    top: -14px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #f1d486;
+
+    color: #4c2b04;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.4);
+
+    transition:
+        transform .2s ease;
+}
+
+
+.close-video:hover {
+
+    transform:
+        rotate(90deg)
+        scale(1.08);
+}
+
+
+/* =====================================================
+   VIDEO FRAME
+===================================================== */
+
+.video-frame {
+
+    width: 100%;
+
+    aspect-ratio:
+        16 / 9;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background: #080401;
+
+    box-shadow:
+        inset 0 0 30px rgba(0,0,0,.5);
+}
+
+
+.video-frame video {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    background: #080401;
+}
+
+
+/* =====================================================
+   VIDEO MESSAGE
+===================================================== */
+
+.video-message {
+
+    margin: 20px 20px 7px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    font-style: italic;
+
+    color: #ffeab0;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.6);
+
+    min-height: 28px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .tulip-garden {
+
+        grid-template-columns:
+            repeat(2, 135px);
+
+        grid-template-rows:
+            repeat(3, 165px);
+
+        gap: 20px;
+
+        padding-top: 105px;
+    }
+
+
+    .tulip-card {
+
+        width: 135px;
+        height: 165px;
+    }
+
+
+    .garden-heading h2 {
+
+        font-size: 26px;
+    }
+
+
+    .garden-heading span {
+
+        font-size: 11px;
+    }
+
+
+    .video-box {
+
+        width: 92vw;
+
+        padding: 12px;
+
+        border-radius: 18px;
+    }
+
+
+    .video-message {
+
+        font-size: 16px;
+
+        margin:
+            15px 10px 5px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .tulip-garden {
+
+        grid-template-columns:
+            repeat(2, 115px);
+
+        grid-template-rows:
+            repeat(3, 145px);
+
+        gap: 14px;
+    }
+
+
+    .tulip-card {
+
+        width: 115px;
+        height: 145px;
+    }
+
+
+    .garden-heading {
+
+        top: 22px;
+    }
+
+
+    .garden-heading h2 {
+
+        font-size: 22px;
+    }
+
+
+    .garden-heading p {
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .butterfly,
+    .butterfly-wing,
+    .firefly,
+    .tulip-card {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+    }
+}

@@ -16,7 +16,11 @@ body {
 
 body {
     overflow: hidden;
-    font-family: Georgia, "Times New Roman", serif;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 }
 
 
@@ -25,6 +29,7 @@ body {
 ===================================================== */
 
 #lockScreen {
+
     position: relative;
 
     width: 100vw;
@@ -39,6 +44,7 @@ body {
     background-position: center;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 }
@@ -49,6 +55,7 @@ body {
 ===================================================== */
 
 .golden-glow {
+
     position: absolute;
 
     inset: -20%;
@@ -56,7 +63,7 @@ body {
     background:
         radial-gradient(
             circle at center,
-            rgba(255, 221, 112, 0.12),
+            rgba(255, 221, 112, .12),
             transparent 45%
         );
 
@@ -75,6 +82,7 @@ body {
 ===================================================== */
 
 .lock-area {
+
     position: relative;
 
     z-index: 10;
@@ -82,7 +90,9 @@ body {
     width: 420px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     transition:
@@ -97,12 +107,14 @@ body {
 ===================================================== */
 
 .lock-wrapper {
+
     position: relative;
 
     width: 180px;
     height: 220px;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 }
@@ -113,6 +125,7 @@ body {
 ===================================================== */
 
 .heart-lock {
+
     position: relative;
 
     width: 115px;
@@ -124,7 +137,7 @@ body {
 
     filter:
         drop-shadow(
-            0 8px 10px rgba(126, 83, 15, 0.22)
+            0 8px 10px rgba(126, 83, 15, .22)
         );
 
     transition:
@@ -138,6 +151,7 @@ body {
 ===================================================== */
 
 .heart-body {
+
     position: absolute;
 
     width: 100px;
@@ -173,6 +187,7 @@ body {
 
 .heart-body::before,
 .heart-body::after {
+
     content: "";
 
     position: absolute;
@@ -206,6 +221,7 @@ body {
 ===================================================== */
 
 .lock-shackle {
+
     position: absolute;
 
     width: 65px;
@@ -233,6 +249,7 @@ body {
 
 
 .shackle-inner {
+
     position: absolute;
 
     width: 38px;
@@ -241,7 +258,8 @@ body {
     left: 2px;
     top: 8px;
 
-    border: 4px solid rgba(255,235,160,.55);
+    border:
+        4px solid rgba(255,235,160,.55);
 
     border-bottom: none;
 
@@ -255,6 +273,7 @@ body {
 ===================================================== */
 
 .keyhole {
+
     position: absolute;
 
     left: 38px;
@@ -270,6 +289,7 @@ body {
 
 
 .keyhole-circle {
+
     position: absolute;
 
     width: 22px;
@@ -280,13 +300,11 @@ body {
     border-radius: 50%;
 
     background: #70450d;
-
-    box-shadow:
-        inset 2px 2px 3px rgba(0,0,0,.2);
 }
 
 
 .keyhole-line {
+
     position: absolute;
 
     width: 10px;
@@ -306,6 +324,7 @@ body {
 ===================================================== */
 
 .golden-key {
+
     position: absolute;
 
     right: -15px;
@@ -322,31 +341,28 @@ body {
         drop-shadow(
             0 5px 5px rgba(125,80,0,.2)
         );
-
-    transition:
-        transform 1.4s cubic-bezier(.2,.8,.2,1);
 }
 
 
 .key-ring {
+
     position: absolute;
 
     width: 38px;
     height: 38px;
 
-    border: 7px solid #d59c1e;
+    border:
+        7px solid #d59c1e;
 
     border-radius: 50%;
 
     left: 0;
     top: 8px;
-
-    box-shadow:
-        inset 2px 2px 3px rgba(255,255,255,.5);
 }
 
 
 .key-shaft {
+
     position: absolute;
 
     width: 72px;
@@ -367,6 +383,7 @@ body {
 
 
 .key-teeth {
+
     position: absolute;
 
     right: 0;
@@ -378,6 +395,7 @@ body {
 
 
 .key-teeth span {
+
     position: absolute;
 
     width: 12px;
@@ -387,7 +405,6 @@ body {
 
     right: 0;
 }
-
 
 .key-teeth span:first-child {
     top: 0;
@@ -403,9 +420,8 @@ body {
 ===================================================== */
 
 .lock-text {
-    text-align: center;
 
-    margin-top: 0;
+    text-align: center;
 
     transition:
         opacity .8s ease,
@@ -414,6 +430,7 @@ body {
 
 
 .lock-text h1 {
+
     font-size: 29px;
 
     font-weight: 500;
@@ -421,9 +438,6 @@ body {
     font-style: italic;
 
     color: #805615;
-
-    text-shadow:
-        0 1px 1px rgba(255,255,255,.7);
 }
 
 
@@ -433,11 +447,10 @@ body {
 
 
 .lock-text p {
+
     margin-top: 16px;
 
-    font-family:
-        Arial,
-        sans-serif;
+    font-family: Arial, sans-serif;
 
     font-size: 15px;
 
@@ -450,6 +463,7 @@ body {
 ===================================================== */
 
 .code-display {
+
     display: flex;
 
     justify-content: center;
@@ -463,6 +477,7 @@ body {
 
 
 .code-display span {
+
     width: 8px;
     height: 8px;
 
@@ -470,7 +485,8 @@ body {
 
     background: transparent;
 
-    border: 1px solid rgba(155,108,29,.5);
+    border:
+        1px solid rgba(155,108,29,.5);
 
     transition:
         background .2s ease,
@@ -479,6 +495,7 @@ body {
 
 
 .code-display span.active {
+
     background: #a36d13;
 
     transform: scale(1.25);
@@ -493,6 +510,7 @@ body {
 ===================================================== */
 
 .keypad {
+
     margin-top: 28px;
 
     width: 250px;
@@ -511,9 +529,11 @@ body {
 
 
 .key {
+
     height: 58px;
 
-    border: 1px solid rgba(180,130,50,.18);
+    border:
+        1px solid rgba(180,130,50,.18);
 
     border-radius: 7px;
 
@@ -528,9 +548,7 @@ body {
 
     font-size: 22px;
 
-    font-family:
-        Georgia,
-        serif;
+    font-family: Georgia, serif;
 
     cursor: pointer;
 
@@ -540,27 +558,25 @@ body {
 
     transition:
         transform .15s ease,
-        box-shadow .15s ease,
-        background .15s ease;
+        box-shadow .15s ease;
 }
 
 
 .key:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 6px 12px rgba(115,75,10,.18),
-        inset 0 1px 0 rgba(255,255,255,.9);
+        0 6px 12px rgba(115,75,10,.18);
 }
 
 
 .key:active {
+
     transform:
         translateY(1px)
         scale(.96);
-
-    box-shadow:
-        0 1px 3px rgba(115,75,10,.15);
 }
 
 
@@ -613,6 +629,7 @@ body {
 ===================================================== */
 
 .unlocking .golden-glow {
+
     opacity: 1;
 
     transform: scale(1.4);
@@ -620,12 +637,14 @@ body {
 
 
 .unlocking .golden-key {
+
     animation:
         keyUnlock 1.8s forwards;
 }
 
 
 .unlocking .heart-lock {
+
     animation:
         lockGlow 1.6s ease forwards,
         lockOpen 2s 1.3s ease forwards;
@@ -634,16 +653,18 @@ body {
 
 .unlocking .keypad,
 .unlocking .lock-text {
+
     opacity: 0;
 
-    transform: translateY(25px);
+    transform:
+        translateY(25px);
 
     pointer-events: none;
 }
 
 
 /* =====================================================
-   KEY UNLOCK ANIMATION
+   KEY ANIMATION
 ===================================================== */
 
 @keyframes keyUnlock {
@@ -739,6 +760,7 @@ body {
 ===================================================== */
 
 .light-burst {
+
     position: absolute;
 
     left: 50%;
@@ -765,6 +787,7 @@ body {
 
 
 .unlocking .light-burst {
+
     animation:
         burst 2.4s 1.7s ease forwards;
 }
@@ -807,6 +830,7 @@ body {
 ===================================================== */
 
 #particles {
+
     position: absolute;
 
     inset: 0;
@@ -818,6 +842,7 @@ body {
 
 
 .particle {
+
     position: absolute;
 
     width: 5px;
@@ -870,6 +895,7 @@ body {
 ===================================================== */
 
 .unlock-message {
+
     position: absolute;
 
     left: 50%;
@@ -892,6 +918,7 @@ body {
 
 
 .unlock-message .unlock-icon {
+
     font-size: 38px;
 
     color: #c28a19;
@@ -901,6 +928,7 @@ body {
 
 
 .unlock-message h2 {
+
     font-size: 36px;
 
     font-weight: 400;
@@ -912,11 +940,10 @@ body {
 
 
 .unlock-message p {
+
     margin-top: 12px;
 
-    font-family:
-        Arial,
-        sans-serif;
+    font-family: Arial, sans-serif;
 
     font-size: 15px;
 
@@ -925,6 +952,7 @@ body {
 
 
 .show-unlock-message {
+
     animation:
         messageAppear
         2.5s
@@ -970,6 +998,7 @@ body {
 ===================================================== */
 
 .come-inside {
+
     position: absolute;
 
     left: 50%;
@@ -992,6 +1021,7 @@ body {
 
 
 .come-inside .small-key {
+
     font-size: 35px;
 
     margin-bottom: 18px;
@@ -1005,6 +1035,7 @@ body {
 
 
 .come-inside h2 {
+
     font-size: 42px;
 
     font-weight: 400;
@@ -1016,11 +1047,10 @@ body {
 
 
 .come-inside p {
+
     margin-top: 14px;
 
-    font-family:
-        Arial,
-        sans-serif;
+    font-family: Arial, sans-serif;
 
     color: #9b712b;
 
@@ -1029,6 +1059,7 @@ body {
 
 
 .show-come-inside {
+
     animation:
         comeInsideAppear
         2.8s
@@ -1088,6 +1119,7 @@ body {
 ===================================================== */
 
 .secret-world {
+
     position: absolute;
 
     inset: 0;
@@ -1119,6 +1151,7 @@ body {
 
 
 .secret-world.visible {
+
     opacity: 1;
 
     pointer-events: auto;
@@ -1128,6 +1161,7 @@ body {
 
 
 .world-content {
+
     text-align: center;
 
     max-width: 650px;
@@ -1137,6 +1171,7 @@ body {
 
 
 .world-symbol {
+
     font-size: 50px;
 
     color: #bd841b;
@@ -1146,9 +1181,8 @@ body {
 
 
 .little-label {
-    font-family:
-        Arial,
-        sans-serif;
+
+    font-family: Arial, sans-serif;
 
     letter-spacing: 5px;
 
@@ -1161,6 +1195,7 @@ body {
 
 
 .world-content h2 {
+
     font-size: 52px;
 
     line-height: 1.15;
@@ -1174,11 +1209,10 @@ body {
 
 
 .world-description {
+
     margin-top: 22px;
 
-    font-family:
-        Arial,
-        sans-serif;
+    font-family: Arial, sans-serif;
 
     color: #96702f;
 
@@ -1189,6 +1223,7 @@ body {
 
 
 .enter-world {
+
     margin-top: 32px;
 
     padding: 14px 28px;
@@ -1207,9 +1242,7 @@ body {
 
     color: #754d0c;
 
-    font-family:
-        Georgia,
-        serif;
+    font-family: Georgia, serif;
 
     font-size: 16px;
 
@@ -1225,6 +1258,7 @@ body {
 
 
 .enter-world:hover {
+
     transform:
         translateY(-3px);
 
@@ -1234,11 +1268,13 @@ body {
 
 
 /* =====================================================
-   MAGICAL GARDEN CREATURES
+   GARDEN CREATURES
 ===================================================== */
 
 #gardenCreatures {
+
     position: absolute;
+
     inset: 0;
 
     z-index: 35;
@@ -1249,8 +1285,10 @@ body {
 
     opacity: 0;
 
-    transition: opacity 2s ease;
+    transition:
+        opacity 2s ease;
 }
+
 
 #gardenCreatures.garden-active {
     opacity: 1;
@@ -1262,6 +1300,7 @@ body {
 ===================================================== */
 
 .butterfly {
+
     position: absolute;
 
     left: -120px;
@@ -1271,9 +1310,11 @@ body {
 
     z-index: 40;
 
-    pointer-events: auto;
+    /* IMPORTANT:
+       butterflies are NOT clickable anymore
+    */
 
-    cursor: pointer;
+    pointer-events: none;
 
     transform:
         translateY(var(--start-y))
@@ -1285,10 +1326,13 @@ body {
         linear
         infinite;
 
-    animation-delay: var(--delay);
+    animation-delay:
+        var(--delay);
 
     filter:
-        drop-shadow(0 5px 6px rgba(40, 25, 5, .28));
+        drop-shadow(
+            0 5px 6px rgba(40,25,5,.28)
+        );
 
     transform-origin: center;
 }
@@ -1299,6 +1343,7 @@ body {
 ===================================================== */
 
 .butterfly-wing {
+
     position: absolute;
 
     width: 31px;
@@ -1309,30 +1354,31 @@ body {
     border-radius:
         70% 35% 65% 35%;
 
+    /* DARKER GOLD */
     background:
         radial-gradient(
             circle at 35% 30%,
-            #fff5bf 0%,
-            #e9b83e 22%,
-            #9a5d13 58%,
-            #4b2606 100%
+            #ffeaa0 0%,
+            #d49a22 22%,
+            #80500d 58%,
+            #351a03 100%
         );
 
     border:
-        2px solid rgba(67, 35, 5, .75);
+        2px solid rgba(55,28,3,.82);
 
     box-shadow:
-        inset 2px 2px 5px rgba(255,255,255,.45),
-        inset -4px -5px 8px rgba(45,20,2,.35),
-        0 2px 5px rgba(45,25,5,.25);
+        inset 2px 2px 5px rgba(255,255,255,.35),
+        inset -4px -5px 8px rgba(45,20,2,.4),
+        0 2px 5px rgba(45,25,5,.3);
 
-    transform-origin: center bottom;
+    transform-origin:
+        center bottom;
 }
 
 
-/* LEFT WING */
-
 .butterfly-wing.left {
+
     left: 4px;
 
     transform:
@@ -1346,9 +1392,8 @@ body {
 }
 
 
-/* RIGHT WING */
-
 .butterfly-wing.right {
+
     right: 4px;
 
     transform:
@@ -1368,6 +1413,7 @@ body {
 ===================================================== */
 
 .butterfly-wing::before {
+
     content: "";
 
     position: absolute;
@@ -1383,17 +1429,15 @@ body {
     background:
         radial-gradient(
             circle,
-            #fff6c7 0%,
-            #d9a02c 45%,
-            #70400a 100%
+            #fff3b0 0%,
+            #b97915 45%,
+            #4d2805 100%
         );
-
-    box-shadow:
-        0 0 3px rgba(255,235,160,.5);
 }
 
 
 .butterfly-wing::after {
+
     content: "";
 
     position: absolute;
@@ -1406,10 +1450,10 @@ body {
 
     border-radius: 50%;
 
-    background: #fff0a5;
+    background: #ffe58a;
 
     box-shadow:
-        0 0 5px rgba(255,225,100,.5);
+        0 0 5px rgba(255,215,75,.45);
 }
 
 
@@ -1418,6 +1462,7 @@ body {
 ===================================================== */
 
 .butterfly-body {
+
     position: absolute;
 
     width: 10px;
@@ -1431,23 +1476,17 @@ body {
     background:
         linear-gradient(
             to right,
-            #241305,
-            #6a3b09,
-            #241305
+            #1b0d02,
+            #4c2907,
+            #1b0d02
         );
 
     z-index: 10;
-
-    box-shadow:
-        0 2px 4px rgba(0,0,0,.35);
 }
 
 
-/* =====================================================
-   BUTTERFLY HEAD
-===================================================== */
-
 .butterfly-body::before {
+
     content: "";
 
     position: absolute;
@@ -1460,7 +1499,7 @@ body {
 
     border-radius: 50%;
 
-    background: #3a1e05;
+    background: #2b1403;
 }
 
 
@@ -1469,6 +1508,7 @@ body {
 ===================================================== */
 
 .antenna {
+
     position: absolute;
 
     width: 22px;
@@ -1477,13 +1517,14 @@ body {
     top: 1px;
 
     border-top:
-        1.5px solid #3a1e05;
+        1.5px solid #321704;
 
     z-index: 12;
 }
 
 
 .antenna.left {
+
     left: 17px;
 
     transform:
@@ -1492,6 +1533,7 @@ body {
 
 
 .antenna.right {
+
     right: 17px;
 
     transform:
@@ -1506,6 +1548,7 @@ body {
 @keyframes butterflyFly {
 
     0% {
+
         left: -100px;
 
         transform:
@@ -1515,6 +1558,7 @@ body {
     }
 
     20% {
+
         transform:
             translateY(
                 calc(var(--start-y) - 40px)
@@ -1524,6 +1568,7 @@ body {
     }
 
     40% {
+
         transform:
             translateY(
                 calc(var(--start-y) + 45px)
@@ -1533,6 +1578,7 @@ body {
     }
 
     60% {
+
         transform:
             translateY(
                 calc(var(--start-y) - 30px)
@@ -1542,6 +1588,7 @@ body {
     }
 
     80% {
+
         transform:
             translateY(
                 calc(var(--start-y) + 35px)
@@ -1551,7 +1598,9 @@ body {
     }
 
     100% {
-        left: calc(100vw + 100px);
+
+        left:
+            calc(100vw + 100px);
 
         transform:
             translateY(var(--end-y))
@@ -1604,35 +1653,36 @@ body {
 ===================================================== */
 
 .firefly {
+
     position: absolute;
 
     width: 17px;
     height: 17px;
 
-    border-radius: 50%;
-
     z-index: 45;
 
-    pointer-events: auto;
+    /* IMPORTANT:
+       fireflies are NOT clickable
+    */
 
-    cursor: pointer;
+    pointer-events: none;
 
     background:
         radial-gradient(
             circle,
-            #ffe98a 0%,
-            #b77a14 28%,
-            #5a3508 60%,
-            #211202 100%
+            #ffe27a 0%,
+            #a9680c 28%,
+            #492704 60%,
+            #160b01 100%
         );
 
     border:
-        2px solid rgba(55,30,3,.85);
+        2px solid rgba(45,23,2,.9);
 
     box-shadow:
-        0 0 5px rgba(255,218,85,.75),
-        0 0 14px rgba(184,124,15,.55),
-        0 0 25px rgba(95,55,4,.4);
+        0 0 5px rgba(255,205,60,.65),
+        0 0 14px rgba(166,103,8,.5),
+        0 0 25px rgba(75,40,2,.4);
 
     animation:
         fireflyMove
@@ -1645,33 +1695,8 @@ body {
         ease-in-out
         infinite;
 
-    animation-delay: var(--delay);
-}
-
-
-/* =====================================================
-   BIG CLICK AREA
-===================================================== */
-
-.firefly::before{
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 55px;
-    height: 55px;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background: transparent;
-
-    z-index: 100;
+    animation-delay:
+        var(--delay);
 }
 
 
@@ -1682,6 +1707,7 @@ body {
 @keyframes fireflyMove {
 
     0% {
+
         left: -40px;
 
         transform:
@@ -1692,6 +1718,7 @@ body {
     }
 
     20% {
+
         transform:
             translate(
                 10vw,
@@ -1700,6 +1727,7 @@ body {
     }
 
     40% {
+
         transform:
             translate(
                 25vw,
@@ -1708,6 +1736,7 @@ body {
     }
 
     60% {
+
         transform:
             translate(
                 45vw,
@@ -1716,6 +1745,7 @@ body {
     }
 
     80% {
+
         transform:
             translate(
                 70vw,
@@ -1724,7 +1754,9 @@ body {
     }
 
     100% {
-        left: calc(100vw + 40px);
+
+        left:
+            calc(100vw + 40px);
 
         transform:
             translate(
@@ -1742,199 +1774,328 @@ body {
 @keyframes fireflyGlow {
 
     0%, 100% {
-        opacity: .65;
+
+        opacity: .6;
 
         box-shadow:
-            0 0 5px rgba(255,220,80,.55),
-            0 0 12px rgba(150,95,8,.4);
+            0 0 5px rgba(255,210,65,.5),
+            0 0 12px rgba(145,88,5,.35);
     }
 
     50% {
+
         opacity: 1;
 
         box-shadow:
-            0 0 8px rgba(255,231,105,.9),
-            0 0 18px rgba(174,113,10,.65),
-            0 0 30px rgba(95,55,4,.45);
+            0 0 8px rgba(255,222,90,.8),
+            0 0 18px rgba(164,101,7,.6),
+            0 0 30px rgba(80,42,2,.45);
     }
 }
 
 
 /* =====================================================
-   SPECIAL CREATURE
+   TULIP GARDEN
 ===================================================== */
 
-.special-creature {
-    z-index: 70 !important;
+.tulip-garden {
 
-    filter:
-        drop-shadow(
-            0 0 8px rgba(255,235,120,.95)
-        )
-        drop-shadow(
-            0 0 18px rgba(255,200,50,.75)
-        );
-}
+    position: absolute;
 
+    inset: 0;
 
-/* =====================================================
-   SPECIAL FIREFLY
-===================================================== */
+    z-index: 90;
 
-.firefly.special-creature {
+    display: grid;
 
-    width: 21px;
-    height: 21px;
+    grid-template-columns:
+        repeat(3, 170px);
+
+    grid-template-rows:
+        repeat(2, 210px);
+
+    justify-content: center;
+
+    align-content: center;
+
+    gap: 30px 45px;
+
+    padding: 80px 30px;
 
     background:
         radial-gradient(
-            circle,
-            #fffde0 0%,
-            #f4cf4c 28%,
-            #8b5a0c 58%,
-            #392003 100%
+            circle at center,
+            rgba(72,38,5,.18),
+            rgba(20,10,2,.58)
         );
 
-    border-color:
-        rgba(62,35,3,.95);
+    opacity: 0;
 
-    box-shadow:
-        0 0 8px #fffbd0,
-        0 0 18px #ffe86a,
-        0 0 32px #c98f1b,
-        0 0 48px rgba(90,50,3,.7);
-}
-
-
-/* =====================================================
-   SPECIAL BUTTERFLY
-===================================================== */
-
-.butterfly.special-creature {
-
-    filter:
-        drop-shadow(
-            0 0 7px rgba(255,245,150,.95)
-        )
-        drop-shadow(
-            0 0 18px rgba(255,200,55,.8)
-        )
-        drop-shadow(
-            0 0 35px rgba(185,120,10,.5)
-        );
-}
-
-
-/* =====================================================
-   CREATURE FOUND
-===================================================== */
-
-.creature-found {
-
-    pointer-events: none !important;
-
-    animation:
-        creatureFound
-        .9s
-        ease
-        forwards !important;
-}
-
-
-@keyframes creatureFound {
-
-    0% {
-        opacity: 1;
-
-        transform:
-            scale(1);
-    }
-
-    35% {
-        opacity: 1;
-
-        transform:
-            scale(1.35);
-    }
-
-    65% {
-        opacity: .65;
-
-        transform:
-            scale(1.7);
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            scale(0);
-    }
-}
-
-
-/* =====================================================
-   SECRET COUNTER
-===================================================== */
-
-#secretCounter {
-
-    position: fixed;
-
-    top: 22px;
-    right: 25px;
-
-    z-index: 140;
-
-    padding: 9px 15px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(48, 28, 5, .82);
-
-    border:
-        1px solid rgba(255,220,120,.4);
-
-    color: #fff1b0;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size: 11px;
-
-    letter-spacing: .5px;
-
-    box-shadow:
-        0 5px 20px rgba(40,25,5,.3);
-
-    backdrop-filter: blur(7px);
-}
-
-
-/* =====================================================
-   CREATURE MESSAGE
-===================================================== */
-
-#creatureMessage {
-
-    position: fixed;
-
-    left: 50%;
-    top: 50%;
-
-    width: min(520px, 85vw);
-
-    padding: 32px 30px;
+    pointer-events: none;
 
     transform:
-        translate(-50%, -50%)
-        scale(.8);
+        scale(1.05);
+
+    transition:
+        opacity 1.8s ease,
+        transform 2s ease;
+}
+
+
+.tulip-garden.visible {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        scale(1);
+}
+
+
+/* =====================================================
+   GARDEN HEADING
+===================================================== */
+
+.garden-heading {
+
+    position: absolute;
+
+    top: 35px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
 
     text-align: center;
 
-    z-index: 99999;
+    z-index: 95;
+
+    width: 100%;
+}
+
+
+.garden-heading p {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #ffe5a0;
+
+    margin-bottom: 8px;
+}
+
+
+.garden-heading h2 {
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #fff0c5;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.6);
+}
+
+
+.garden-heading span {
+
+    display: block;
+
+    margin-top: 7px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    color: #e6c985;
+}
+
+
+/* =====================================================
+   TULIP CARD
+===================================================== */
+
+.tulip-card {
+
+    position: relative;
+
+    width: 170px;
+    height: 210px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 100px 100px 35px 35px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    background: #241304;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.5),
+        0 0 0 1px rgba(255,220,130,.2);
+
+    transform:
+        translateY(25px)
+        scale(.92);
+
+    opacity: 0;
+
+    animation:
+        tulipAppear
+        .9s
+        ease forwards;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* staggered entrance */
+
+.tulip-card:nth-of-type(2) {
+    animation-delay: .1s;
+}
+
+.tulip-card:nth-of-type(3) {
+    animation-delay: .2s;
+}
+
+.tulip-card:nth-of-type(4) {
+    animation-delay: .3s;
+}
+
+.tulip-card:nth-of-type(5) {
+    animation-delay: .4s;
+}
+
+.tulip-card:nth-of-type(6) {
+    animation-delay: .5s;
+}
+
+.tulip-card:nth-of-type(7) {
+    animation-delay: .6s;
+}
+
+
+@keyframes tulipAppear {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   TULIP IMAGE
+===================================================== */
+
+.tulip-card img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+}
+
+
+.tulip-card:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.03);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.6),
+        0 0 25px rgba(255,205,100,.18);
+}
+
+
+.tulip-card:hover img {
+
+    transform:
+        scale(1.08);
+
+    filter:
+        brightness(1.08)
+        saturate(1.1);
+}
+
+
+/* =====================================================
+   TULIP SHINE
+===================================================== */
+
+.tulip-shine {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 30%,
+            rgba(255,255,255,.3) 50%,
+            transparent 70%
+        );
+
+    transform:
+        translateX(-120%);
+
+    transition:
+        transform .8s ease;
+
+    pointer-events: none;
+}
+
+
+.tulip-card:hover .tulip-shine {
+
+    transform:
+        translateX(120%);
+}
+
+
+/* =====================================================
+   VIDEO MODAL
+===================================================== */
+
+.video-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     opacity: 0;
 
@@ -1942,102 +2103,192 @@ body {
 
     pointer-events: none;
 
-    border-radius: 24px;
-
-    background:
-        rgba(38, 22, 4, .97);
-
-    border:
-        2px solid rgba(255,221,120,.8);
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.6),
-        0 0 35px rgba(255,210,70,.4);
-
-    backdrop-filter: blur(14px);
-
     transition:
-        opacity .35s ease,
-        transform .35s ease,
-        visibility .35s ease;
+        opacity .4s ease,
+        visibility .4s ease;
 }
 
 
-/* =====================================================
-   MESSAGE VISIBLE
-===================================================== */
-
-#creatureMessage.show {
+.video-modal.show {
 
     opacity: 1;
 
     visibility: visible;
 
-    transform:
-        translate(-50%, -50%)
-        scale(1);
+    pointer-events: auto;
 }
 
 
 /* =====================================================
-   MESSAGE SPARKLE
+   VIDEO BACKDROP
 ===================================================== */
 
-.message-sparkle {
+.video-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(12,7,1,.82);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+/* =====================================================
+   VIDEO BOX
+===================================================== */
+
+.video-box {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(760px, 90vw);
+
+    padding: 18px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(63,36,6,.98),
+            rgba(27,14,2,.98)
+        );
+
+    border:
+        1px solid rgba(255,222,130,.35);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.75),
+        0 0 40px rgba(255,207,90,.12);
+
+    transform:
+        scale(.88)
+        translateY(20px);
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.video-modal.show .video-box {
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+
+.close-video {
+
+    position: absolute;
+
+    right: -14px;
+    top: -14px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #f1d486;
+
+    color: #4c2b04;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.4);
+
+    transition:
+        transform .2s ease;
+}
+
+
+.close-video:hover {
+
+    transform:
+        rotate(90deg)
+        scale(1.08);
+}
+
+
+/* =====================================================
+   VIDEO FRAME
+===================================================== */
+
+.video-frame {
+
+    width: 100%;
+
+    aspect-ratio:
+        16 / 9;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background: #080401;
+
+    box-shadow:
+        inset 0 0 30px rgba(0,0,0,.5);
+}
+
+
+.video-frame video {
+
+    width: 100%;
+    height: 100%;
 
     display: block;
 
-    font-size: 34px;
+    object-fit: contain;
 
-    color: #ffe47a;
-
-    margin-bottom: 15px;
-
-    text-shadow:
-        0 0 8px rgba(255,225,100,.9),
-        0 0 20px rgba(255,200,50,.6);
-
-    animation:
-        messageSparkle
-        1.4s
-        ease-in-out
-        infinite;
+    background: #080401;
 }
 
 
-#creatureMessageText {
+/* =====================================================
+   VIDEO MESSAGE
+===================================================== */
 
-    margin: 0;
+.video-message {
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+    margin: 20px 20px 7px;
 
-    font-size: 21px;
+    text-align: center;
 
-    line-height: 1.6;
+    font-size: 18px;
+
+    line-height: 1.5;
 
     font-style: italic;
 
-    color: #fff4c9;
+    color: #ffeab0;
 
     text-shadow:
-        0 2px 4px rgba(0,0,0,.6);
-}
+        0 2px 5px rgba(0,0,0,.6);
 
-
-@keyframes messageSparkle {
-
-    0%, 100% {
-        transform: scale(1);
-        opacity: .8;
-    }
-
-    50% {
-        transform: scale(1.15);
-        opacity: 1;
-    }
+    min-height: 28px;
 }
 
 
@@ -2045,48 +2296,103 @@ body {
    MOBILE
 ===================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    #secretCounter {
-        top: 15px;
-        right: 15px;
+    .tulip-garden {
 
-        font-size: 10px;
+        grid-template-columns:
+            repeat(2, 135px);
+
+        grid-template-rows:
+            repeat(3, 165px);
+
+        gap: 20px;
+
+        padding-top: 105px;
     }
 
-    #creatureMessage {
 
-        width: 84vw;
+    .tulip-card {
 
-        padding: 27px 20px;
-
-        border-radius: 20px;
+        width: 135px;
+        height: 165px;
     }
 
-    #creatureMessageText {
 
-        font-size: 18px;
+    .garden-heading h2 {
 
-        line-height: 1.55;
+        font-size: 26px;
     }
 
-    .message-sparkle {
-        font-size: 28px;
+
+    .garden-heading span {
+
+        font-size: 11px;
     }
 
-    .butterfly {
-        width: 60px;
-        height: 48px;
+
+    .video-box {
+
+        width: 92vw;
+
+        padding: 12px;
+
+        border-radius: 18px;
     }
 
-    .butterfly-wing {
-        width: 27px;
-        height: 41px;
+
+    .video-message {
+
+        font-size: 16px;
+
+        margin:
+            15px 10px 5px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .tulip-garden {
+
+        grid-template-columns:
+            repeat(2, 115px);
+
+        grid-template-rows:
+            repeat(3, 145px);
+
+        gap: 14px;
     }
 
-    .firefly {
-        width: 18px;
-        height: 18px;
+
+    .tulip-card {
+
+        width: 115px;
+        height: 145px;
+    }
+
+
+    .garden-heading {
+
+        top: 22px;
+    }
+
+
+    .garden-heading h2 {
+
+        font-size: 22px;
+    }
+
+
+    .garden-heading p {
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
     }
 }
 
@@ -2100,10 +2406,12 @@ body {
     .butterfly,
     .butterfly-wing,
     .firefly,
-    .message-sparkle {
+    .tulip-card {
 
-        animation-duration: .01ms !important;
+        animation-duration:
+            .01ms !important;
 
-        animation-iteration-count: 1 !important;
+        animation-iteration-count:
+            1 !important;
     }
 }
