@@ -1,592 +1,233 @@
 /* =====================================================
-   RESET
+   SECRET CODE
 ===================================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-}
-
-body {
-    overflow: hidden;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-}
+const SECRET_CODE = "1234";
 
 
 /* =====================================================
-   MAIN SCREEN
+   ELEMENTS
 ===================================================== */
 
-#lockScreen {
+const lockScreen =
+    document.getElementById("lockScreen");
 
-    position: relative;
+const lockArea =
+    document.getElementById("lockArea");
 
-    width: 100vw;
-    height: 100vh;
+const keypad =
+    document.getElementById("keypad");
 
-    overflow: hidden;
+const codeDisplay =
+    document.getElementById("codeDisplay");
 
-    background-image:
-        url("background22.png");
+const instruction =
+    document.getElementById("instruction");
 
-    background-size: cover;
-    background-position: center;
+const unlockMessage =
+    document.getElementById("unlockMessage");
 
-    display: flex;
+const comeInside =
+    document.getElementById("comeInside");
 
-    justify-content: center;
-    align-items: center;
-}
+const secretWorld =
+    document.getElementById("secretWorld");
+
+const enterWorld =
+    document.getElementById("enterWorld");
+
+const particles =
+    document.getElementById("particles");
+
+const gardenCreatures =
+    document.getElementById("gardenCreatures");
+
+const tulipGarden =
+    document.getElementById("tulipGarden");
+
+const videoModal =
+    document.getElementById("videoModal");
+
+const videoBackdrop =
+    document.getElementById("videoBackdrop");
+
+const closeVideo =
+    document.getElementById("closeVideo");
+
+const gardenVideo =
+    document.getElementById("gardenVideo");
+
+const videoSource =
+    document.getElementById("videoSource");
+
+const videoMessage =
+    document.getElementById("videoMessage");
 
 
 /* =====================================================
-   GOLDEN ATMOSPHERIC LIGHT
+   STATE
 ===================================================== */
 
-.golden-glow {
+let enteredCode = "";
 
-    position: absolute;
+let isUnlocking = false;
 
-    inset: -20%;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255, 221, 112, .12),
-            transparent 45%
-        );
-
-    pointer-events: none;
-
-    transition:
-        opacity 2s ease,
-        transform 3s ease;
-
-    z-index: 1;
-}
-
-
-/* =====================================================
-   LOCK AREA
-===================================================== */
-
-.lock-area {
-
-    position: relative;
-
-    z-index: 10;
-
-    width: 420px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.5s ease,
-        filter 1s ease;
-}
-
-
-/* =====================================================
-   LOCK
-===================================================== */
-
-.lock-wrapper {
-
-    position: relative;
-
-    width: 180px;
-    height: 220px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* =====================================================
-   HEART LOCK
-===================================================== */
-
-.heart-lock {
-
-    position: relative;
-
-    width: 115px;
-    height: 115px;
-
-    z-index: 4;
-
-    transform: rotate(-45deg);
-
-    filter:
-        drop-shadow(
-            0 8px 10px rgba(126, 83, 15, .22)
-        );
-
-    transition:
-        transform 1s cubic-bezier(.2,.8,.2,1),
-        filter 1s ease;
-}
-
-
-/* =====================================================
-   HEART BODY
-===================================================== */
-
-.heart-body {
-
-    position: absolute;
-
-    width: 100px;
-    height: 100px;
-
-    left: 8px;
-    top: 15px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffe9a3,
-            #e8a91f
-        );
-
-    border-radius:
-        15px
-        15px
-        20px
-        15px;
-
-    box-shadow:
-        inset 3px 3px 8px rgba(255,255,255,.55),
-        inset -5px -5px 12px rgba(142,92,5,.18);
-
-    overflow: hidden;
-}
-
-
-/* =====================================================
-   HEART SHAPE
-===================================================== */
-
-.heart-body::before,
-.heart-body::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 58px;
-    height: 58px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffe9a3,
-            #e8a91f
-        );
-
-    top: -30px;
-}
-
-.heart-body::before {
-    left: 0;
-}
-
-.heart-body::after {
-    right: 0;
-}
-
-
-/* =====================================================
-   LOCK SHACKLE
-===================================================== */
-
-.lock-shackle {
-
-    position: absolute;
-
-    width: 65px;
-    height: 80px;
-
-    left: 32px;
-    top: -48px;
-
-    border: 11px solid #c8901d;
-
-    border-bottom: none;
-
-    border-radius:
-        50px 50px 0 0;
-
-    z-index: 2;
-
-    transform: rotate(45deg);
-
-    background: transparent;
-
-    box-shadow:
-        inset 2px 2px 4px rgba(255,255,255,.5);
-}
-
-
-.shackle-inner {
-
-    position: absolute;
-
-    width: 38px;
-    height: 55px;
-
-    left: 2px;
-    top: 8px;
-
-    border:
-        4px solid rgba(255,235,160,.55);
-
-    border-bottom: none;
-
-    border-radius:
-        30px 30px 0 0;
-}
-
-
-/* =====================================================
-   KEYHOLE
-===================================================== */
-
-.keyhole {
-
-    position: absolute;
-
-    left: 38px;
-    top: 35px;
-
-    width: 27px;
-    height: 35px;
-
-    z-index: 10;
-
-    transform: rotate(45deg);
-}
-
-
-.keyhole-circle {
-
-    position: absolute;
-
-    width: 22px;
-    height: 22px;
-
-    left: 2px;
-
-    border-radius: 50%;
-
-    background: #70450d;
-}
-
-
-.keyhole-line {
-
-    position: absolute;
-
-    width: 10px;
-    height: 20px;
-
-    left: 8px;
-    top: 14px;
-
-    background: #70450d;
-
-    border-radius: 2px;
-}
-
-
-/* =====================================================
-   GOLDEN KEY
-===================================================== */
-
-.golden-key {
-
-    position: absolute;
-
-    right: -15px;
-    top: 5px;
-
-    width: 115px;
-    height: 60px;
-
-    transform: rotate(30deg);
-
-    z-index: 8;
-
-    filter:
-        drop-shadow(
-            0 5px 5px rgba(125,80,0,.2)
-        );
-}
-
-
-.key-ring {
-
-    position: absolute;
-
-    width: 38px;
-    height: 38px;
-
-    border:
-        7px solid #d59c1e;
-
-    border-radius: 50%;
-
-    left: 0;
-    top: 8px;
-}
-
-
-.key-shaft {
-
-    position: absolute;
-
-    width: 72px;
-    height: 10px;
-
-    left: 30px;
-    top: 22px;
-
-    border-radius: 8px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #ffe69a,
-            #d89d20
-        );
-}
-
-
-.key-teeth {
-
-    position: absolute;
-
-    right: 0;
-    top: 22px;
-
-    width: 25px;
-    height: 25px;
-}
-
-
-.key-teeth span {
-
-    position: absolute;
-
-    width: 12px;
-    height: 13px;
-
-    background: #d89d20;
-
-    right: 0;
-}
-
-.key-teeth span:first-child {
-    top: 0;
-}
-
-.key-teeth span:last-child {
-    top: 10px;
-}
-
-
-/* =====================================================
-   TEXT
-===================================================== */
-
-.lock-text {
-
-    text-align: center;
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
-
-
-.lock-text h1 {
-
-    font-size: 29px;
-
-    font-weight: 500;
-
-    font-style: italic;
-
-    color: #805615;
-}
-
-
-.lock-text h1 span {
-    font-size: 25px;
-}
-
-
-.lock-text p {
-
-    margin-top: 16px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 15px;
-
-    color: #976a1b;
-}
-
-
-/* =====================================================
-   CODE DISPLAY
-===================================================== */
-
-.code-display {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 13px;
-
-    margin-top: 18px;
-
-    height: 12px;
-}
-
-
-.code-display span {
-
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: transparent;
-
-    border:
-        1px solid rgba(155,108,29,.5);
-
-    transition:
-        background .2s ease,
-        transform .2s ease;
-}
-
-
-.code-display span.active {
-
-    background: #a36d13;
-
-    transform: scale(1.25);
-
-    box-shadow:
-        0 0 7px rgba(215,157,40,.45);
-}
+let gardenStarted = false;
 
 
 /* =====================================================
    KEYPAD
 ===================================================== */
 
-.keypad {
+const numberButtons =
+    document.querySelectorAll(
+        "[data-number]"
+    );
 
-    margin-top: 28px;
 
-    width: 250px;
+numberButtons.forEach(button => {
 
-    display: grid;
+    button.addEventListener(
+        "click",
+        () => {
 
-    grid-template-columns:
-        repeat(3, 1fr);
+            if (isUnlocking) {
+                return;
+            }
 
-    gap: 7px;
+            const number =
+                button.dataset.number;
 
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
+            addNumber(number);
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   ADD NUMBER
+===================================================== */
+
+function addNumber(number) {
+
+    if (isUnlocking) {
+        return;
+    }
+
+
+    if (
+        enteredCode.length >=
+        SECRET_CODE.length
+    ) {
+        return;
+    }
+
+
+    enteredCode += number;
+
+    updateDisplay();
+
+
+    if (
+        enteredCode.length ===
+        SECRET_CODE.length
+    ) {
+
+        setTimeout(() => {
+
+            checkCode();
+
+        }, 250);
+
+    }
+
 }
 
 
-.key {
+/* =====================================================
+   BACKSPACE
+===================================================== */
 
-    height: 58px;
+const backspace =
+    document.getElementById("backspace");
 
-    border:
-        1px solid rgba(180,130,50,.18);
 
-    border-radius: 7px;
+backspace.addEventListener(
+    "click",
+    () => {
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,250,234,.92),
-            rgba(245,229,194,.85)
+        if (isUnlocking) {
+            return;
+        }
+
+        enteredCode =
+            enteredCode.slice(0, -1);
+
+        updateDisplay();
+
+    }
+);
+
+
+/* =====================================================
+   UPDATE CODE DISPLAY
+===================================================== */
+
+function updateDisplay() {
+
+    const dots =
+        codeDisplay.querySelectorAll(
+            "span"
         );
 
-    color: #93651a;
 
-    font-size: 22px;
+    dots.forEach(
+        (dot, index) => {
 
-    font-family: Georgia, serif;
+            if (
+                index <
+                enteredCode.length
+            ) {
 
-    cursor: pointer;
+                dot.classList.add(
+                    "active"
+                );
 
-    box-shadow:
-        0 3px 8px rgba(115,75,10,.13),
-        inset 0 1px 0 rgba(255,255,255,.8);
+            } else {
 
-    transition:
-        transform .15s ease,
-        box-shadow .15s ease;
+                dot.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
 }
 
 
-.key:hover {
+/* =====================================================
+   CHECK CODE
+===================================================== */
 
-    transform:
-        translateY(-2px);
+function checkCode() {
 
-    box-shadow:
-        0 6px 12px rgba(115,75,10,.18);
-}
+    if (
+        enteredCode ===
+        SECRET_CODE
+    ) {
 
+        unlock();
 
-.key:active {
+    } else {
 
-    transform:
-        translateY(1px)
-        scale(.96);
-}
+        wrongCode();
 
+    }
 
-.key.empty {
-    visibility: hidden;
-}
-
-
-.key.backspace {
-    font-size: 21px;
 }
 
 
@@ -594,1594 +235,379 @@ body {
    WRONG CODE
 ===================================================== */
 
-.shake {
-    animation:
-        shake .45s ease;
-}
+function wrongCode() {
 
-
-@keyframes shake {
-
-    0%, 100% {
-        transform: translateX(0);
+    if (isUnlocking) {
+        return;
     }
 
-    20% {
-        transform: translateX(-8px);
-    }
 
-    40% {
-        transform: translateX(8px);
-    }
-
-    60% {
-        transform: translateX(-6px);
-    }
-
-    80% {
-        transform: translateX(6px);
-    }
-}
+    lockArea.classList.remove(
+        "shake"
+    );
 
 
-/* =====================================================
-   UNLOCKING
-===================================================== */
-
-.unlocking .golden-glow {
-
-    opacity: 1;
-
-    transform: scale(1.4);
-}
+    void lockArea.offsetWidth;
 
 
-.unlocking .golden-key {
-
-    animation:
-        keyUnlock 1.8s forwards;
-}
+    lockArea.classList.add(
+        "shake"
+    );
 
 
-.unlocking .heart-lock {
-
-    animation:
-        lockGlow 1.6s ease forwards,
-        lockOpen 2s 1.3s ease forwards;
-}
+    instruction.textContent =
+        "That's not the right key...";
 
 
-.unlocking .keypad,
-.unlocking .lock-text {
+    instruction.style.color =
+        "#a34e32";
 
-    opacity: 0;
 
-    transform:
-        translateY(25px);
+    setTimeout(() => {
 
-    pointer-events: none;
+        enteredCode = "";
+
+        updateDisplay();
+
+        instruction.textContent =
+            "Enter the secret code...";
+
+        instruction.style.color = "";
+
+    }, 900);
+
 }
 
 
 /* =====================================================
-   KEY ANIMATION
+   UNLOCK
 ===================================================== */
 
-@keyframes keyUnlock {
+function unlock() {
 
-    0% {
-        transform: rotate(30deg);
+    if (isUnlocking) {
+        return;
     }
 
-    35% {
-        transform:
-            rotate(30deg)
-            translateX(-20px);
-    }
 
-    65% {
-        transform:
-            rotate(30deg)
-            translateX(-20px)
-            rotate(-20deg);
-    }
+    isUnlocking = true;
 
-    100% {
-        transform:
-            rotate(30deg)
-            translateX(-20px)
-            rotate(-20deg)
-            translateX(80px);
-    }
-}
 
+    lockScreen.classList.add(
+        "unlocking"
+    );
 
-/* =====================================================
-   LOCK GLOW
-===================================================== */
 
-@keyframes lockGlow {
+    createParticles();
 
-    0% {
-        filter:
-            drop-shadow(
-                0 8px 10px rgba(126,83,15,.22)
-            );
-    }
 
-    50% {
-        filter:
-            drop-shadow(
-                0 0 18px rgba(255,210,70,.8)
-            )
-            drop-shadow(
-                0 0 45px rgba(255,196,35,.5)
-            );
-    }
+    /* =================================================
+       MESSAGE 1
+    ================================================== */
 
-    100% {
-        filter:
-            drop-shadow(
-                0 0 35px rgba(255,216,90,.95)
-            );
-    }
-}
+    setTimeout(() => {
 
-
-/* =====================================================
-   LOCK OPEN
-===================================================== */
-
-@keyframes lockOpen {
-
-    0% {
-        transform: rotate(-45deg);
-    }
-
-    40% {
-        transform:
-            rotate(-45deg)
-            scale(1.12);
-    }
-
-    100% {
-        transform:
-            rotate(-45deg)
-            scale(0)
-            translateY(-40px);
-
-        opacity: 0;
-    }
-}
-
-
-/* =====================================================
-   LIGHT BURST
-===================================================== */
-
-.light-burst {
-
-    position: absolute;
-
-    left: 50%;
-    top: 40%;
-
-    width: 20px;
-    height: 20px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,239,172,.9);
-
-    transform:
-        translate(-50%,-50%)
-        scale(0);
-
-    opacity: 0;
-
-    z-index: 20;
-
-    pointer-events: none;
-}
-
-
-.unlocking .light-burst {
-
-    animation:
-        burst 2.4s 1.7s ease forwards;
-}
-
-
-@keyframes burst {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(0);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    70% {
-        opacity: .7;
-
-        transform:
-            translate(-50%,-50%)
-            scale(35);
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(60);
-    }
-}
-
-
-/* =====================================================
-   PARTICLES
-===================================================== */
-
-#particles {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 25;
-
-    pointer-events: none;
-}
-
-
-.particle {
-
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: #e9b62d;
-
-    box-shadow:
-        0 0 8px rgba(255,211,79,.8);
-
-    animation:
-        particleFloat
-        var(--duration)
-        ease-out
-        forwards;
-}
-
-
-@keyframes particleFloat {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translate(0,0)
-            scale(.2);
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(
-                var(--x),
-                var(--y)
-            )
-            scale(0);
-    }
-}
-
-
-/* =====================================================
-   UNLOCK MESSAGE
-===================================================== */
-
-.unlock-message {
-
-    position: absolute;
-
-    left: 50%;
-    top: 48%;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.85);
-
-    width: 500px;
-
-    text-align: center;
-
-    z-index: 50;
-
-    opacity: 0;
-
-    pointer-events: none;
-}
-
-
-.unlock-message .unlock-icon {
-
-    font-size: 38px;
-
-    color: #c28a19;
-
-    margin-bottom: 18px;
-}
-
-
-.unlock-message h2 {
-
-    font-size: 36px;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #79500f;
-}
-
-
-.unlock-message p {
-
-    margin-top: 12px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 15px;
-
-    color: #a17427;
-}
-
-
-.show-unlock-message {
-
-    animation:
-        messageAppear
-        2.5s
-        ease
-        forwards;
-}
-
-
-@keyframes messageAppear {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(.85);
-    }
-
-    20% {
-        opacity: 1;
-
-        transform:
-            translate(-50%,-50%)
-            scale(1);
-    }
-
-    75% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(-50%,-55%)
-            scale(1.04);
-    }
-}
-
-
-/* =====================================================
-   COME INSIDE
-===================================================== */
-
-.come-inside {
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 600px;
-
-    text-align: center;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.9);
-
-    opacity: 0;
-
-    z-index: 60;
-
-    pointer-events: none;
-}
-
-
-.come-inside .small-key {
-
-    font-size: 35px;
-
-    margin-bottom: 18px;
-
-    animation:
-        tinyFloat
-        2s
-        ease-in-out
-        infinite;
-}
-
-
-.come-inside h2 {
-
-    font-size: 42px;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #79500f;
-}
-
-
-.come-inside p {
-
-    margin-top: 14px;
-
-    font-family: Arial, sans-serif;
-
-    color: #9b712b;
-
-    font-size: 15px;
-}
-
-
-.show-come-inside {
-
-    animation:
-        comeInsideAppear
-        2.8s
-        ease
-        forwards;
-}
-
-
-@keyframes comeInsideAppear {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translate(-50%,-50%)
-            scale(.9);
-    }
-
-    20% {
-        opacity: 1;
-
-        transform:
-            translate(-50%,-50%)
-            scale(1);
-    }
-
-    75% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(-50%,-52%)
-            scale(1.03);
-    }
-}
-
-
-@keyframes tinyFloat {
-
-    0%, 100% {
-        transform:
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateY(-8px);
-    }
-}
-
-
-/* =====================================================
-   SECRET WORLD
-===================================================== */
-
-.secret-world {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 100;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,244,200,.88),
-            rgba(255,235,170,.72)
+        unlockMessage.classList.add(
+            "show-unlock-message"
         );
 
-    transform: scale(1.08);
-
-    transition:
-        opacity 2s ease,
-        transform 2.5s ease;
-}
+    }, 2500);
 
 
-.secret-world.visible {
+    /* =================================================
+       MESSAGE 2
+    ================================================== */
 
-    opacity: 1;
+    setTimeout(() => {
 
-    pointer-events: auto;
-
-    transform: scale(1);
-}
-
-
-.world-content {
-
-    text-align: center;
-
-    max-width: 650px;
-
-    padding: 30px;
-}
-
-
-.world-symbol {
-
-    font-size: 50px;
-
-    color: #bd841b;
-
-    margin-bottom: 15px;
-}
-
-
-.little-label {
-
-    font-family: Arial, sans-serif;
-
-    letter-spacing: 5px;
-
-    font-size: 11px;
-
-    color: #a97a28;
-
-    margin-bottom: 18px;
-}
-
-
-.world-content h2 {
-
-    font-size: 52px;
-
-    line-height: 1.15;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #75500f;
-}
-
-
-.world-description {
-
-    margin-top: 22px;
-
-    font-family: Arial, sans-serif;
-
-    color: #96702f;
-
-    font-size: 15px;
-
-    line-height: 1.7;
-}
-
-
-.enter-world {
-
-    margin-top: 32px;
-
-    padding: 14px 28px;
-
-    border-radius: 30px;
-
-    border:
-        1px solid rgba(161,113,29,.3);
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff2bf,
-            #e9bd52
+        comeInside.classList.add(
+            "show-come-inside"
         );
 
-    color: #754d0c;
-
-    font-family: Georgia, serif;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 6px 20px rgba(132,92,20,.15);
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-}
+    }, 5100);
 
 
-.enter-world:hover {
+    /* =================================================
+       SECRET WORLD
+    ================================================== */
 
-    transform:
-        translateY(-3px);
+    setTimeout(() => {
 
-    box-shadow:
-        0 10px 25px rgba(132,92,20,.2);
+        secretWorld.classList.add(
+            "visible"
+        );
+
+    }, 7600);
+
 }
 
 
 /* =====================================================
-   GARDEN CREATURES
+   GOLDEN PARTICLES
 ===================================================== */
 
-#gardenCreatures {
+function createParticles() {
 
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 35;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    opacity: 0;
-
-    transition:
-        opacity 2s ease;
-}
+    const amount = 70;
 
 
-#gardenCreatures.garden-active {
-    opacity: 1;
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const particle =
+            document.createElement("div");
+
+
+        particle.classList.add(
+            "particle"
+        );
+
+
+        particle.style.left =
+            `calc(50% + ${random(-50, 50)}px)`;
+
+
+        particle.style.top =
+            `calc(40% + ${random(-50, 50)}px)`;
+
+
+        particle.style.setProperty(
+            "--x",
+            `${random(-350, 350)}px`
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            `${random(-300, 250)}px`
+        );
+
+
+        particle.style.setProperty(
+            "--duration",
+            `${random(1.5, 3.5)}s`
+        );
+
+
+        const size =
+            random(3, 7);
+
+
+        particle.style.width =
+            `${size}px`;
+
+
+        particle.style.height =
+            `${size}px`;
+
+
+        particles.appendChild(
+            particle
+        );
+
+
+        setTimeout(() => {
+
+            particle.remove();
+
+        }, 4000);
+
+    }
+
 }
 
 
 /* =====================================================
-   BUTTERFLY
+   RANDOM NUMBER
 ===================================================== */
 
-.butterfly {
+function random(min, max) {
 
-    position: absolute;
+    return Math.random() *
+        (max - min) + min;
 
-    left: -120px;
+}
 
-    width: 70px;
-    height: 55px;
 
-    z-index: 40;
+/* =====================================================
+   ENTER THE GARDEN
+===================================================== */
 
-    /* IMPORTANT:
-       butterflies are NOT clickable anymore
+enterWorld.addEventListener(
+    "click",
+    () => {
+
+        if (gardenStarted) {
+            return;
+        }
+
+
+        gardenStarted = true;
+
+
+        enterWorld.textContent =
+            "The garden is waking...";
+
+
+        /*
+            First reveal the flying creatures.
+        */
+
+        gardenCreatures.classList.add(
+            "garden-active"
+        );
+
+
+        /*
+            Give the button a tiny moment
+            before the tulips appear.
+        */
+
+        setTimeout(() => {
+
+            secretWorld.classList.remove(
+                "visible"
+            );
+
+
+            setTimeout(() => {
+
+                tulipGarden.classList.add(
+                    "visible"
+                );
+
+            }, 700);
+
+        }, 1200);
+
+    }
+);
+
+
+/* =====================================================
+   TULIP VIDEOS
+===================================================== */
+
+const tulips =
+    document.querySelectorAll(
+        ".tulip-card"
+    );
+
+
+tulips.forEach(tulip => {
+
+    tulip.addEventListener(
+        "click",
+        () => {
+
+            const video =
+                tulip.dataset.video;
+
+            const message =
+                tulip.dataset.message;
+
+
+            openVideo(
+                video,
+                message
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   OPEN VIDEO
+===================================================== */
+
+function openVideo(
+    video,
+    message
+) {
+
+    /*
+        Change the video source.
     */
 
-    pointer-events: none;
+    videoSource.src =
+        video;
 
-    transform:
-        translateY(var(--start-y))
-        scale(var(--size));
 
-    animation:
-        butterflyFly
-        var(--fly-duration)
-        linear
-        infinite;
-
-    animation-delay:
-        var(--delay);
-
-    filter:
-        drop-shadow(
-            0 5px 6px rgba(40,25,5,.28)
-        );
-
-    transform-origin: center;
-}
-
-
-/* =====================================================
-   BUTTERFLY WINGS
-===================================================== */
-
-.butterfly-wing {
-
-    position: absolute;
-
-    width: 31px;
-    height: 46px;
-
-    top: 4px;
-
-    border-radius:
-        70% 35% 65% 35%;
-
-    /* DARKER GOLD */
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #ffeaa0 0%,
-            #d49a22 22%,
-            #80500d 58%,
-            #351a03 100%
-        );
-
-    border:
-        2px solid rgba(55,28,3,.82);
-
-    box-shadow:
-        inset 2px 2px 5px rgba(255,255,255,.35),
-        inset -4px -5px 8px rgba(45,20,2,.4),
-        0 2px 5px rgba(45,25,5,.3);
-
-    transform-origin:
-        center bottom;
-}
-
-
-.butterfly-wing.left {
-
-    left: 4px;
-
-    transform:
-        rotate(-25deg);
-
-    animation:
-        leftWingFlap
-        .42s
-        ease-in-out
-        infinite alternate;
-}
-
-
-.butterfly-wing.right {
-
-    right: 4px;
-
-    transform:
-        scaleX(-1)
-        rotate(-25deg);
-
-    animation:
-        rightWingFlap
-        .42s
-        ease-in-out
-        infinite alternate;
-}
-
-
-/* =====================================================
-   WING PATTERNS
-===================================================== */
-
-.butterfly-wing::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 13px;
-    height: 13px;
-
-    right: 5px;
-    top: 7px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #fff3b0 0%,
-            #b97915 45%,
-            #4d2805 100%
-        );
-}
-
-
-.butterfly-wing::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 8px;
-    height: 8px;
-
-    left: 6px;
-    bottom: 9px;
-
-    border-radius: 50%;
-
-    background: #ffe58a;
-
-    box-shadow:
-        0 0 5px rgba(255,215,75,.45);
-}
-
-
-/* =====================================================
-   BUTTERFLY BODY
-===================================================== */
-
-.butterfly-body {
-
-    position: absolute;
-
-    width: 10px;
-    height: 37px;
-
-    left: 30px;
-    top: 9px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            to right,
-            #1b0d02,
-            #4c2907,
-            #1b0d02
-        );
-
-    z-index: 10;
-}
-
-
-.butterfly-body::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 12px;
-    height: 12px;
-
-    left: -1px;
-    top: -6px;
-
-    border-radius: 50%;
-
-    background: #2b1403;
-}
-
-
-/* =====================================================
-   ANTENNAE
-===================================================== */
-
-.antenna {
-
-    position: absolute;
-
-    width: 22px;
-    height: 14px;
-
-    top: 1px;
-
-    border-top:
-        1.5px solid #321704;
-
-    z-index: 12;
-}
-
-
-.antenna.left {
-
-    left: 17px;
-
-    transform:
-        rotate(-28deg);
-}
-
-
-.antenna.right {
-
-    right: 17px;
-
-    transform:
-        rotate(28deg);
-}
-
-
-/* =====================================================
-   BUTTERFLY FLIGHT
-===================================================== */
-
-@keyframes butterflyFly {
-
-    0% {
-
-        left: -100px;
-
-        transform:
-            translateY(var(--start-y))
-            scale(var(--size))
-            rotate(-5deg);
-    }
-
-    20% {
-
-        transform:
-            translateY(
-                calc(var(--start-y) - 40px)
-            )
-            scale(var(--size))
-            rotate(4deg);
-    }
-
-    40% {
-
-        transform:
-            translateY(
-                calc(var(--start-y) + 45px)
-            )
-            scale(var(--size))
-            rotate(-3deg);
-    }
-
-    60% {
-
-        transform:
-            translateY(
-                calc(var(--start-y) - 30px)
-            )
-            scale(var(--size))
-            rotate(5deg);
-    }
-
-    80% {
-
-        transform:
-            translateY(
-                calc(var(--start-y) + 35px)
-            )
-            scale(var(--size))
-            rotate(-4deg);
-    }
-
-    100% {
-
-        left:
-            calc(100vw + 100px);
-
-        transform:
-            translateY(var(--end-y))
-            scale(var(--size))
-            rotate(3deg);
-    }
-}
-
-
-/* =====================================================
-   WING FLAPPING
-===================================================== */
-
-@keyframes leftWingFlap {
-
-    from {
-        transform:
-            rotate(-25deg)
-            rotateY(5deg);
-    }
-
-    to {
-        transform:
-            rotate(-25deg)
-            rotateY(-55deg);
-    }
-}
-
-
-@keyframes rightWingFlap {
-
-    from {
-        transform:
-            scaleX(-1)
-            rotate(-25deg)
-            rotateY(5deg);
-    }
-
-    to {
-        transform:
-            scaleX(-1)
-            rotate(-25deg)
-            rotateY(-55deg);
-    }
-}
-
-
-/* =====================================================
-   FIREFLIES
-===================================================== */
-
-.firefly {
-
-    position: absolute;
-
-    width: 17px;
-    height: 17px;
-
-    z-index: 45;
-
-    /* IMPORTANT:
-       fireflies are NOT clickable
+    /*
+        Reload the video element
+        so the new video loads.
     */
 
-    pointer-events: none;
+    gardenVideo.load();
 
-    background:
-        radial-gradient(
-            circle,
-            #ffe27a 0%,
-            #a9680c 28%,
-            #492704 60%,
-            #160b01 100%
-        );
 
-    border:
-        2px solid rgba(45,23,2,.9);
+    /*
+        Put the message underneath.
+    */
 
-    box-shadow:
-        0 0 5px rgba(255,205,60,.65),
-        0 0 14px rgba(166,103,8,.5),
-        0 0 25px rgba(75,40,2,.4);
+    videoMessage.textContent =
+        message;
 
-    animation:
-        fireflyMove
-        var(--fly-duration)
-        linear
-        infinite,
 
-        fireflyGlow
-        var(--glow-duration)
-        ease-in-out
-        infinite;
+    /*
+        Show popup.
+    */
 
-    animation-delay:
-        var(--delay);
+    videoModal.classList.add(
+        "show"
+    );
+
+
+    /*
+        Stop page scrolling.
+    */
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    /*
+        Start video.
+    */
+
+    gardenVideo.play()
+        .catch(() => {
+
+            /*
+                Some browsers require
+                user interaction before
+                autoplay.
+
+                The controls are still available.
+            */
+
+        });
+
 }
 
 
 /* =====================================================
-   FIREFLY MOVEMENT
+   CLOSE VIDEO
 ===================================================== */
 
-@keyframes fireflyMove {
+function closeVideoModal() {
 
-    0% {
+    gardenVideo.pause();
 
-        left: -40px;
+    gardenVideo.currentTime = 0;
 
-        transform:
-            translate(
-                0,
-                var(--start-y)
-            );
-    }
+    videoModal.classList.remove(
+        "show"
+    );
 
-    20% {
+    document.body.style.overflow =
+        "hidden";
 
-        transform:
-            translate(
-                10vw,
-                calc(var(--start-y) - 35px)
-            );
-    }
-
-    40% {
-
-        transform:
-            translate(
-                25vw,
-                calc(var(--start-y) + 50px)
-            );
-    }
-
-    60% {
-
-        transform:
-            translate(
-                45vw,
-                calc(var(--start-y) - 25px)
-            );
-    }
-
-    80% {
-
-        transform:
-            translate(
-                70vw,
-                calc(var(--start-y) + 40px)
-            );
-    }
-
-    100% {
-
-        left:
-            calc(100vw + 40px);
-
-        transform:
-            translate(
-                100vw,
-                var(--end-y)
-            );
-    }
-}
-
-
-/* =====================================================
-   FIREFLY GLOW
-===================================================== */
-
-@keyframes fireflyGlow {
-
-    0%, 100% {
-
-        opacity: .6;
-
-        box-shadow:
-            0 0 5px rgba(255,210,65,.5),
-            0 0 12px rgba(145,88,5,.35);
-    }
-
-    50% {
-
-        opacity: 1;
-
-        box-shadow:
-            0 0 8px rgba(255,222,90,.8),
-            0 0 18px rgba(164,101,7,.6),
-            0 0 30px rgba(80,42,2,.45);
-    }
-}
-
-
-/* =====================================================
-   TULIP GARDEN
-===================================================== */
-
-.tulip-garden {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 90;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 170px);
-
-    grid-template-rows:
-        repeat(2, 210px);
-
-    justify-content: center;
-
-    align-content: center;
-
-    gap: 30px 45px;
-
-    padding: 80px 30px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(72,38,5,.18),
-            rgba(20,10,2,.58)
-        );
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transform:
-        scale(1.05);
-
-    transition:
-        opacity 1.8s ease,
-        transform 2s ease;
-}
-
-
-.tulip-garden.visible {
-
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform:
-        scale(1);
-}
-
-
-/* =====================================================
-   GARDEN HEADING
-===================================================== */
-
-.garden-heading {
-
-    position: absolute;
-
-    top: 35px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    text-align: center;
-
-    z-index: 95;
-
-    width: 100%;
-}
-
-
-.garden-heading p {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #ffe5a0;
-
-    margin-bottom: 8px;
-}
-
-
-.garden-heading h2 {
-
-    font-size: 32px;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #fff0c5;
-
-    text-shadow:
-        0 3px 12px rgba(0,0,0,.6);
-}
-
-
-.garden-heading span {
-
-    display: block;
-
-    margin-top: 7px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    color: #e6c985;
-}
-
-
-/* =====================================================
-   TULIP CARD
-===================================================== */
-
-.tulip-card {
-
-    position: relative;
-
-    width: 170px;
-    height: 210px;
-
-    padding: 0;
-
-    border: none;
-
-    border-radius: 100px 100px 35px 35px;
-
-    overflow: hidden;
-
-    cursor: pointer;
-
-    background: #241304;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.5),
-        0 0 0 1px rgba(255,220,130,.2);
-
-    transform:
-        translateY(25px)
-        scale(.92);
-
-    opacity: 0;
-
-    animation:
-        tulipAppear
-        .9s
-        ease forwards;
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
-}
-
-
-/* staggered entrance */
-
-.tulip-card:nth-of-type(2) {
-    animation-delay: .1s;
-}
-
-.tulip-card:nth-of-type(3) {
-    animation-delay: .2s;
-}
-
-.tulip-card:nth-of-type(4) {
-    animation-delay: .3s;
-}
-
-.tulip-card:nth-of-type(5) {
-    animation-delay: .4s;
-}
-
-.tulip-card:nth-of-type(6) {
-    animation-delay: .5s;
-}
-
-.tulip-card:nth-of-type(7) {
-    animation-delay: .6s;
-}
-
-
-@keyframes tulipAppear {
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =====================================================
-   TULIP IMAGE
-===================================================== */
-
-.tulip-card img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    transition:
-        transform .6s ease,
-        filter .6s ease;
-}
-
-
-.tulip-card:hover {
-
-    transform:
-        translateY(-8px)
-        scale(1.03);
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.6),
-        0 0 25px rgba(255,205,100,.18);
-}
-
-
-.tulip-card:hover img {
-
-    transform:
-        scale(1.08);
-
-    filter:
-        brightness(1.08)
-        saturate(1.1);
-}
-
-
-/* =====================================================
-   TULIP SHINE
-===================================================== */
-
-.tulip-shine {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent 30%,
-            rgba(255,255,255,.3) 50%,
-            transparent 70%
-        );
-
-    transform:
-        translateX(-120%);
-
-    transition:
-        transform .8s ease;
-
-    pointer-events: none;
-}
-
-
-.tulip-card:hover .tulip-shine {
-
-    transform:
-        translateX(120%);
-}
-
-
-/* =====================================================
-   VIDEO MODAL
-===================================================== */
-
-.video-modal {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity .4s ease,
-        visibility .4s ease;
-}
-
-
-.video-modal.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-}
-
-
-/* =====================================================
-   VIDEO BACKDROP
-===================================================== */
-
-.video-backdrop {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        rgba(12,7,1,.82);
-
-    backdrop-filter:
-        blur(12px);
-}
-
-
-/* =====================================================
-   VIDEO BOX
-===================================================== */
-
-.video-box {
-
-    position: relative;
-
-    z-index: 2;
-
-    width:
-        min(760px, 90vw);
-
-    padding: 18px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(63,36,6,.98),
-            rgba(27,14,2,.98)
-        );
-
-    border:
-        1px solid rgba(255,222,130,.35);
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.75),
-        0 0 40px rgba(255,207,90,.12);
-
-    transform:
-        scale(.88)
-        translateY(20px);
-
-    transition:
-        transform .45s cubic-bezier(.2,.8,.2,1);
-}
-
-
-.video-modal.show .video-box {
-
-    transform:
-        scale(1)
-        translateY(0);
 }
 
 
@@ -2189,229 +615,40 @@ body {
    CLOSE BUTTON
 ===================================================== */
 
-.close-video {
-
-    position: absolute;
-
-    right: -14px;
-    top: -14px;
-
-    width: 38px;
-    height: 38px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        #f1d486;
-
-    color: #4c2b04;
-
-    font-size: 27px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    z-index: 5;
-
-    box-shadow:
-        0 5px 18px rgba(0,0,0,.4);
-
-    transition:
-        transform .2s ease;
-}
-
-
-.close-video:hover {
-
-    transform:
-        rotate(90deg)
-        scale(1.08);
-}
+closeVideo.addEventListener(
+    "click",
+    closeVideoModal
+);
 
 
 /* =====================================================
-   VIDEO FRAME
+   CLICK BACKDROP TO CLOSE
 ===================================================== */
 
-.video-frame {
-
-    width: 100%;
-
-    aspect-ratio:
-        16 / 9;
-
-    overflow: hidden;
-
-    border-radius: 16px;
-
-    background: #080401;
-
-    box-shadow:
-        inset 0 0 30px rgba(0,0,0,.5);
-}
-
-
-.video-frame video {
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: contain;
-
-    background: #080401;
-}
+videoBackdrop.addEventListener(
+    "click",
+    closeVideoModal
+);
 
 
 /* =====================================================
-   VIDEO MESSAGE
+   ESCAPE KEY
 ===================================================== */
 
-.video-message {
+document.addEventListener(
+    "keydown",
+    event => {
 
-    margin: 20px 20px 7px;
+        if (
+            event.key === "Escape" &&
+            videoModal.classList.contains(
+                "show"
+            )
+        ) {
 
-    text-align: center;
+            closeVideoModal();
 
-    font-size: 18px;
+        }
 
-    line-height: 1.5;
-
-    font-style: italic;
-
-    color: #ffeab0;
-
-    text-shadow:
-        0 2px 5px rgba(0,0,0,.6);
-
-    min-height: 28px;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 700px) {
-
-    .tulip-garden {
-
-        grid-template-columns:
-            repeat(2, 135px);
-
-        grid-template-rows:
-            repeat(3, 165px);
-
-        gap: 20px;
-
-        padding-top: 105px;
     }
-
-
-    .tulip-card {
-
-        width: 135px;
-        height: 165px;
-    }
-
-
-    .garden-heading h2 {
-
-        font-size: 26px;
-    }
-
-
-    .garden-heading span {
-
-        font-size: 11px;
-    }
-
-
-    .video-box {
-
-        width: 92vw;
-
-        padding: 12px;
-
-        border-radius: 18px;
-    }
-
-
-    .video-message {
-
-        font-size: 16px;
-
-        margin:
-            15px 10px 5px;
-    }
-}
-
-
-/* =====================================================
-   SMALL PHONES
-===================================================== */
-
-@media (max-width: 420px) {
-
-    .tulip-garden {
-
-        grid-template-columns:
-            repeat(2, 115px);
-
-        grid-template-rows:
-            repeat(3, 145px);
-
-        gap: 14px;
-    }
-
-
-    .tulip-card {
-
-        width: 115px;
-        height: 145px;
-    }
-
-
-    .garden-heading {
-
-        top: 22px;
-    }
-
-
-    .garden-heading h2 {
-
-        font-size: 22px;
-    }
-
-
-    .garden-heading p {
-
-        font-size: 8px;
-
-        letter-spacing: 3px;
-    }
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .butterfly,
-    .butterfly-wing,
-    .firefly,
-    .tulip-card {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-    }
-}
+);
