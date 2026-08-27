@@ -1002,24 +1002,11 @@ function makeSpecial(
    REVEAL SECRET
 ===================================================== */
 
-function revealSecret(
-    creature,
-    messageIndex
-) {
+function revealSecret(creature, messageIndex) {
 
-    /*
-        Safety check.
-    */
-
-    if (
-        secretsFound >=
-        TOTAL_SPECIAL
-    ) {
-
+    if (secretsFound >= TOTAL_SPECIAL) {
         return;
-
     }
-
 
     /* ---------------------------------------------
        INCREASE COUNTER
@@ -1027,18 +1014,14 @@ function revealSecret(
 
     secretsFound++;
 
-
-    secretCount.textContent =
-        secretsFound;
+    secretCounter.textContent = secretsFound;
 
 
     /* ---------------------------------------------
-       MARK CREATURE AS FOUND
+       CREATURE DISAPPEARS
     --------------------------------------------- */
 
-    creature.classList.add(
-        "creature-found"
-    );
+    creature.classList.add("creature-found");
 
 
     /* ---------------------------------------------
@@ -1047,48 +1030,59 @@ function revealSecret(
 
     const message =
         secretMessages[
-            messageIndex %
-            secretMessages.length
+            messageIndex % secretMessages.length
         ];
 
 
-    creatureMessageText.textContent =
-        message;
+    /* ---------------------------------------------
+       PUT MESSAGE ON SCREEN
+    --------------------------------------------- */
+
+    creatureMessageText.textContent = message;
 
 
     /* ---------------------------------------------
-       RESTART MESSAGE ANIMATION
+       SHOW MESSAGE
     --------------------------------------------- */
 
-    creatureMessage.classList.remove(
-        "show"
-    );
-
+    creatureMessage.classList.remove("show");
 
     void creatureMessage.offsetWidth;
 
+    creatureMessage.classList.add("show");
 
-    creatureMessage.classList.add(
-        "show"
-    );
+
+    /* ---------------------------------------------
+       HIDE AFTER 3.8 SECONDS
+    --------------------------------------------- */
+
+    setTimeout(() => {
+
+        creatureMessage.classList.remove("show");
+
+    }, 3800);
 
 
     /* ---------------------------------------------
        ALL SIX FOUND
     --------------------------------------------- */
 
-    if (
-        secretsFound ===
-        TOTAL_SPECIAL
-    ) {
+    if (secretsFound === TOTAL_SPECIAL) {
 
-        setTimeout(
-            allSecretsFound,
-            4000
-        );
+        setTimeout(() => {
+
+            creatureMessageText.textContent =
+                "You found all six little secrets... ✦";
+
+            creatureMessage.classList.remove("show");
+
+            void creatureMessage.offsetWidth;
+
+            creatureMessage.classList.add("show");
+
+        }, 4000);
 
     }
-
 }
 
 
