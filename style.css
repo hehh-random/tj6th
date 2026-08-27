@@ -1264,149 +1264,33 @@ body {
 .butterfly {
     position: absolute;
 
-    width: 76px;
-    height: 64px;
+    left: -120px;
+
+    width: 70px;
+    height: 55px;
+
+    z-index: 40;
 
     pointer-events: auto;
+
     cursor: pointer;
 
-    z-index: 50;
-
-    opacity: 1;
-
-    transform-origin: center;
-
-    filter:
-        drop-shadow(0 3px 4px rgba(40, 24, 3, .45))
-        drop-shadow(0 0 8px rgba(255, 210, 60, .25));
+    transform:
+        translateY(var(--start-y))
+        scale(var(--size));
 
     animation:
-        butterflyFly var(--fly-duration)
-        linear infinite;
+        butterflyFly
+        var(--fly-duration)
+        linear
+        infinite;
 
     animation-delay: var(--delay);
-}
 
+    filter:
+        drop-shadow(0 5px 6px rgba(40, 25, 5, .28));
 
-/* =====================================================
-   EASY CLICK AREA
-===================================================== */
-
-.butterfly::before {
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 100px;
-    height: 90px;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background: transparent;
-
-    pointer-events: auto;
-
-    z-index: 100;
-}
-
-
-/* =====================================================
-   BUTTERFLY BODY
-===================================================== */
-
-.butterfly-body {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 9px;
-    height: 39px;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 70%;
-
-    background:
-        linear-gradient(
-            to right,
-            #241504,
-            #67400b 30%,
-            #9a6815 50%,
-            #553307 70%,
-            #1b1003
-        );
-
-    box-shadow:
-        inset 1px 0 rgba(255,225,130,.35),
-        2px 3px 4px rgba(0,0,0,.45);
-
-    z-index: 20;
-}
-
-
-/* =====================================================
-   ANTENNAE
-===================================================== */
-
-.butterfly .antenna {
-    position: absolute;
-
-    width: 25px;
-    height: 19px;
-
-    top: 7px;
-
-    border-top:
-        2px solid rgba(45,28,5,.95);
-
-    z-index: 30;
-}
-
-.butterfly .antenna.left {
-    left: 19px;
-
-    transform:
-        rotate(-30deg)
-        skewX(-15deg);
-}
-
-.butterfly .antenna.right {
-    right: 19px;
-
-    transform:
-        rotate(30deg)
-        skewX(15deg);
-}
-
-.butterfly .antenna::after {
-    content: "";
-
-    position: absolute;
-
-    width: 4px;
-    height: 4px;
-
-    border-radius: 50%;
-
-    background: #2b1904;
-
-    top: -3px;
-}
-
-.butterfly .antenna.left::after {
-    left: -2px;
-}
-
-.butterfly .antenna.right::after {
-    right: -2px;
+    transform-origin: center;
 }
 
 
@@ -1417,40 +1301,70 @@ body {
 .butterfly-wing {
     position: absolute;
 
+    width: 31px;
+    height: 46px;
+
     top: 4px;
 
-    width: 38px;
-    height: 54px;
-
-    z-index: 10;
-
-    overflow: hidden;
-
-    border:
-        2px solid rgba(80, 43, 3, .75);
+    border-radius:
+        70% 35% 65% 35%;
 
     background:
         radial-gradient(
-            ellipse at 42% 22%,
-            #fffbd0 0%,
-            #ffe878 18%,
-            #eebc32 40%,
-            #b8750e 67%,
-            #623806 88%,
-            #321a03 100%
+            circle at 35% 30%,
+            #fff5bf 0%,
+            #e9b83e 22%,
+            #9a5d13 58%,
+            #4b2606 100%
         );
 
-    box-shadow:
-        inset 2px 2px 4px rgba(255,255,220,.7),
-        inset -4px -5px 9px rgba(57,29,2,.45),
-        0 2px 5px rgba(40,20,2,.35);
+    border:
+        2px solid rgba(67, 35, 5, .75);
 
-    transform-origin: center;
+    box-shadow:
+        inset 2px 2px 5px rgba(255,255,255,.45),
+        inset -4px -5px 8px rgba(45,20,2,.35),
+        0 2px 5px rgba(45,25,5,.25);
+
+    transform-origin: center bottom;
+}
+
+
+/* LEFT WING */
+
+.butterfly-wing.left {
+    left: 4px;
+
+    transform:
+        rotate(-25deg);
+
+    animation:
+        leftWingFlap
+        .42s
+        ease-in-out
+        infinite alternate;
+}
+
+
+/* RIGHT WING */
+
+.butterfly-wing.right {
+    right: 4px;
+
+    transform:
+        scaleX(-1)
+        rotate(-25deg);
+
+    animation:
+        rightWingFlap
+        .42s
+        ease-in-out
+        infinite alternate;
 }
 
 
 /* =====================================================
-   WING VEINS
+   WING PATTERNS
 ===================================================== */
 
 .butterfly-wing::before {
@@ -1458,140 +1372,130 @@ body {
 
     position: absolute;
 
-    inset: 0;
-
-    background:
-        linear-gradient(
-            110deg,
-            transparent 43%,
-            rgba(67,35,3,.65) 45%,
-            rgba(67,35,3,.65) 48%,
-            transparent 50%
-        ),
-
-        linear-gradient(
-            25deg,
-            transparent 47%,
-            rgba(75,39,3,.55) 48%,
-            rgba(75,39,3,.55) 51%,
-            transparent 52%
-        ),
-
-        linear-gradient(
-            155deg,
-            transparent 52%,
-            rgba(75,39,3,.5) 53%,
-            rgba(75,39,3,.5) 55%,
-            transparent 56%
-        );
-
-    opacity: .9;
-}
-
-
-/* =====================================================
-   WING SPOTS
-===================================================== */
-
-.butterfly-wing::after {
-    content: "";
-
-    position: absolute;
-
-    width: 10px;
-    height: 10px;
+    width: 13px;
+    height: 13px;
 
     right: 5px;
-    top: 6px;
+    top: 7px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            #fffbd5 0%,
-            #ffe76c 35%,
-            #b9760d 70%,
-            transparent 75%
+            #fff6c7 0%,
+            #d9a02c 45%,
+            #70400a 100%
         );
 
     box-shadow:
-        -9px 15px 0 -2px #ffe36a,
-        -4px 30px 0 -3px rgba(82,43,4,.8);
+        0 0 3px rgba(255,235,160,.5);
+}
+
+
+.butterfly-wing::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    left: 6px;
+    bottom: 9px;
+
+    border-radius: 50%;
+
+    background: #fff0a5;
+
+    box-shadow:
+        0 0 5px rgba(255,225,100,.5);
 }
 
 
 /* =====================================================
-   LEFT WING
+   BUTTERFLY BODY
 ===================================================== */
 
-.butterfly-wing.left {
-    left: 1px;
+.butterfly-body {
+    position: absolute;
 
-    border-radius:
-        85% 35%
-        65% 45%;
+    width: 10px;
+    height: 37px;
 
-    transform-origin: 100% 55%;
+    left: 30px;
+    top: 9px;
 
-    animation:
-        realisticWingLeft .32s
-        ease-in-out infinite;
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            to right,
+            #241305,
+            #6a3b09,
+            #241305
+        );
+
+    z-index: 10;
+
+    box-shadow:
+        0 2px 4px rgba(0,0,0,.35);
 }
 
 
 /* =====================================================
-   RIGHT WING
+   BUTTERFLY HEAD
 ===================================================== */
 
-.butterfly-wing.right {
-    right: 1px;
+.butterfly-body::before {
+    content: "";
 
-    border-radius:
-        35% 85%
-        45% 65%;
+    position: absolute;
 
-    transform-origin: 0% 55%;
+    width: 12px;
+    height: 12px;
 
-    animation:
-        realisticWingRight .32s
-        ease-in-out infinite;
+    left: -1px;
+    top: -6px;
+
+    border-radius: 50%;
+
+    background: #3a1e05;
 }
 
 
 /* =====================================================
-   REALISTIC WING FLAP
+   ANTENNAE
 ===================================================== */
 
-@keyframes realisticWingLeft {
+.antenna {
+    position: absolute;
 
-    0%, 100% {
-        transform:
-            rotate(-7deg)
-            scaleX(1);
-    }
+    width: 22px;
+    height: 14px;
 
-    50% {
-        transform:
-            rotate(-38deg)
-            scaleX(.38);
-    }
+    top: 1px;
+
+    border-top:
+        1.5px solid #3a1e05;
+
+    z-index: 12;
 }
 
 
-@keyframes realisticWingRight {
+.antenna.left {
+    left: 17px;
 
-    0%, 100% {
-        transform:
-            rotate(7deg)
-            scaleX(1);
-    }
+    transform:
+        rotate(-28deg);
+}
 
-    50% {
-        transform:
-            rotate(38deg)
-            scaleX(.38);
-    }
+
+.antenna.right {
+    right: 17px;
+
+    transform:
+        rotate(28deg);
 }
 
 
@@ -1602,94 +1506,96 @@ body {
 @keyframes butterflyFly {
 
     0% {
-
         left: -100px;
 
         transform:
             translateY(var(--start-y))
-            rotate(var(--angle))
-            scale(var(--size));
+            scale(var(--size))
+            rotate(-5deg);
     }
 
     20% {
-
         transform:
-            translate(
-                20vw,
-                calc(var(--start-y) - 35px)
+            translateY(
+                calc(var(--start-y) - 40px)
             )
-            rotate(
-                calc(var(--angle) + 4deg)
-            )
-            scale(var(--size));
+            scale(var(--size))
+            rotate(4deg);
     }
 
     40% {
-
         transform:
-            translate(
-                40vw,
+            translateY(
                 calc(var(--start-y) + 45px)
             )
-            rotate(
-                calc(var(--angle) - 5deg)
-            )
-            scale(var(--size));
+            scale(var(--size))
+            rotate(-3deg);
     }
 
     60% {
-
         transform:
-            translate(
-                60vw,
+            translateY(
                 calc(var(--start-y) - 30px)
             )
-            rotate(
-                calc(var(--angle) + 4deg)
-            )
-            scale(var(--size));
+            scale(var(--size))
+            rotate(5deg);
     }
 
     80% {
-
         transform:
-            translate(
-                80vw,
+            translateY(
                 calc(var(--start-y) + 35px)
             )
-            rotate(
-                calc(var(--angle) - 3deg)
-            )
-            scale(var(--size));
+            scale(var(--size))
+            rotate(-4deg);
     }
 
     100% {
-
         left: calc(100vw + 100px);
 
         transform:
-            translate(
-                100vw,
-                var(--end-y)
-            )
-            rotate(var(--angle))
-            scale(var(--size));
+            translateY(var(--end-y))
+            scale(var(--size))
+            rotate(3deg);
     }
 }
 
 
 /* =====================================================
-   BUTTERFLY HOVER
+   WING FLAPPING
 ===================================================== */
 
-.butterfly:hover {
+@keyframes leftWingFlap {
 
-    filter:
-        drop-shadow(0 0 10px rgba(255,225,90,.95))
-        drop-shadow(0 0 24px rgba(255,195,40,.55))
-        drop-shadow(0 3px 5px rgba(30,18,2,.45));
+    from {
+        transform:
+            rotate(-25deg)
+            rotateY(5deg);
+    }
 
-    z-index: 90;
+    to {
+        transform:
+            rotate(-25deg)
+            rotateY(-55deg);
+    }
+}
+
+
+@keyframes rightWingFlap {
+
+    from {
+        transform:
+            scaleX(-1)
+            rotate(-25deg)
+            rotateY(5deg);
+    }
+
+    to {
+        transform:
+            scaleX(-1)
+            rotate(-25deg)
+            rotateY(-55deg);
+    }
 }
 
 
@@ -1700,50 +1606,54 @@ body {
 .firefly {
     position: absolute;
 
-    width: 13px;
-    height: 13px;
+    width: 17px;
+    height: 17px;
 
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #fff9c2 0%,
-            #e6b82d 25%,
-            #9a6810 55%,
-            #4b2b04 80%,
-            #251503 100%
-        );
-
-    border:
-        1px solid rgba(75,42,4,.75);
 
     z-index: 45;
 
     pointer-events: auto;
+
     cursor: pointer;
 
+    background:
+        radial-gradient(
+            circle,
+            #ffe98a 0%,
+            #b77a14 28%,
+            #5a3508 60%,
+            #211202 100%
+        );
+
+    border:
+        2px solid rgba(55,30,3,.85);
+
     box-shadow:
-        0 0 5px rgba(255,221,90,.75),
-        0 0 13px rgba(218,166,35,.55),
-        0 0 24px rgba(180,120,10,.3);
+        0 0 5px rgba(255,218,85,.75),
+        0 0 14px rgba(184,124,15,.55),
+        0 0 25px rgba(95,55,4,.4);
 
     animation:
-        fireflyMove var(--fly-duration)
-        linear infinite,
+        fireflyMove
+        var(--fly-duration)
+        linear
+        infinite,
 
-        fireflyGlow var(--glow-duration)
-        ease-in-out infinite;
+        fireflyGlow
+        var(--glow-duration)
+        ease-in-out
+        infinite;
 
     animation-delay: var(--delay);
 }
 
 
 /* =====================================================
-   FIREFLY CLICK AREA
+   BIG CLICK AREA
 ===================================================== */
 
-.firefly::before {
+.firefly::before{
     content: "";
 
     position: absolute;
@@ -1751,8 +1661,8 @@ body {
     left: 50%;
     top: 50%;
 
-    width: 48px;
-    height: 48px;
+    width: 55px;
+    height: 55px;
 
     transform:
         translate(-50%, -50%);
@@ -1761,7 +1671,7 @@ body {
 
     background: transparent;
 
-    z-index: 50;
+    z-index: 100;
 }
 
 
@@ -1772,7 +1682,6 @@ body {
 @keyframes fireflyMove {
 
     0% {
-
         left: -40px;
 
         transform:
@@ -1783,7 +1692,6 @@ body {
     }
 
     20% {
-
         transform:
             translate(
                 10vw,
@@ -1792,7 +1700,6 @@ body {
     }
 
     40% {
-
         transform:
             translate(
                 25vw,
@@ -1801,7 +1708,6 @@ body {
     }
 
     60% {
-
         transform:
             translate(
                 45vw,
@@ -1810,7 +1716,6 @@ body {
     }
 
     80% {
-
         transform:
             translate(
                 70vw,
@@ -1819,7 +1724,6 @@ body {
     }
 
     100% {
-
         left: calc(100vw + 40px);
 
         transform:
@@ -1838,32 +1742,20 @@ body {
 @keyframes fireflyGlow {
 
     0%, 100% {
-        opacity: .55;
+        opacity: .65;
 
         box-shadow:
-            0 0 4px rgba(255,220,80,.5),
-            0 0 10px rgba(180,125,15,.35);
-    }
-
-    25% {
-        opacity: .85;
-
-        box-shadow:
-            0 0 7px rgba(255,230,100,.75),
-            0 0 18px rgba(190,135,20,.5);
+            0 0 5px rgba(255,220,80,.55),
+            0 0 12px rgba(150,95,8,.4);
     }
 
     50% {
         opacity: 1;
 
         box-shadow:
-            0 0 9px rgba(255,239,130,.95),
-            0 0 22px rgba(200,145,25,.65),
-            0 0 38px rgba(155,95,5,.35);
-    }
-
-    75% {
-        opacity: .75;
+            0 0 8px rgba(255,231,105,.9),
+            0 0 18px rgba(174,113,10,.65),
+            0 0 30px rgba(95,55,4,.45);
     }
 }
 
@@ -1876,9 +1768,12 @@ body {
     z-index: 70 !important;
 
     filter:
-        drop-shadow(0 0 8px rgba(255,232,100,.95))
-        drop-shadow(0 0 20px rgba(255,205,45,.8))
-        drop-shadow(0 0 40px rgba(180,115,5,.5));
+        drop-shadow(
+            0 0 8px rgba(255,235,120,.95)
+        )
+        drop-shadow(
+            0 0 18px rgba(255,200,50,.75)
+        );
 }
 
 
@@ -1888,23 +1783,26 @@ body {
 
 .firefly.special-creature {
 
-    width: 16px;
-    height: 16px;
+    width: 21px;
+    height: 21px;
 
     background:
         radial-gradient(
             circle,
-            #fffde1 0%,
-            #f5d45b 25%,
-            #a87312 55%,
-            #4a2903 100%
+            #fffde0 0%,
+            #f4cf4c 28%,
+            #8b5a0c 58%,
+            #392003 100%
         );
+
+    border-color:
+        rgba(62,35,3,.95);
 
     box-shadow:
         0 0 8px #fffbd0,
         0 0 18px #ffe86a,
-        0 0 35px #d29a24,
-        0 0 55px rgba(130,75,4,.65);
+        0 0 32px #c98f1b,
+        0 0 48px rgba(90,50,3,.7);
 }
 
 
@@ -1914,12 +1812,16 @@ body {
 
 .butterfly.special-creature {
 
-    transform-origin: center;
-
     filter:
-        drop-shadow(0 0 9px rgb(71, 202, 45))
-        drop-shadow(0 0 20px rgba(33, 199, 24, 0.85))
-        drop-shadow(0 0 40px rgba(24, 222, 10, 0.5));
+        drop-shadow(
+            0 0 7px rgba(255,245,150,.95)
+        )
+        drop-shadow(
+            0 0 18px rgba(255,200,55,.8)
+        )
+        drop-shadow(
+            0 0 35px rgba(185,120,10,.5)
+        );
 }
 
 
@@ -1932,7 +1834,10 @@ body {
     pointer-events: none !important;
 
     animation:
-        creatureFound .9s ease forwards !important;
+        creatureFound
+        .9s
+        ease
+        forwards !important;
 }
 
 
@@ -1945,15 +1850,15 @@ body {
             scale(1);
     }
 
-    30% {
+    35% {
         opacity: 1;
 
         transform:
             scale(1.35);
     }
 
-    60% {
-        opacity: .7;
+    65% {
+        opacity: .65;
 
         transform:
             scale(1.7);
@@ -1986,32 +1891,34 @@ body {
     border-radius: 20px;
 
     background:
-        rgba(62, 38, 7, .72);
+        rgba(48, 28, 5, .82);
 
     border:
-        1px solid rgba(255,220,120,.35);
+        1px solid rgba(255,220,120,.4);
 
     color: #fff1b0;
 
-    font-family: Arial, sans-serif;
+    font-family:
+        Arial,
+        sans-serif;
 
     font-size: 11px;
 
     letter-spacing: .5px;
 
     box-shadow:
-        0 5px 20px rgba(40,25,5,.25);
+        0 5px 20px rgba(40,25,5,.3);
 
     backdrop-filter: blur(7px);
 }
 
 
-
 /* =====================================================
-   CREATURE MESSAGE - VISIBLE POPUP
+   CREATURE MESSAGE
 ===================================================== */
 
 #creatureMessage {
+
     position: fixed;
 
     left: 50%;
@@ -2021,7 +1928,9 @@ body {
 
     padding: 32px 30px;
 
-    transform: translate(-50%, -50%) scale(0.8);
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
 
     text-align: center;
 
@@ -2035,21 +1944,22 @@ body {
 
     border-radius: 24px;
 
-    background: rgba(45, 27, 5, 0.96);
+    background:
+        rgba(38, 22, 4, .97);
 
-    border: 2px solid rgba(255, 221, 120, 0.75);
+    border:
+        2px solid rgba(255,221,120,.8);
 
     box-shadow:
-        0 20px 70px rgba(0, 0, 0, 0.55),
-        0 0 30px rgba(255, 210, 70, 0.35),
-        inset 0 1px 0 rgba(255, 245, 190, 0.3);
+        0 20px 70px rgba(0,0,0,.6),
+        0 0 35px rgba(255,210,70,.4);
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
 
     transition:
-        opacity 0.35s ease,
-        transform 0.35s ease,
-        visibility 0.35s ease;
+        opacity .35s ease,
+        transform .35s ease,
+        visibility .35s ease;
 }
 
 
@@ -2058,6 +1968,7 @@ body {
 ===================================================== */
 
 #creatureMessage.show {
+
     opacity: 1;
 
     visibility: visible;
@@ -2069,32 +1980,33 @@ body {
 
 
 /* =====================================================
-   MESSAGE SYMBOL
+   MESSAGE SPARKLE
 ===================================================== */
 
 .message-sparkle {
+
     display: block;
 
-    font-size: 32px;
+    font-size: 34px;
 
     color: #ffe47a;
 
     margin-bottom: 15px;
 
     text-shadow:
-        0 0 8px rgba(255, 225, 100, 0.9),
-        0 0 20px rgba(255, 200, 50, 0.6);
+        0 0 8px rgba(255,225,100,.9),
+        0 0 20px rgba(255,200,50,.6);
 
     animation:
-        messageSparkle 1.4s ease-in-out infinite;
+        messageSparkle
+        1.4s
+        ease-in-out
+        infinite;
 }
 
 
-/* =====================================================
-   MESSAGE TEXT
-===================================================== */
-
 #creatureMessageText {
+
     margin: 0;
 
     font-family:
@@ -2111,19 +2023,15 @@ body {
     color: #fff4c9;
 
     text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.6);
+        0 2px 4px rgba(0,0,0,.6);
 }
 
-
-/* =====================================================
-   MESSAGE SPARKLE ANIMATION
-===================================================== */
 
 @keyframes messageSparkle {
 
     0%, 100% {
         transform: scale(1);
-        opacity: 0.8;
+        opacity: .8;
     }
 
     50% {
@@ -2134,12 +2042,20 @@ body {
 
 
 /* =====================================================
-   MOBILE MESSAGE
+   MOBILE
 ===================================================== */
 
 @media (max-width: 600px) {
 
+    #secretCounter {
+        top: 15px;
+        right: 15px;
+
+        font-size: 10px;
+    }
+
     #creatureMessage {
+
         width: 84vw;
 
         padding: 27px 20px;
@@ -2148,12 +2064,29 @@ body {
     }
 
     #creatureMessageText {
+
         font-size: 18px;
+
         line-height: 1.55;
     }
 
     .message-sparkle {
         font-size: 28px;
+    }
+
+    .butterfly {
+        width: 60px;
+        height: 48px;
+    }
+
+    .butterfly-wing {
+        width: 27px;
+        height: 41px;
+    }
+
+    .firefly {
+        width: 18px;
+        height: 18px;
     }
 }
 
@@ -2167,10 +2100,9 @@ body {
     .butterfly,
     .butterfly-wing,
     .firefly,
-    .message-sparkle,
-    .come-inside .small-key {
+    .message-sparkle {
 
-        animation-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
 
         animation-iteration-count: 1 !important;
     }
