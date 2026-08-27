@@ -1123,3 +1123,13 @@ function allSecretsFound() {
 */
 
 createGardenCreatures();
+
+
+setTimeout(() => {
+
+    creatureMessageText.textContent =
+        "TEST MESSAGE — IT WORKS ✦";
+
+    creatureMessage.classList.add("show");
+
+}, 2000);
