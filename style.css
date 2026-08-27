@@ -1917,9 +1917,9 @@ body {
     transform-origin: center;
 
     filter:
-        drop-shadow(0 0 9px rgba(255,235,120,1))
-        drop-shadow(0 0 20px rgba(255,205,55,.85))
-        drop-shadow(0 0 40px rgba(175,105,5,.5));
+        drop-shadow(0 0 9px rgb(71, 202, 45))
+        drop-shadow(0 0 20px rgba(33, 199, 24, 0.85))
+        drop-shadow(0 0 40px rgba(24, 222, 10, 0.5));
 }
 
 
