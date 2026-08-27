@@ -1,350 +1,203 @@
 /* =====================================================
-   GARDEN PAGE
+   SECRET CODE
 ===================================================== */
 
-.garden-page {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 200;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            rgba(255, 241, 198, .12),
-            rgba(255, 241, 198, .12)
-        ),
-        url("background22.png");
-
-    background-size: cover;
-    background-position: center;
-
-    transition:
-        opacity 1.5s ease,
-        visibility 1.5s ease;
-
-}
-
-
-.garden-page.visible {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-}
+const SECRET_CODE = "1234";
 
 
 /* =====================================================
-   GARDEN CREATURES
+   ELEMENTS
 ===================================================== */
 
-#gardenCreatures {
+const lockScreen =
+    document.getElementById("lockScreen");
 
-    position: absolute;
+const lockArea =
+    document.getElementById("lockArea");
 
-    inset: 0;
+const keypad =
+    document.getElementById("keypad");
 
-    z-index: 1;
+const codeDisplay =
+    document.getElementById("codeDisplay");
 
-    overflow: hidden;
+const instruction =
+    document.getElementById("instruction");
 
-    pointer-events: none;
+const heartLock =
+    document.getElementById("heartLock");
 
-}
+const unlockMessage =
+    document.getElementById("unlockMessage");
+
+const comeInside =
+    document.getElementById("comeInside");
+
+const secretWorld =
+    document.getElementById("secretWorld");
+
+const enterWorld =
+    document.getElementById("enterWorld");
+
+const particles =
+    document.getElementById("particles");
+
+const gardenPage =
+    document.getElementById("gardenPage");
+
+const gardenCreatures =
+    document.getElementById("gardenCreatures");
+
+const tulipContainer =
+    document.getElementById("tulipContainer");
+
+const tulipInstruction =
+    document.getElementById("tulipInstruction");
+
+const videoOverlay =
+    document.getElementById("videoOverlay");
+
+const secretVideo =
+    document.getElementById("secretVideo");
+
+const videoSource =
+    document.getElementById("videoSource");
+
+const videoMessage =
+    document.getElementById("videoMessage");
+
+const closeVideo =
+    document.getElementById("closeVideo");
+
+const finalPage =
+    document.getElementById("finalPage");
 
 
 /* =====================================================
-   GARDEN TITLE
+   STATE
 ===================================================== */
 
-.garden-title {
+let enteredCode = "";
 
-    position: absolute;
+let isUnlocking = false;
 
-    top: 8%;
+let videosWatched = 0;
 
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 90%;
-
-    text-align: center;
-
-    z-index: 10;
-
-}
-
-
-.garden-title p {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #8b5c13;
-
-    margin-bottom: 12px;
-
-}
-
-
-.garden-title h2 {
-
-    font-family: Georgia, serif;
-
-    font-size: 39px;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #68440b;
-
-}
-
-
-.garden-title span {
-
-    display: block;
-
-    margin-top: 12px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 14px;
-
-    color: #916a25;
-
-}
+let currentVideo = 0;
 
 
 /* =====================================================
-   TULIP CONTAINER
+   VIDEO INFORMATION
 ===================================================== */
 
-.tulip-container {
-
-    position: absolute;
-
-    left: 50%;
-
-    top: 53%;
-
-    transform: translate(-50%, -50%);
-
-    width: min(900px, 90vw);
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 35px;
-
-    justify-items: center;
-
-    z-index: 20;
-
-}
-
-
-/* =====================================================
-   TULIP
-===================================================== */
-
-.tulip {
-
-    position: relative;
-
-    width: 180px;
-
-    height: 230px;
-
-    border: none;
-
-    padding: 0;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    transition:
-        transform .35s ease,
-        filter .35s ease;
-
-    animation:
-        tulipFloat
-        4s
-        ease-in-out
-        infinite;
-
-}
-
-
-.tulip:nth-child(2) {
-    animation-delay: .5s;
-}
-
-.tulip:nth-child(3) {
-    animation-delay: 1s;
-}
-
-.tulip:nth-child(4) {
-    animation-delay: 1.5s;
-}
-
-.tulip:nth-child(5) {
-    animation-delay: 2s;
-}
-
-.tulip:nth-child(6) {
-    animation-delay: 2.5s;
-}
-
-
-.tulip:hover {
-
-    transform:
-        translateY(-10px)
-        scale(1.06);
-
-    filter:
-        drop-shadow(
-            0 10px 18px rgba(105, 62, 8, .25)
-        );
-
-}
-
-
-/* =====================================================
-   ACTUAL TULIP IMAGE
-===================================================== */
-
-.tulip img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: contain;
-
-    display: block;
-
-    pointer-events: none;
-
-}
-
-
-/* =====================================================
-   TULIP LABEL
-===================================================== */
-
-.tulip-label {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 2px;
-
-    transform: translateX(-50%);
-
-    padding: 6px 13px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(61, 35, 5, .75);
-
-    color: #fff0bd;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-
-    opacity: 0;
-
-    transition:
-        opacity .3s ease;
-
-    pointer-events: none;
-
-}
-
-
-.tulip:hover .tulip-label {
-
-    opacity: 1;
-
-}
-
-
-/* =====================================================
-   TULIP INSTRUCTION
-===================================================== */
-
-.tulip-instruction {
-
-    position: absolute;
-
-    bottom: 6%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    z-index: 30;
-
-    width: 90%;
-
-    text-align: center;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 13px;
-
-    color: #876126;
-
-    letter-spacing: .5px;
-
-}
-
-
-/* =====================================================
-   TULIP FLOAT
-===================================================== */
-
-@keyframes tulipFloat {
-
-    0%,
-    100% {
-
-        transform:
-            translateY(0);
-
+const tulips = [
+
+    {
+        image: "tulip1.png",
+        video: "video1.mp4",
+        message:
+            "A little moment, just for you. ♡"
+    },
+
+    {
+        image: "tulip2.png",
+        video: "video2.mp4",
+        message:
+            "I hope this makes you smile. ✦"
+    },
+
+    {
+        image: "tulip3.png",
+        video: "video3.mp4",
+        message:
+            "Some memories deserve their own little place."
+    },
+
+    {
+        image: "tulip4.png",
+        video: "video4.mp4",
+        message:
+            "Here's another little piece of this secret garden. ♡"
+    },
+
+    {
+        image: "tulip5.png",
+        video: "video5.mp4",
+        message:
+            "Keep this one close to your heart. ✦"
+    },
+
+    {
+        image: "tulip6.png",
+        video: "video6.mp4",
+        message:
+            "And one last little surprise..."
     }
 
-    50% {
+];
 
-        transform:
-            translateY(-8px);
+
+/* =====================================================
+   KEYPAD
+===================================================== */
+
+const numberButtons =
+    document.querySelectorAll("[data-number]");
+
+
+numberButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            if (isUnlocking) {
+                return;
+            }
+
+            addNumber(
+                button.dataset.number
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   ADD NUMBER
+===================================================== */
+
+function addNumber(number) {
+
+    if (isUnlocking) {
+        return;
+    }
+
+
+    if (
+        enteredCode.length >=
+        SECRET_CODE.length
+    ) {
+        return;
+    }
+
+
+    enteredCode += number;
+
+    updateDisplay();
+
+
+    if (
+        enteredCode.length ===
+        SECRET_CODE.length
+    ) {
+
+        setTimeout(
+            checkCode,
+            250
+        );
 
     }
 
@@ -352,374 +205,829 @@
 
 
 /* =====================================================
-   VIDEO OVERLAY
+   BACKSPACE
 ===================================================== */
 
-.video-overlay {
+if (backspace) {
 
-    position: fixed;
+    backspace.addEventListener(
+        "click",
+        () => {
 
-    inset: 0;
+            if (isUnlocking) {
+                return;
+            }
 
-    z-index: 1000;
+            enteredCode =
+                enteredCode.slice(0, -1);
 
-    display: flex;
+            updateDisplay();
 
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 25px;
-
-    background:
-        rgba(22, 12, 2, .78);
-
-    backdrop-filter:
-        blur(12px);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity .4s ease,
-        visibility .4s ease;
-
-}
-
-
-.video-overlay.visible {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
+        }
+    );
 
 }
 
 
 /* =====================================================
-   VIDEO BOX
+   UPDATE DISPLAY
 ===================================================== */
 
-.video-box {
+function updateDisplay() {
 
-    position: relative;
+    const dots =
+        codeDisplay.querySelectorAll("span");
 
-    width: min(720px, 92vw);
 
-    padding: 24px;
+    dots.forEach(
+        (dot, index) => {
 
-    border-radius: 25px;
+            if (
+                index <
+                enteredCode.length
+            ) {
 
-    background:
-        linear-gradient(
-            145deg,
-            #fff8df,
-            #f2d998
+                dot.classList.add(
+                    "active"
+                );
+
+            } else {
+
+                dot.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CHECK CODE
+===================================================== */
+
+function checkCode() {
+
+    if (
+        enteredCode ===
+        SECRET_CODE
+    ) {
+
+        unlock();
+
+    } else {
+
+        wrongCode();
+
+    }
+
+}
+
+
+/* =====================================================
+   WRONG CODE
+===================================================== */
+
+function wrongCode() {
+
+    lockArea.classList.remove(
+        "shake"
+    );
+
+    void lockArea.offsetWidth;
+
+    lockArea.classList.add(
+        "shake"
+    );
+
+
+    instruction.textContent =
+        "That's not the right key...";
+
+    instruction.style.color =
+        "#a34e32";
+
+
+    setTimeout(
+        () => {
+
+            enteredCode = "";
+
+            updateDisplay();
+
+            instruction.textContent =
+                "Enter the secret code...";
+
+            instruction.style.color = "";
+
+        },
+        900
+    );
+
+}
+
+
+/* =====================================================
+   UNLOCK
+===================================================== */
+
+function unlock() {
+
+    if (isUnlocking) {
+        return;
+    }
+
+    isUnlocking = true;
+
+
+    lockScreen.classList.add(
+        "unlocking"
+    );
+
+
+    createParticles();
+
+
+    setTimeout(
+        () => {
+
+            unlockMessage.classList.add(
+                "show-unlock-message"
+            );
+
+        },
+        2500
+    );
+
+
+    setTimeout(
+        () => {
+
+            comeInside.classList.add(
+                "show-come-inside"
+            );
+
+        },
+        5100
+    );
+
+
+    setTimeout(
+        () => {
+
+            secretWorld.classList.add(
+                "visible"
+            );
+
+        },
+        7600
+    );
+
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+function createParticles() {
+
+    const amount = 70;
+
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const particle =
+            document.createElement("div");
+
+
+        particle.classList.add(
+            "particle"
         );
 
-    border:
-        1px solid rgba(155, 105, 17, .35);
 
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.55);
-
-    transform:
-        scale(.9)
-        translateY(20px);
-
-    transition:
-        transform .45s ease;
-
-}
+        particle.style.left =
+            `calc(50% + ${random(-50, 50)}px)`;
 
 
-.video-overlay.visible .video-box {
-
-    transform:
-        scale(1)
-        translateY(0);
-
-}
+        particle.style.top =
+            `calc(40% + ${random(-50, 50)}px)`;
 
 
-/* =====================================================
-   CLOSE BUTTON
-===================================================== */
-
-.close-video {
-
-    position: absolute;
-
-    right: 12px;
-
-    top: 10px;
-
-    width: 38px;
-
-    height: 38px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        rgba(76, 45, 5, .85);
-
-    color: #fff4cb;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    z-index: 10;
-
-    transition:
-        transform .2s ease;
-
-}
+        particle.style.setProperty(
+            "--x",
+            `${random(-350, 350)}px`
+        );
 
 
-.close-video:hover {
+        particle.style.setProperty(
+            "--y",
+            `${random(-300, 250)}px`
+        );
 
-    transform:
-        rotate(90deg)
-        scale(1.05);
+
+        particle.style.setProperty(
+            "--duration",
+            `${random(1.5, 3.5)}s`
+        );
+
+
+        const size =
+            random(3, 7);
+
+
+        particle.style.width =
+            `${size}px`;
+
+        particle.style.height =
+            `${size}px`;
+
+
+        particles.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            () => {
+                particle.remove();
+            },
+            4000
+        );
+
+    }
 
 }
 
 
 /* =====================================================
-   VIDEO
+   RANDOM NUMBER
 ===================================================== */
 
-#secretVideo {
+function random(min, max) {
 
-    width: 100%;
-
-    max-height: 62vh;
-
-    display: block;
-
-    border-radius: 16px;
-
-    background: #1b1004;
+    return Math.random() *
+        (max - min) + min;
 
 }
 
 
 /* =====================================================
-   VIDEO TOP SPARKLE
+   ENTER GARDEN
 ===================================================== */
 
-.video-flower {
+enterWorld.addEventListener(
+    "click",
+    () => {
 
-    text-align: center;
+        secretWorld.classList.remove(
+            "visible"
+        );
 
-    color: #b57b18;
 
-    font-size: 24px;
+        setTimeout(
+            () => {
 
-    margin-bottom: 8px;
+                gardenPage.classList.add(
+                    "visible"
+                );
+
+
+                createGarden();
+
+            },
+            900
+        );
+
+    }
+);
+
+
+/* =====================================================
+   CREATE GARDEN
+===================================================== */
+
+function createGarden() {
+
+    gardenCreatures.innerHTML = "";
+
+    createButterflies();
+
+    createFireflies();
+
+    createTulips();
 
 }
 
 
 /* =====================================================
-   VIDEO MESSAGE
+   CREATE TULIPS
 ===================================================== */
 
-.video-message {
+function createTulips() {
 
-    margin:
+    tulipContainer.innerHTML = "";
 
-        18px
-        10px
-        4px;
 
-    text-align: center;
+    tulips.forEach(
+        (tulip, index) => {
 
-    min-height: 25px;
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-    font-family:
-        Georgia,
-        serif;
 
-    font-size: 17px;
+            button.className =
+                "tulip";
 
-    font-style: italic;
 
-    line-height: 1.5;
+            button.type =
+                "button";
 
-    color: #704a0d;
+
+            button.dataset.index =
+                index;
+
+
+            /* -----------------------------------------
+               IMAGE
+            ----------------------------------------- */
+
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+
+            image.src =
+                tulip.image;
+
+
+            image.alt =
+                `Secret tulip ${index + 1}`;
+
+
+            /* -----------------------------------------
+               IMAGE ERROR CHECK
+            ----------------------------------------- */
+
+            image.onerror =
+                function() {
+
+                    console.error(
+                        `Could not load ${tulip.image}`
+                    );
+
+                    this.alt =
+                        `Missing ${tulip.image}`;
+
+                };
+
+
+            button.appendChild(
+                image
+            );
+
+
+            /* -----------------------------------------
+               LABEL
+            ----------------------------------------- */
+
+            const label =
+                document.createElement(
+                    "span"
+                );
+
+
+            label.className =
+                "tulip-label";
+
+
+            label.textContent =
+                "open me ✦";
+
+
+            button.appendChild(
+                label
+            );
+
+
+            /* -----------------------------------------
+               CLICK
+            ----------------------------------------- */
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    openVideo(index);
+
+                }
+            );
+
+
+            tulipContainer.appendChild(
+                button
+            );
+
+        }
+    );
 
 }
+
+
+/* =====================================================
+   OPEN VIDEO
+===================================================== */
+
+function openVideo(index) {
+
+    currentVideo = index;
+
+
+    const tulip =
+        tulips[index];
+
+
+    /*
+        Set video.
+    */
+
+    videoSource.src =
+        tulip.video;
+
+
+    /*
+        Tell browser to reload
+        the new video source.
+    */
+
+    secretVideo.load();
+
+
+    /*
+        Set message immediately.
+    */
+
+    videoMessage.textContent =
+        tulip.message;
+
+
+    /*
+        Show popup.
+    */
+
+    videoOverlay.classList.add(
+        "visible"
+    );
+
+
+    /*
+        Try to start video.
+    */
+
+    secretVideo.play().catch(
+        () => {
+
+            /*
+                Browser may block
+                autoplay.
+
+                The controls will still
+                allow the user to press play.
+            */
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   VIDEO ENDED
+===================================================== */
+
+secretVideo.addEventListener(
+    "ended",
+    () => {
+
+        markVideoWatched();
+
+    }
+);
+
+
+/* =====================================================
+   MARK VIDEO WATCHED
+===================================================== */
+
+function markVideoWatched() {
+
+    /*
+        Don't count the same video twice.
+    */
+
+    const tulipButtons =
+        document.querySelectorAll(
+            ".tulip"
+        );
+
+
+    const button =
+        tulipButtons[currentVideo];
+
+
+    if (
+        button &&
+        button.dataset.watched === "true"
+    ) {
+
+        return;
+
+    }
+
+
+    if (button) {
+
+        button.dataset.watched =
+            "true";
+
+    }
+
+
+    videosWatched++;
+
+
+    /*
+        Change instruction.
+    */
+
+    if (
+        videosWatched <
+        tulips.length
+    ) {
+
+        tulipInstruction.textContent =
+            `${videosWatched} of 6 little secrets discovered ✦`;
+
+    } else {
+
+        tulipInstruction.textContent =
+            "You found them all... ♡";
+
+    }
+
+
+    /*
+        If all six videos
+        have been watched,
+        prepare final page.
+    */
+
+    if (
+        videosWatched ===
+        tulips.length
+    ) {
+
+        setTimeout(
+            () => {
+
+                closeVideoPopup();
+
+                setTimeout(
+                    showFinalPage,
+                    700
+                );
+
+            },
+            1800
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CLOSE VIDEO
+===================================================== */
+
+closeVideo.addEventListener(
+    "click",
+    closeVideoPopup
+);
+
+
+/* =====================================================
+   CLICK OUTSIDE VIDEO
+===================================================== */
+
+videoOverlay.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            videoOverlay
+        ) {
+
+            closeVideoPopup();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE VIDEO FUNCTION
+===================================================== */
+
+function closeVideoPopup() {
+
+    secretVideo.pause();
+
+    videoOverlay.classList.remove(
+        "visible"
+    );
+
+}
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeVideoPopup();
+
+        }
+
+    }
+);
 
 
 /* =====================================================
    FINAL PAGE
 ===================================================== */
 
-.final-page {
+function showFinalPage() {
 
-    position: fixed;
+    finalPage.classList.add(
+        "visible"
+    );
 
-    inset: 0;
+}
 
-    z-index: 2000;
 
-    display: flex;
+/* =====================================================
+   BUTTERFLIES
+===================================================== */
 
-    justify-content: center;
+function createButterflies() {
 
-    align-items: center;
+    const amount = 10;
 
-    text-align: center;
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,248,218,.96),
-            rgba(240,211,145,.96)
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const butterfly =
+            document.createElement(
+                "div"
+            );
+
+
+        butterfly.className =
+            "butterfly";
+
+
+        butterfly.style.top =
+            `${random(8, 88)}%`;
+
+
+        butterfly.style.setProperty(
+            "--start-y",
+            `${random(-80, 80)}px`
         );
 
-    opacity: 0;
 
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform:
-        scale(1.05);
-
-    transition:
-        opacity 1.8s ease,
-        transform 2s ease,
-        visibility 1.8s ease;
-
-}
+        butterfly.style.setProperty(
+            "--end-y",
+            `${random(-100, 100)}px`
+        );
 
 
-.final-page.visible {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform:
-        scale(1);
-
-}
+        butterfly.style.setProperty(
+            "--fly-duration",
+            `${random(18, 30)}s`
+        );
 
 
-.final-content {
-
-    max-width: 650px;
-
-    padding: 35px;
-
-}
+        butterfly.style.setProperty(
+            "--delay",
+            `${random(-30, 0)}s`
+        );
 
 
-.final-sparkle {
-
-    font-size: 40px;
-
-    color: #b77c16;
-
-    margin-bottom: 18px;
-
-    animation:
-        finalSparkle
-        2s
-        ease-in-out
-        infinite;
-
-}
+        butterfly.style.setProperty(
+            "--size",
+            random(.75, 1.2)
+        );
 
 
-.final-small {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #a37529;
-
-    margin-bottom: 18px;
-
-}
+        const leftWing =
+            document.createElement(
+                "div"
+            );
 
 
-.final-content h2 {
-
-    font-size: 45px;
-
-    line-height: 1.2;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #704a0c;
-
-}
+        leftWing.className =
+            "butterfly-wing left";
 
 
-.final-message {
-
-    margin-top: 24px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 15px;
-
-    line-height: 1.7;
-
-    color: #916d2c;
-
-}
+        const rightWing =
+            document.createElement(
+                "div"
+            );
 
 
-.final-heart {
-
-    margin-top: 25px;
-
-    font-size: 32px;
-
-    color: #b47b16;
-
-}
+        rightWing.className =
+            "butterfly-wing right";
 
 
-@keyframes finalSparkle {
+        const body =
+            document.createElement(
+                "div"
+            );
 
-    0%,
-    100% {
 
-        transform:
-            scale(1);
+        body.className =
+            "butterfly-body";
 
-        opacity: .7;
 
-    }
+        const leftAntenna =
+            document.createElement(
+                "div"
+            );
 
-    50% {
 
-        transform:
-            scale(1.18);
+        leftAntenna.className =
+            "antenna left";
 
-        opacity: 1;
+
+        const rightAntenna =
+            document.createElement(
+                "div"
+            );
+
+
+        rightAntenna.className =
+            "antenna right";
+
+
+        butterfly.appendChild(
+            leftWing
+        );
+
+        butterfly.appendChild(
+            rightWing
+        );
+
+        butterfly.appendChild(
+            body
+        );
+
+        butterfly.appendChild(
+            leftAntenna
+        );
+
+        butterfly.appendChild(
+            rightAntenna
+        );
+
+
+        gardenCreatures.appendChild(
+            butterfly
+        );
 
     }
 
@@ -727,76 +1035,71 @@
 
 
 /* =====================================================
-   MOBILE
+   FIREFLIES
 ===================================================== */
 
-@media (max-width: 650px) {
+function createFireflies() {
 
-    .garden-title {
-
-        top: 7%;
-
-    }
+    const amount = 10;
 
 
-    .garden-title h2 {
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
 
-        font-size: 30px;
-
-    }
-
-
-    .garden-title span {
-
-        font-size: 12px;
-
-    }
+        const firefly =
+            document.createElement(
+                "div"
+            );
 
 
-    .tulip-container {
-
-        top: 52%;
-
-        width: 94vw;
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 12px;
-
-    }
+        firefly.className =
+            "firefly";
 
 
-    .tulip {
-
-        width: 145px;
-
-        height: 180px;
-
-    }
+        firefly.style.top =
+            `${random(12, 92)}%`;
 
 
-    .tulip-instruction {
-
-        bottom: 4%;
-
-        font-size: 11px;
-
-    }
+        firefly.style.setProperty(
+            "--start-y",
+            `${random(-80, 80)}px`
+        );
 
 
-    .video-box {
-
-        padding: 15px;
-
-        border-radius: 20px;
-
-    }
+        firefly.style.setProperty(
+            "--end-y",
+            `${random(-120, 120)}px`
+        );
 
 
-    .final-content h2 {
+        firefly.style.setProperty(
+            "--fly-duration",
+            `${random(20, 34)}s`
+        );
 
-        font-size: 34px;
+
+        firefly.style.setProperty(
+            "--glow-duration",
+            `${random(1.8, 3.8)}s`
+        );
+
+
+        firefly.style.setProperty(
+            "--delay",
+            `${random(-35, 0)}s`
+        );
+
+
+        firefly.style.scale =
+            random(.8, 1.35);
+
+
+        gardenCreatures.appendChild(
+            firefly
+        );
 
     }
 
