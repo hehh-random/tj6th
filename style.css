@@ -2415,3 +2415,313 @@ body {
             1 !important;
     }
 }
+
+
+/* =====================================================
+   FINAL CUTE MESSAGE PAGE
+===================================================== */
+
+#finalMessagePage {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 500;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: scale(1.06);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 247, 215, .97),
+            rgba(247, 222, 168, .94)
+        );
+
+    transition:
+        opacity 2s ease,
+        transform 2.5s ease,
+        visibility 2s ease;
+}
+
+
+/* =====================================================
+   SHOW FINAL PAGE
+===================================================== */
+
+#finalMessagePage.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform: scale(1);
+
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.final-message-content {
+
+    max-width: 650px;
+
+    padding: 40px;
+
+    transform: translateY(25px);
+
+    opacity: 0;
+
+    transition:
+        opacity 1.8s ease .5s,
+        transform 1.8s ease .5s;
+}
+
+
+#finalMessagePage.visible
+.final-message-content {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =====================================================
+   TOP SPARKLES
+===================================================== */
+
+.final-sparkles {
+
+    font-size: 24px;
+
+    letter-spacing: 12px;
+
+    color: #c79228;
+
+    margin-bottom: 28px;
+
+    animation:
+        finalSparkle
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes finalSparkle {
+
+    0%, 100% {
+
+        opacity: .65;
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.08);
+
+    }
+
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.final-label {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #aa7a27;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.final-message-content h2 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color: #76500f;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* =====================================================
+   MAIN MESSAGE
+===================================================== */
+
+.final-main-message {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 34px;
+
+    line-height: 1.35;
+
+    font-style: italic;
+
+    color: #805815;
+
+    text-shadow:
+        0 1px 2px rgba(255,255,255,.7);
+
+}
+
+
+/* =====================================================
+   SMALL MESSAGE
+===================================================== */
+
+.final-small-message {
+
+    max-width: 480px;
+
+    margin: 25px auto 0;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    color: #96702f;
+
+}
+
+
+/* =====================================================
+   HEART
+===================================================== */
+
+.final-heart {
+
+    margin-top: 30px;
+
+    font-size: 38px;
+
+    color: #b77d1c;
+
+    text-shadow:
+        0 0 10px rgba(255,211,90,.6);
+
+    animation:
+        heartFloat
+        2.2s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes heartFloat {
+
+    0%, 100% {
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-7px)
+            scale(1.08);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .final-message-content {
+
+        padding: 30px 22px;
+
+    }
+
+    .final-sparkles {
+
+        font-size: 20px;
+
+        letter-spacing: 7px;
+
+    }
+
+    .final-message-content h2 {
+
+        font-size: 31px;
+
+    }
+
+    .final-main-message {
+
+        font-size: 27px;
+
+    }
+
+    .final-small-message {
+
+        font-size: 13px;
+
+    }
+
+}
+
