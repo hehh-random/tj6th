@@ -2410,16 +2410,15 @@ body {
 /* =====================================================
    RESTART BUTTON
 ===================================================== */
-
 .restart-button {
     margin-top: 25px;
     padding: 12px 28px;
 
-    border: 1px solid rgba(214, 102, 16, 0.995);
+    border: none;
     border-radius: 30px;
 
-    background: rgba(207, 160, 19, 0.692);
-    color: rgb(237, 183, 18);
+    background: #f4d35e;
+    color: black;
 
     font-family: Georgia, "Times New Roman", serif;
     font-size: 15px;
@@ -2435,13 +2434,12 @@ body {
 .restart-button:hover {
     transform: translateY(-2px);
 
-    background: rgba(212, 185, 31, 0.915);
+    background: #f7df78;
 
     box-shadow:
-        0 0 20px rgba(154, 161, 19, 0.708);
+        0 0 20px rgba(244, 211, 94, 0.45);
 }
 
 .restart-button:active {
     transform: translateY(0);
 }
-
