@@ -16,7 +16,6 @@ body {
 
 body {
     overflow: hidden;
-
     font-family:
         Georgia,
         "Times New Roman",
@@ -29,7 +28,6 @@ body {
 ===================================================== */
 
 #lockScreen {
-
     position: relative;
 
     width: 100vw;
@@ -37,11 +35,10 @@ body {
 
     overflow: hidden;
 
-    background-image:
-        url("background22.png");
-
-    background-size: cover;
-    background-position: center;
+    background:
+        url("background22.png")
+        center / cover
+        no-repeat;
 
     display: flex;
 
@@ -51,13 +48,11 @@ body {
 
 
 /* =====================================================
-   GOLDEN ATMOSPHERIC LIGHT
+   GOLDEN GLOW
 ===================================================== */
 
 .golden-glow {
-
     position: absolute;
-
     inset: -20%;
 
     background:
@@ -82,7 +77,6 @@ body {
 ===================================================== */
 
 .lock-area {
-
     position: relative;
 
     z-index: 10;
@@ -103,11 +97,10 @@ body {
 
 
 /* =====================================================
-   LOCK
+   LOCK WRAPPER
 ===================================================== */
 
 .lock-wrapper {
-
     position: relative;
 
     width: 180px;
@@ -125,7 +118,6 @@ body {
 ===================================================== */
 
 .heart-lock {
-
     position: relative;
 
     width: 115px;
@@ -137,21 +129,17 @@ body {
 
     filter:
         drop-shadow(
-            0 8px 10px rgba(126, 83, 15, .22)
+            0 8px 10px
+            rgba(126, 83, 15, .22)
         );
-
-    transition:
-        transform 1s cubic-bezier(.2,.8,.2,1),
-        filter 1s ease;
 }
 
 
 /* =====================================================
-   HEART BODY
+   HEART
 ===================================================== */
 
 .heart-body {
-
     position: absolute;
 
     width: 100px;
@@ -174,20 +162,17 @@ body {
         15px;
 
     box-shadow:
-        inset 3px 3px 8px rgba(255,255,255,.55),
-        inset -5px -5px 12px rgba(142,92,5,.18);
+        inset 3px 3px 8px
+        rgba(255,255,255,.55),
+
+        inset -5px -5px 12px
+        rgba(142,92,5,.18);
 
     overflow: hidden;
 }
 
-
-/* =====================================================
-   HEART SHAPE
-===================================================== */
-
 .heart-body::before,
 .heart-body::after {
-
     content: "";
 
     position: absolute;
@@ -217,11 +202,10 @@ body {
 
 
 /* =====================================================
-   LOCK SHACKLE
+   SHACKLE
 ===================================================== */
 
 .lock-shackle {
-
     position: absolute;
 
     width: 65px;
@@ -230,7 +214,9 @@ body {
     left: 32px;
     top: -48px;
 
-    border: 11px solid #c8901d;
+    border:
+        11px solid
+        #c8901d;
 
     border-bottom: none;
 
@@ -242,14 +228,9 @@ body {
     transform: rotate(45deg);
 
     background: transparent;
-
-    box-shadow:
-        inset 2px 2px 4px rgba(255,255,255,.5);
 }
 
-
 .shackle-inner {
-
     position: absolute;
 
     width: 38px;
@@ -259,7 +240,8 @@ body {
     top: 8px;
 
     border:
-        4px solid rgba(255,235,160,.55);
+        4px solid
+        rgba(255,235,160,.55);
 
     border-bottom: none;
 
@@ -273,7 +255,6 @@ body {
 ===================================================== */
 
 .keyhole {
-
     position: absolute;
 
     left: 38px;
@@ -287,9 +268,7 @@ body {
     transform: rotate(45deg);
 }
 
-
 .keyhole-circle {
-
     position: absolute;
 
     width: 22px;
@@ -302,9 +281,7 @@ body {
     background: #70450d;
 }
 
-
 .keyhole-line {
-
     position: absolute;
 
     width: 10px;
@@ -324,7 +301,6 @@ body {
 ===================================================== */
 
 .golden-key {
-
     position: absolute;
 
     right: -15px;
@@ -339,20 +315,20 @@ body {
 
     filter:
         drop-shadow(
-            0 5px 5px rgba(125,80,0,.2)
+            0 5px 5px
+            rgba(125,80,0,.2)
         );
 }
 
-
 .key-ring {
-
     position: absolute;
 
     width: 38px;
     height: 38px;
 
     border:
-        7px solid #d59c1e;
+        7px solid
+        #d59c1e;
 
     border-radius: 50%;
 
@@ -360,9 +336,7 @@ body {
     top: 8px;
 }
 
-
 .key-shaft {
-
     position: absolute;
 
     width: 72px;
@@ -381,9 +355,7 @@ body {
         );
 }
 
-
 .key-teeth {
-
     position: absolute;
 
     right: 0;
@@ -393,9 +365,7 @@ body {
     height: 25px;
 }
 
-
 .key-teeth span {
-
     position: absolute;
 
     width: 12px;
@@ -416,11 +386,10 @@ body {
 
 
 /* =====================================================
-   TEXT
+   LOCK TEXT
 ===================================================== */
 
 .lock-text {
-
     text-align: center;
 
     transition:
@@ -428,9 +397,7 @@ body {
         transform .8s ease;
 }
 
-
 .lock-text h1 {
-
     font-size: 29px;
 
     font-weight: 500;
@@ -440,14 +407,11 @@ body {
     color: #805615;
 }
 
-
 .lock-text h1 span {
     font-size: 25px;
 }
 
-
 .lock-text p {
-
     margin-top: 16px;
 
     font-family: Arial, sans-serif;
@@ -455,6 +419,12 @@ body {
     font-size: 15px;
 
     color: #976a1b;
+
+    transition: color .3s ease;
+}
+
+.lock-text p.wrong {
+    color: #a34e32;
 }
 
 
@@ -463,7 +433,6 @@ body {
 ===================================================== */
 
 .code-display {
-
     display: flex;
 
     justify-content: center;
@@ -475,9 +444,7 @@ body {
     height: 12px;
 }
 
-
 .code-display span {
-
     width: 8px;
     height: 8px;
 
@@ -486,22 +453,22 @@ body {
     background: transparent;
 
     border:
-        1px solid rgba(155,108,29,.5);
+        1px solid
+        rgba(155,108,29,.5);
 
     transition:
         background .2s ease,
         transform .2s ease;
 }
 
-
 .code-display span.active {
-
     background: #a36d13;
 
     transform: scale(1.25);
 
     box-shadow:
-        0 0 7px rgba(215,157,40,.45);
+        0 0 7px
+        rgba(215,157,40,.45);
 }
 
 
@@ -510,7 +477,6 @@ body {
 ===================================================== */
 
 .keypad {
-
     margin-top: 28px;
 
     width: 250px;
@@ -527,13 +493,12 @@ body {
         transform .8s ease;
 }
 
-
 .key {
-
     height: 58px;
 
     border:
-        1px solid rgba(180,130,50,.18);
+        1px solid
+        rgba(180,130,50,.18);
 
     border-radius: 7px;
 
@@ -553,37 +518,35 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 3px 8px rgba(115,75,10,.13),
-        inset 0 1px 0 rgba(255,255,255,.8);
+        0 3px 8px
+        rgba(115,75,10,.13),
+
+        inset 0 1px 0
+        rgba(255,255,255,.8);
 
     transition:
         transform .15s ease,
         box-shadow .15s ease;
 }
 
-
 .key:hover {
-
     transform:
         translateY(-2px);
 
     box-shadow:
-        0 6px 12px rgba(115,75,10,.18);
+        0 6px 12px
+        rgba(115,75,10,.18);
 }
 
-
 .key:active {
-
     transform:
         translateY(1px)
         scale(.96);
 }
 
-
 .key.empty {
     visibility: hidden;
 }
-
 
 .key.backspace {
     font-size: 21px;
@@ -599,10 +562,10 @@ body {
         shake .45s ease;
 }
 
-
 @keyframes shake {
 
-    0%, 100% {
+    0%,
+    100% {
         transform: translateX(0);
     }
 
@@ -629,31 +592,26 @@ body {
 ===================================================== */
 
 .unlocking .golden-glow {
-
     opacity: 1;
 
     transform: scale(1.4);
 }
 
-
 .unlocking .golden-key {
-
     animation:
-        keyUnlock 1.8s forwards;
+        keyUnlock
+        1.8s
+        forwards;
 }
 
-
 .unlocking .heart-lock {
-
     animation:
         lockGlow 1.6s ease forwards,
         lockOpen 2s 1.3s ease forwards;
 }
 
-
 .unlocking .keypad,
 .unlocking .lock-text {
-
     opacity: 0;
 
     transform:
@@ -670,7 +628,8 @@ body {
 @keyframes keyUnlock {
 
     0% {
-        transform: rotate(30deg);
+        transform:
+            rotate(30deg);
     }
 
     35% {
@@ -705,24 +664,28 @@ body {
     0% {
         filter:
             drop-shadow(
-                0 8px 10px rgba(126,83,15,.22)
+                0 8px 10px
+                rgba(126,83,15,.22)
             );
     }
 
     50% {
         filter:
             drop-shadow(
-                0 0 18px rgba(255,210,70,.8)
+                0 0 18px
+                rgba(255,210,70,.8)
             )
             drop-shadow(
-                0 0 45px rgba(255,196,35,.5)
+                0 0 45px
+                rgba(255,196,35,.5)
             );
     }
 
     100% {
         filter:
             drop-shadow(
-                0 0 35px rgba(255,216,90,.95)
+                0 0 35px
+                rgba(255,216,90,.95)
             );
     }
 }
@@ -735,7 +698,8 @@ body {
 @keyframes lockOpen {
 
     0% {
-        transform: rotate(-45deg);
+        transform:
+            rotate(-45deg);
     }
 
     40% {
@@ -760,7 +724,6 @@ body {
 ===================================================== */
 
 .light-burst {
-
     position: absolute;
 
     left: 50%;
@@ -785,13 +748,14 @@ body {
     pointer-events: none;
 }
 
-
 .unlocking .light-burst {
-
     animation:
-        burst 2.4s 1.7s ease forwards;
+        burst
+        2.4s
+        1.7s
+        ease
+        forwards;
 }
-
 
 @keyframes burst {
 
@@ -830,7 +794,6 @@ body {
 ===================================================== */
 
 #particles {
-
     position: absolute;
 
     inset: 0;
@@ -840,20 +803,16 @@ body {
     pointer-events: none;
 }
 
-
 .particle {
-
     position: absolute;
-
-    width: 5px;
-    height: 5px;
 
     border-radius: 50%;
 
     background: #e9b62d;
 
     box-shadow:
-        0 0 8px rgba(255,211,79,.8);
+        0 0 8px
+        rgba(255,211,79,.8);
 
     animation:
         particleFloat
@@ -861,7 +820,6 @@ body {
         ease-out
         forwards;
 }
-
 
 @keyframes particleFloat {
 
@@ -895,7 +853,6 @@ body {
 ===================================================== */
 
 .unlock-message {
-
     position: absolute;
 
     left: 50%;
@@ -916,9 +873,15 @@ body {
     pointer-events: none;
 }
 
+.unlock-message.show {
+    animation:
+        messageAppear
+        2.5s
+        ease
+        forwards;
+}
 
-.unlock-message .unlock-icon {
-
+.unlock-icon {
     font-size: 38px;
 
     color: #c28a19;
@@ -926,9 +889,7 @@ body {
     margin-bottom: 18px;
 }
 
-
 .unlock-message h2 {
-
     font-size: 36px;
 
     font-weight: 400;
@@ -938,9 +899,7 @@ body {
     color: #79500f;
 }
 
-
 .unlock-message p {
-
     margin-top: 12px;
 
     font-family: Arial, sans-serif;
@@ -949,17 +908,6 @@ body {
 
     color: #a17427;
 }
-
-
-.show-unlock-message {
-
-    animation:
-        messageAppear
-        2.5s
-        ease
-        forwards;
-}
-
 
 @keyframes messageAppear {
 
@@ -998,7 +946,6 @@ body {
 ===================================================== */
 
 .come-inside {
-
     position: absolute;
 
     left: 50%;
@@ -1019,9 +966,15 @@ body {
     pointer-events: none;
 }
 
+.come-inside.show {
+    animation:
+        comeInsideAppear
+        2.8s
+        ease
+        forwards;
+}
 
-.come-inside .small-key {
-
+.small-key {
     font-size: 35px;
 
     margin-bottom: 18px;
@@ -1033,9 +986,7 @@ body {
         infinite;
 }
 
-
 .come-inside h2 {
-
     font-size: 42px;
 
     font-weight: 400;
@@ -1045,9 +996,7 @@ body {
     color: #79500f;
 }
 
-
 .come-inside p {
-
     margin-top: 14px;
 
     font-family: Arial, sans-serif;
@@ -1056,17 +1005,6 @@ body {
 
     font-size: 15px;
 }
-
-
-.show-come-inside {
-
-    animation:
-        comeInsideAppear
-        2.8s
-        ease
-        forwards;
-}
-
 
 @keyframes comeInsideAppear {
 
@@ -1099,10 +1037,10 @@ body {
     }
 }
 
-
 @keyframes tinyFloat {
 
-    0%, 100% {
+    0%,
+    100% {
         transform:
             translateY(0);
     }
@@ -1119,7 +1057,6 @@ body {
 ===================================================== */
 
 .secret-world {
-
     position: absolute;
 
     inset: 0;
@@ -1138,30 +1075,28 @@ body {
     background:
         radial-gradient(
             circle at center,
-            rgba(255,244,200,.88),
-            rgba(255,235,170,.72)
+            rgba(255,244,200,.96),
+            rgba(255,235,170,.96)
         );
 
-    transform: scale(1.08);
+    transform:
+        scale(1.08);
 
     transition:
         opacity 2s ease,
         transform 2.5s ease;
 }
 
-
 .secret-world.visible {
-
     opacity: 1;
 
     pointer-events: auto;
 
-    transform: scale(1);
+    transform:
+        scale(1);
 }
 
-
 .world-content {
-
     text-align: center;
 
     max-width: 650px;
@@ -1169,9 +1104,7 @@ body {
     padding: 30px;
 }
 
-
 .world-symbol {
-
     font-size: 50px;
 
     color: #bd841b;
@@ -1179,9 +1112,7 @@ body {
     margin-bottom: 15px;
 }
 
-
 .little-label {
-
     font-family: Arial, sans-serif;
 
     letter-spacing: 5px;
@@ -1193,9 +1124,7 @@ body {
     margin-bottom: 18px;
 }
 
-
 .world-content h2 {
-
     font-size: 52px;
 
     line-height: 1.15;
@@ -1207,9 +1136,7 @@ body {
     color: #75500f;
 }
 
-
 .world-description {
-
     margin-top: 22px;
 
     font-family: Arial, sans-serif;
@@ -1221,9 +1148,7 @@ body {
     line-height: 1.7;
 }
 
-
 .enter-world {
-
     margin-top: 32px;
 
     padding: 14px 28px;
@@ -1231,7 +1156,8 @@ body {
     border-radius: 30px;
 
     border:
-        1px solid rgba(161,113,29,.3);
+        1px solid
+        rgba(161,113,29,.3);
 
     background:
         linear-gradient(
@@ -1249,21 +1175,25 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 6px 20px rgba(132,92,20,.15);
+        0 6px 20px
+        rgba(132,92,20,.15);
 
     transition:
         transform .2s ease,
         box-shadow .2s ease;
 }
 
-
 .enter-world:hover {
-
     transform:
         translateY(-3px);
 
     box-shadow:
-        0 10px 25px rgba(132,92,20,.2);
+        0 10px 25px
+        rgba(132,92,20,.2);
+}
+
+.enter-world:disabled {
+    cursor: default;
 }
 
 
@@ -1272,12 +1202,11 @@ body {
 ===================================================== */
 
 #gardenCreatures {
-
     position: absolute;
 
     inset: 0;
 
-    z-index: 35;
+    z-index: 110;
 
     overflow: hidden;
 
@@ -1289,7 +1218,6 @@ body {
         opacity 2s ease;
 }
 
-
 #gardenCreatures.garden-active {
     opacity: 1;
 }
@@ -1300,19 +1228,12 @@ body {
 ===================================================== */
 
 .butterfly {
-
     position: absolute;
 
     left: -120px;
 
     width: 70px;
     height: 55px;
-
-    z-index: 40;
-
-    /* IMPORTANT:
-       butterflies are NOT clickable anymore
-    */
 
     pointer-events: none;
 
@@ -1331,19 +1252,12 @@ body {
 
     filter:
         drop-shadow(
-            0 5px 6px rgba(40,25,5,.28)
+            0 5px 6px
+            rgba(40,25,5,.28)
         );
-
-    transform-origin: center;
 }
 
-
-/* =====================================================
-   BUTTERFLY WINGS
-===================================================== */
-
 .butterfly-wing {
-
     position: absolute;
 
     width: 31px;
@@ -1354,7 +1268,6 @@ body {
     border-radius:
         70% 35% 65% 35%;
 
-    /* DARKER GOLD */
     background:
         radial-gradient(
             circle at 35% 30%,
@@ -1365,20 +1278,18 @@ body {
         );
 
     border:
-        2px solid rgba(55,28,3,.82);
+        2px solid
+        rgba(55,28,3,.82);
 
     box-shadow:
-        inset 2px 2px 5px rgba(255,255,255,.35),
-        inset -4px -5px 8px rgba(45,20,2,.4),
-        0 2px 5px rgba(45,25,5,.3);
+        inset 2px 2px 5px
+        rgba(255,255,255,.35),
 
-    transform-origin:
-        center bottom;
+        inset -4px -5px 8px
+        rgba(45,20,2,.4);
 }
 
-
 .butterfly-wing.left {
-
     left: 4px;
 
     transform:
@@ -1391,9 +1302,7 @@ body {
         infinite alternate;
 }
 
-
 .butterfly-wing.right {
-
     right: 4px;
 
     transform:
@@ -1407,13 +1316,7 @@ body {
         infinite alternate;
 }
 
-
-/* =====================================================
-   WING PATTERNS
-===================================================== */
-
 .butterfly-wing::before {
-
     content: "";
 
     position: absolute;
@@ -1435,9 +1338,7 @@ body {
         );
 }
 
-
 .butterfly-wing::after {
-
     content: "";
 
     position: absolute;
@@ -1453,16 +1354,11 @@ body {
     background: #ffe58a;
 
     box-shadow:
-        0 0 5px rgba(255,215,75,.45);
+        0 0 5px
+        rgba(255,215,75,.45);
 }
 
-
-/* =====================================================
-   BUTTERFLY BODY
-===================================================== */
-
 .butterfly-body {
-
     position: absolute;
 
     width: 10px;
@@ -1484,9 +1380,7 @@ body {
     z-index: 10;
 }
 
-
 .butterfly-body::before {
-
     content: "";
 
     position: absolute;
@@ -1502,13 +1396,7 @@ body {
     background: #2b1403;
 }
 
-
-/* =====================================================
-   ANTENNAE
-===================================================== */
-
 .antenna {
-
     position: absolute;
 
     width: 22px;
@@ -1517,38 +1405,29 @@ body {
     top: 1px;
 
     border-top:
-        1.5px solid #321704;
+        1.5px solid
+        #321704;
 
     z-index: 12;
 }
 
-
 .antenna.left {
-
     left: 17px;
 
     transform:
         rotate(-28deg);
 }
 
-
 .antenna.right {
-
     right: 17px;
 
     transform:
         rotate(28deg);
 }
 
-
-/* =====================================================
-   BUTTERFLY FLIGHT
-===================================================== */
-
 @keyframes butterflyFly {
 
     0% {
-
         left: -100px;
 
         transform:
@@ -1558,7 +1437,6 @@ body {
     }
 
     20% {
-
         transform:
             translateY(
                 calc(var(--start-y) - 40px)
@@ -1568,7 +1446,6 @@ body {
     }
 
     40% {
-
         transform:
             translateY(
                 calc(var(--start-y) + 45px)
@@ -1578,7 +1455,6 @@ body {
     }
 
     60% {
-
         transform:
             translateY(
                 calc(var(--start-y) - 30px)
@@ -1588,7 +1464,6 @@ body {
     }
 
     80% {
-
         transform:
             translateY(
                 calc(var(--start-y) + 35px)
@@ -1598,7 +1473,6 @@ body {
     }
 
     100% {
-
         left:
             calc(100vw + 100px);
 
@@ -1608,11 +1482,6 @@ body {
             rotate(3deg);
     }
 }
-
-
-/* =====================================================
-   WING FLAPPING
-===================================================== */
 
 @keyframes leftWingFlap {
 
@@ -1628,7 +1497,6 @@ body {
             rotateY(-55deg);
     }
 }
-
 
 @keyframes rightWingFlap {
 
@@ -1653,19 +1521,14 @@ body {
 ===================================================== */
 
 .firefly {
-
     position: absolute;
 
     width: 17px;
     height: 17px;
 
-    z-index: 45;
-
-    /* IMPORTANT:
-       fireflies are NOT clickable
-    */
-
     pointer-events: none;
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
@@ -1677,12 +1540,15 @@ body {
         );
 
     border:
-        2px solid rgba(45,23,2,.9);
+        2px solid
+        rgba(45,23,2,.9);
 
     box-shadow:
-        0 0 5px rgba(255,205,60,.65),
-        0 0 14px rgba(166,103,8,.5),
-        0 0 25px rgba(75,40,2,.4);
+        0 0 5px
+        rgba(255,205,60,.65),
+
+        0 0 14px
+        rgba(166,103,8,.5);
 
     animation:
         fireflyMove
@@ -1699,15 +1565,9 @@ body {
         var(--delay);
 }
 
-
-/* =====================================================
-   FIREFLY MOVEMENT
-===================================================== */
-
 @keyframes fireflyMove {
 
     0% {
-
         left: -40px;
 
         transform:
@@ -1718,7 +1578,6 @@ body {
     }
 
     20% {
-
         transform:
             translate(
                 10vw,
@@ -1727,7 +1586,6 @@ body {
     }
 
     40% {
-
         transform:
             translate(
                 25vw,
@@ -1736,7 +1594,6 @@ body {
     }
 
     60% {
-
         transform:
             translate(
                 45vw,
@@ -1745,7 +1602,6 @@ body {
     }
 
     80% {
-
         transform:
             translate(
                 70vw,
@@ -1754,7 +1610,6 @@ body {
     }
 
     100% {
-
         left:
             calc(100vw + 40px);
 
@@ -1766,30 +1621,32 @@ body {
     }
 }
 
-
-/* =====================================================
-   FIREFLY GLOW
-===================================================== */
-
 @keyframes fireflyGlow {
 
-    0%, 100% {
-
+    0%,
+    100% {
         opacity: .6;
 
         box-shadow:
-            0 0 5px rgba(255,210,65,.5),
-            0 0 12px rgba(145,88,5,.35);
+            0 0 5px
+            rgba(255,210,65,.5),
+
+            0 0 12px
+            rgba(145,88,5,.35);
     }
 
     50% {
-
         opacity: 1;
 
         box-shadow:
-            0 0 8px rgba(255,222,90,.8),
-            0 0 18px rgba(164,101,7,.6),
-            0 0 30px rgba(80,42,2,.45);
+            0 0 8px
+            rgba(255,222,90,.8),
+
+            0 0 18px
+            rgba(164,101,7,.6),
+
+            0 0 30px
+            rgba(80,42,2,.45);
     }
 }
 
@@ -1799,52 +1656,46 @@ body {
 ===================================================== */
 
 .tulip-garden {
-
     position: absolute;
 
     inset: 0;
 
-    z-index: 90;
+    z-index: 500;
 
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 170px);
-
-    grid-template-rows:
-        repeat(2, 210px);
-
-    justify-content: center;
-
-    align-content: center;
-
-    gap: 30px 45px;
-
-    padding: 80px 30px;
+    padding:
+        45px
+        30px
+        35px;
 
     background:
-        radial-gradient(
-            circle at center,
-            rgba(72,38,5,.18),
-            rgba(20,10,2,.58)
-        );
+        linear-gradient(
+            rgba(255,245,215,.16),
+            rgba(255,236,190,.16)
+        ),
+        url("background22.png");
+
+    background-size: cover;
+    background-position: center;
 
     opacity: 0;
+
+    visibility: hidden;
 
     pointer-events: none;
 
     transform:
-        scale(1.05);
+        scale(1.04);
 
     transition:
-        opacity 1.8s ease,
-        transform 2s ease;
+        opacity 1.5s ease,
+        transform 1.5s ease,
+        visibility 1.5s ease;
 }
 
-
 .tulip-garden.visible {
-
     opacity: 1;
+
+    visibility: visible;
 
     pointer-events: auto;
 
@@ -1854,68 +1705,80 @@ body {
 
 
 /* =====================================================
-   GARDEN HEADING
+   TULIP TITLE
 ===================================================== */
 
-.garden-heading {
+.tulip-title {
+    position: relative;
 
-    position: absolute;
-
-    top: 35px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
+    z-index: 5;
 
     text-align: center;
 
-    z-index: 95;
-
-    width: 100%;
+    margin-bottom: 20px;
 }
 
-
-.garden-heading p {
-
+.tulip-title p {
     font-family: Arial, sans-serif;
 
     font-size: 10px;
 
     letter-spacing: 5px;
 
-    color: #ffe5a0;
+    color: #8b5c13;
 
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
+.tulip-title h2 {
+    font-size: 36px;
 
-.garden-heading h2 {
-
-    font-size: 32px;
+    line-height: 1.15;
 
     font-weight: 400;
 
     font-style: italic;
 
-    color: #fff0c5;
-
-    text-shadow:
-        0 3px 12px rgba(0,0,0,.6);
+    color: #68440b;
 }
 
-
-.garden-heading span {
-
+.tulip-title span {
     display: block;
 
-    margin-top: 7px;
+    margin-top: 10px;
 
     font-family: Arial, sans-serif;
 
-    font-size: 12px;
+    font-size: 13px;
 
-    color: #e6c985;
+    color: #916a25;
+}
+
+
+/* =====================================================
+   TULIP GRID
+===================================================== */
+
+.tulip-grid {
+    position: absolute;
+
+    left: 50%;
+    top: 55%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width:
+        min(850px, 90vw);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px 35px;
+
+    justify-items: center;
 }
 
 
@@ -1924,76 +1787,76 @@ body {
 ===================================================== */
 
 .tulip-card {
-
     position: relative;
 
     width: 170px;
-    height: 210px;
+    height: 190px;
 
     padding: 0;
 
     border: none;
 
-    border-radius: 100px 100px 35px 35px;
+    border-radius:
+        90px 90px 30px 30px;
 
     overflow: hidden;
 
     cursor: pointer;
 
-    background: #241304;
+    background:
+        #241304;
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,.5),
-        0 0 0 1px rgba(255,220,130,.2);
+        0 15px 35px
+        rgba(0,0,0,.38),
+
+        0 0 0 1px
+        rgba(255,220,130,.25);
+
+    opacity: 0;
 
     transform:
         translateY(25px)
         scale(.92);
 
-    opacity: 0;
-
     animation:
         tulipAppear
-        .9s
-        ease forwards;
+        .8s
+        ease
+        forwards;
 
     transition:
         transform .35s ease,
         box-shadow .35s ease;
 }
 
-
-/* staggered entrance */
-
-.tulip-card:nth-of-type(2) {
-    animation-delay: .1s;
+.tulip-card:nth-child(1) {
+    animation-delay: .05s;
 }
 
-.tulip-card:nth-of-type(3) {
-    animation-delay: .2s;
+.tulip-card:nth-child(2) {
+    animation-delay: .15s;
 }
 
-.tulip-card:nth-of-type(4) {
-    animation-delay: .3s;
+.tulip-card:nth-child(3) {
+    animation-delay: .25s;
 }
 
-.tulip-card:nth-of-type(5) {
-    animation-delay: .4s;
+.tulip-card:nth-child(4) {
+    animation-delay: .35s;
 }
 
-.tulip-card:nth-of-type(6) {
-    animation-delay: .5s;
+.tulip-card:nth-child(5) {
+    animation-delay: .45s;
 }
 
-.tulip-card:nth-of-type(7) {
-    animation-delay: .6s;
+.tulip-card:nth-child(6) {
+    animation-delay: .55s;
 }
-
 
 @keyframes tulipAppear {
 
     to {
-
         opacity: 1;
 
         transform:
@@ -2002,13 +1865,20 @@ body {
     }
 }
 
+.tulip-card:hover {
+    transform:
+        translateY(-8px)
+        scale(1.04);
 
-/* =====================================================
-   TULIP IMAGE
-===================================================== */
+    box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.5),
+
+        0 0 25px
+        rgba(255,205,100,.22);
+}
 
 .tulip-card img {
-
     width: 100%;
     height: 100%;
 
@@ -2021,1029 +1891,55 @@ body {
         filter .6s ease;
 }
 
-
-.tulip-card:hover {
-
-    transform:
-        translateY(-8px)
-        scale(1.03);
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.6),
-        0 0 25px rgba(255,205,100,.18);
-}
-
-
 .tulip-card:hover img {
-
     transform:
-        scale(1.08);
+        scale(1.07);
 
     filter:
         brightness(1.08)
         saturate(1.1);
 }
 
-
-/* =====================================================
-   TULIP SHINE
-===================================================== */
-
-.tulip-shine {
-
+.tulip-glow {
     position: absolute;
 
     inset: 0;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent 30%,
-            rgba(255,255,255,.3) 50%,
-            transparent 70%
-        );
-
-    transform:
-        translateX(-120%);
-
-    transition:
-        transform .8s ease;
 
     pointer-events: none;
-}
-
-
-.tulip-card:hover .tulip-shine {
-
-    transform:
-        translateX(120%);
-}
-
-
-/* =====================================================
-   VIDEO MODAL
-===================================================== */
-
-.video-modal {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity .4s ease,
-        visibility .4s ease;
-}
-
-
-.video-modal.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-}
-
-
-/* =====================================================
-   VIDEO BACKDROP
-===================================================== */
-
-.video-backdrop {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        rgba(12,7,1,.82);
-
-    backdrop-filter:
-        blur(12px);
-}
-
-
-/* =====================================================
-   VIDEO BOX
-===================================================== */
-
-.video-box {
-
-    position: relative;
-
-    z-index: 2;
-
-    width:
-        min(760px, 90vw);
-
-    padding: 18px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(63,36,6,.98),
-            rgba(27,14,2,.98)
-        );
-
-    border:
-        1px solid rgba(255,222,130,.35);
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.75),
-        0 0 40px rgba(255,207,90,.12);
-
-    transform:
-        scale(.88)
-        translateY(20px);
-
-    transition:
-        transform .45s cubic-bezier(.2,.8,.2,1);
-}
-
-
-.video-modal.show .video-box {
-
-    transform:
-        scale(1)
-        translateY(0);
-}
-
-
-/* =====================================================
-   CLOSE BUTTON
-===================================================== */
-
-.close-video {
-
-    position: absolute;
-
-    right: -14px;
-    top: -14px;
-
-    width: 38px;
-    height: 38px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        #f1d486;
-
-    color: #4c2b04;
-
-    font-size: 27px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    z-index: 5;
-
-    box-shadow:
-        0 5px 18px rgba(0,0,0,.4);
-
-    transition:
-        transform .2s ease;
-}
-
-
-.close-video:hover {
-
-    transform:
-        rotate(90deg)
-        scale(1.08);
-}
-
-
-/* =====================================================
-   VIDEO FRAME
-===================================================== */
-
-.video-frame {
-
-    width: 100%;
-
-    aspect-ratio:
-        16 / 9;
-
-    overflow: hidden;
-
-    border-radius: 16px;
-
-    background: #080401;
-
-    box-shadow:
-        inset 0 0 30px rgba(0,0,0,.5);
-}
-
-
-.video-frame video {
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: contain;
-
-    background: #080401;
-}
-
-
-/* =====================================================
-   VIDEO MESSAGE
-===================================================== */
-
-.video-message {
-
-    margin: 20px 20px 7px;
-
-    text-align: center;
-
-    font-size: 18px;
-
-    line-height: 1.5;
-
-    font-style: italic;
-
-    color: #ffeab0;
-
-    text-shadow:
-        0 2px 5px rgba(0,0,0,.6);
-
-    min-height: 28px;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 700px) {
-
-    .tulip-garden {
-
-        grid-template-columns:
-            repeat(2, 135px);
-
-        grid-template-rows:
-            repeat(3, 165px);
-
-        gap: 20px;
-
-        padding-top: 105px;
-    }
-
-
-    .tulip-card {
-
-        width: 135px;
-        height: 165px;
-    }
-
-
-    .garden-heading h2 {
-
-        font-size: 26px;
-    }
-
-
-    .garden-heading span {
-
-        font-size: 11px;
-    }
-
-
-    .video-box {
-
-        width: 92vw;
-
-        padding: 12px;
-
-        border-radius: 18px;
-    }
-
-
-    .video-message {
-
-        font-size: 16px;
-
-        margin:
-            15px 10px 5px;
-    }
-}
-
-
-/* =====================================================
-   SMALL PHONES
-===================================================== */
-
-@media (max-width: 420px) {
-
-    .tulip-garden {
-
-        grid-template-columns:
-            repeat(2, 115px);
-
-        grid-template-rows:
-            repeat(3, 145px);
-
-        gap: 14px;
-    }
-
-
-    .tulip-card {
-
-        width: 115px;
-        height: 145px;
-    }
-
-
-    .garden-heading {
-
-        top: 22px;
-    }
-
-
-    .garden-heading h2 {
-
-        font-size: 22px;
-    }
-
-
-    .garden-heading p {
-
-        font-size: 8px;
-
-        letter-spacing: 3px;
-    }
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .butterfly,
-    .butterfly-wing,
-    .firefly,
-    .tulip-card {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-    }
-}
-
-
-/* =====================================================
-   FINAL CUTE MESSAGE PAGE
-===================================================== */
-
-#finalMessagePage {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 500;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform: scale(1.06);
 
     background:
         radial-gradient(
             circle at center,
-            rgba(255, 247, 215, .97),
-            rgba(247, 222, 168, .94)
+            rgba(255,224,145,.05),
+            transparent 65%
         );
-
-    transition:
-        opacity 2s ease,
-        transform 2.5s ease,
-        visibility 2s ease;
-}
-
-
-/* =====================================================
-   SHOW FINAL PAGE
-===================================================== */
-
-#finalMessagePage.visible {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform: scale(1);
-
-}
-
-
-/* =====================================================
-   CONTENT
-===================================================== */
-
-.final-message-content {
-
-    max-width: 650px;
-
-    padding: 40px;
-
-    transform: translateY(25px);
-
-    opacity: 0;
-
-    transition:
-        opacity 1.8s ease .5s,
-        transform 1.8s ease .5s;
-}
-
-
-#finalMessagePage.visible
-.final-message-content {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-/* =====================================================
-   TOP SPARKLES
-===================================================== */
-
-.final-sparkles {
-
-    font-size: 24px;
-
-    letter-spacing: 12px;
-
-    color: #c79228;
-
-    margin-bottom: 28px;
-
-    animation:
-        finalSparkle
-        2.5s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes finalSparkle {
-
-    0%, 100% {
-
-        opacity: .65;
-
-        transform: scale(1);
-
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform: scale(1.08);
-
-    }
-
-}
-
-
-/* =====================================================
-   LABEL
-===================================================== */
-
-.final-label {
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #aa7a27;
-
-    margin-bottom: 20px;
-
-}
-
-
-/* =====================================================
-   HEADING
-===================================================== */
-
-.final-message-content h2 {
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 38px;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #76500f;
-
-    margin-bottom: 18px;
-
-}
-
-
-/* =====================================================
-   MAIN MESSAGE
-===================================================== */
-
-.final-main-message {
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 34px;
-
-    line-height: 1.35;
-
-    font-style: italic;
-
-    color: #805815;
-
-    text-shadow:
-        0 1px 2px rgba(255,255,255,.7);
-
-}
-
-
-/* =====================================================
-   SMALL MESSAGE
-===================================================== */
-
-.final-small-message {
-
-    max-width: 480px;
-
-    margin: 25px auto 0;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size: 14px;
-
-    line-height: 1.8;
-
-    color: #96702f;
-
-}
-
-
-/* =====================================================
-   HEART
-===================================================== */
-
-.final-heart {
-
-    margin-top: 30px;
-
-    font-size: 38px;
-
-    color: #b77d1c;
-
-    text-shadow:
-        0 0 10px rgba(255,211,90,.6);
-
-    animation:
-        heartFloat
-        2.2s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes heartFloat {
-
-    0%, 100% {
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-7px)
-            scale(1.08);
-
-    }
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 600px) {
-
-    .final-message-content {
-
-        padding: 30px 22px;
-
-    }
-
-    .final-sparkles {
-
-        font-size: 20px;
-
-        letter-spacing: 7px;
-
-    }
-
-    .final-message-content h2 {
-
-        font-size: 31px;
-
-    }
-
-    .final-main-message {
-
-        font-size: 27px;
-
-    }
-
-    .final-small-message {
-
-        font-size: 13px;
-
-    }
-
-}
-
-
-
-/* =====================================================
-   GARDEN PAGE
-===================================================== */
-
-.garden-page {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 200;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            rgba(255, 241, 198, .12),
-            rgba(255, 241, 198, .12)
-        ),
-        url("background22.png");
-
-    background-size: cover;
-    background-position: center;
-
-    transition:
-        opacity 1.5s ease,
-        visibility 1.5s ease;
-
-}
-
-
-.garden-page.visible {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-}
-
-
-/* =====================================================
-   GARDEN CREATURES
-===================================================== */
-
-#gardenCreatures {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 1;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-}
-
-
-/* =====================================================
-   GARDEN TITLE
-===================================================== */
-
-.garden-title {
-
-    position: absolute;
-
-    top: 8%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 90%;
-
-    text-align: center;
-
-    z-index: 10;
-
-}
-
-
-.garden-title p {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #8b5c13;
-
-    margin-bottom: 12px;
-
-}
-
-
-.garden-title h2 {
-
-    font-family: Georgia, serif;
-
-    font-size: 39px;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #68440b;
-
-}
-
-
-.garden-title span {
-
-    display: block;
-
-    margin-top: 12px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 14px;
-
-    color: #916a25;
-
-}
-
-
-/* =====================================================
-   TULIP CONTAINER
-===================================================== */
-
-.tulip-container {
-
-    position: absolute;
-
-    left: 50%;
-
-    top: 53%;
-
-    transform: translate(-50%, -50%);
-
-    width: min(900px, 90vw);
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 35px;
-
-    justify-items: center;
-
-    z-index: 20;
-
-}
-
-
-/* =====================================================
-   TULIP
-===================================================== */
-
-.tulip {
-
-    position: relative;
-
-    width: 180px;
-
-    height: 230px;
-
-    border: none;
-
-    padding: 0;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    transition:
-        transform .35s ease,
-        filter .35s ease;
-
-    animation:
-        tulipFloat
-        4s
-        ease-in-out
-        infinite;
-
-}
-
-
-.tulip:nth-child(2) {
-    animation-delay: .5s;
-}
-
-.tulip:nth-child(3) {
-    animation-delay: 1s;
-}
-
-.tulip:nth-child(4) {
-    animation-delay: 1.5s;
-}
-
-.tulip:nth-child(5) {
-    animation-delay: 2s;
-}
-
-.tulip:nth-child(6) {
-    animation-delay: 2.5s;
-}
-
-
-.tulip:hover {
-
-    transform:
-        translateY(-10px)
-        scale(1.06);
-
-    filter:
-        drop-shadow(
-            0 10px 18px rgba(105, 62, 8, .25)
-        );
-
-}
-
-
-/* =====================================================
-   ACTUAL TULIP IMAGE
-===================================================== */
-
-.tulip img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: contain;
-
-    display: block;
-
-    pointer-events: none;
-
-}
-
-
-/* =====================================================
-   TULIP LABEL
-===================================================== */
-
-.tulip-label {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 2px;
-
-    transform: translateX(-50%);
-
-    padding: 6px 13px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(61, 35, 5, .75);
-
-    color: #fff0bd;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-
-    opacity: 0;
 
     transition:
         opacity .3s ease;
-
-    pointer-events: none;
-
 }
 
+.tulip-card.discovered {
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.38),
 
-.tulip:hover .tulip-label {
-
-    opacity: 1;
-
+        0 0 28px
+        rgba(255,205,100,.38);
 }
 
 
 /* =====================================================
-   TULIP INSTRUCTION
+   PROGRESS
 ===================================================== */
 
-.tulip-instruction {
-
+.tulip-progress {
     position: absolute;
 
-    bottom: 6%;
-
     left: 50%;
+    bottom: 22px;
 
-    transform: translateX(-50%);
-
-    z-index: 30;
-
-    width: 90%;
-
-    text-align: center;
+    transform:
+        translateX(-50%);
 
     font-family: Arial, sans-serif;
 
@@ -3051,41 +1947,15 @@ body {
 
     color: #876126;
 
-    letter-spacing: .5px;
-
+    text-align: center;
 }
 
 
 /* =====================================================
-   TULIP FLOAT
+   VIDEO POPUP
 ===================================================== */
 
-@keyframes tulipFloat {
-
-    0%,
-    100% {
-
-        transform:
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-8px);
-
-    }
-
-}
-
-
-/* =====================================================
-   VIDEO OVERLAY
-===================================================== */
-
-.video-overlay {
-
+.video-popup {
     position: fixed;
 
     inset: 0;
@@ -3094,14 +1964,13 @@ body {
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
+    justify-content: center;
 
     padding: 25px;
 
     background:
-        rgba(22, 12, 2, .78);
+        rgba(22,12,2,.78);
 
     backdrop-filter:
         blur(12px);
@@ -3115,18 +1984,14 @@ body {
     transition:
         opacity .4s ease,
         visibility .4s ease;
-
 }
 
-
-.video-overlay.visible {
-
+.video-popup.show {
     opacity: 1;
 
     visibility: visible;
 
     pointer-events: auto;
-
 }
 
 
@@ -3135,10 +2000,10 @@ body {
 ===================================================== */
 
 .video-box {
-
     position: relative;
 
-    width: min(720px, 92vw);
+    width:
+        min(760px, 92vw);
 
     padding: 24px;
 
@@ -3152,10 +2017,12 @@ body {
         );
 
     border:
-        1px solid rgba(155, 105, 17, .35);
+        1px solid
+        rgba(155,105,17,.35);
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,.55);
+        0 25px 80px
+        rgba(0,0,0,.55);
 
     transform:
         scale(.9)
@@ -3163,33 +2030,26 @@ body {
 
     transition:
         transform .45s ease;
-
 }
 
-
-.video-overlay.visible .video-box {
-
+.video-popup.show .video-box {
     transform:
         scale(1)
         translateY(0);
-
 }
 
 
 /* =====================================================
-   CLOSE BUTTON
+   VIDEO CLOSE
 ===================================================== */
 
 .close-video {
-
     position: absolute;
 
-    right: 12px;
-
+    right: 10px;
     top: 10px;
 
     width: 38px;
-
     height: 38px;
 
     border: none;
@@ -3197,7 +2057,7 @@ body {
     border-radius: 50%;
 
     background:
-        rgba(76, 45, 5, .85);
+        rgba(76,45,5,.88);
 
     color: #fff4cb;
 
@@ -3211,16 +2071,12 @@ body {
 
     transition:
         transform .2s ease;
-
 }
 
-
 .close-video:hover {
-
     transform:
         rotate(90deg)
-        scale(1.05);
-
+        scale(1.08);
 }
 
 
@@ -3228,8 +2084,17 @@ body {
    VIDEO
 ===================================================== */
 
-#secretVideo {
+.video-flower {
+    text-align: center;
 
+    color: #b57b18;
+
+    font-size: 24px;
+
+    margin-bottom: 8px;
+}
+
+#memoryVideo {
     width: 100%;
 
     max-height: 62vh;
@@ -3239,35 +2104,10 @@ body {
     border-radius: 16px;
 
     background: #1b1004;
-
 }
 
-
-/* =====================================================
-   VIDEO TOP SPARKLE
-===================================================== */
-
-.video-flower {
-
-    text-align: center;
-
-    color: #b57b18;
-
-    font-size: 24px;
-
-    margin-bottom: 8px;
-
-}
-
-
-/* =====================================================
-   VIDEO MESSAGE
-===================================================== */
-
-.video-message {
-
+#videoMessage {
     margin:
-
         18px
         10px
         4px;
@@ -3287,7 +2127,6 @@ body {
     line-height: 1.5;
 
     color: #704a0d;
-
 }
 
 
@@ -3296,8 +2135,7 @@ body {
 ===================================================== */
 
 .final-page {
-
-    position: fixed;
+    position: absolute;
 
     inset: 0;
 
@@ -3306,7 +2144,6 @@ body {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     text-align: center;
@@ -3314,8 +2151,8 @@ body {
     background:
         radial-gradient(
             circle at center,
-            rgba(255,248,218,.96),
-            rgba(240,211,145,.96)
+            rgba(255,248,218,.98),
+            rgba(240,211,145,.98)
         );
 
     opacity: 0;
@@ -3331,12 +2168,9 @@ body {
         opacity 1.8s ease,
         transform 2s ease,
         visibility 1.8s ease;
-
 }
 
-
 .final-page.visible {
-
     opacity: 1;
 
     visibility: visible;
@@ -3345,21 +2179,15 @@ body {
 
     transform:
         scale(1);
-
 }
 
-
 .final-content {
-
     max-width: 650px;
 
     padding: 35px;
-
 }
 
-
 .final-sparkle {
-
     font-size: 40px;
 
     color: #b77c16;
@@ -3371,12 +2199,9 @@ body {
         2s
         ease-in-out
         infinite;
-
 }
 
-
 .final-small {
-
     font-family: Arial, sans-serif;
 
     font-size: 10px;
@@ -3386,12 +2211,9 @@ body {
     color: #a37529;
 
     margin-bottom: 18px;
-
 }
 
-
 .final-content h2 {
-
     font-size: 45px;
 
     line-height: 1.2;
@@ -3401,12 +2223,9 @@ body {
     font-style: italic;
 
     color: #704a0c;
-
 }
 
-
 .final-message {
-
     margin-top: 24px;
 
     font-family: Arial, sans-serif;
@@ -3416,746 +2235,54 @@ body {
     line-height: 1.7;
 
     color: #916d2c;
-
 }
 
-
 .final-heart {
-
     margin-top: 25px;
 
-    font-size: 32px;
+    font-size: 35px;
 
     color: #b47b16;
 
+    animation:
+        heartFloat
+        2.2s
+        ease-in-out
+        infinite;
 }
-
 
 @keyframes finalSparkle {
 
     0%,
     100% {
+        opacity: .7;
 
         transform:
             scale(1);
-
-        opacity: .7;
-
     }
 
     50% {
+        opacity: 1;
 
         transform:
             scale(1.18);
+    }
+}
 
-        opacity: 1;
+@keyframes heartFloat {
 
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
     }
 
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 650px) {
-
-    .garden-title {
-
-        top: 7%;
-
+    50% {
+        transform:
+            translateY(-7px)
+            scale(1.08);
     }
-
-
-    .garden-title h2 {
-
-        font-size: 30px;
-
-    }
-
-
-    .garden-title span {
-
-        font-size: 12px;
-
-    }
-
-
-    .tulip-container {
-
-        top: 52%;
-
-        width: 94vw;
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 12px;
-
-    }
-
-
-    .tulip {
-
-        width: 145px;
-
-        height: 180px;
-
-    }
-
-
-    .tulip-instruction {
-
-        bottom: 4%;
-
-        font-size: 11px;
-
-    }
-
-
-    .video-box {
-
-        padding: 15px;
-
-        border-radius: 20px;
-
-    }
-
-
-    .final-content h2 {
-
-        font-size: 34px;
-
-    }
-
-}
-
-
-/* =====================================================
-   TULIP GARDEN
-===================================================== */
-
-#tulipGarden {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 120;
-
-    overflow-y: auto;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transform: scale(1.04);
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,245,215,.94),
-            rgba(255,225,180,.92)
-        );
-
-    transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
-
-    padding:
-        60px
-        30px
-        80px;
-}
-
-
-#tulipGarden.visible {
-
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform: scale(1);
-
-}
-
-
-/* =====================================================
-   TULIP TITLE
-===================================================== */
-
-.tulip-title {
-
-    text-align: center;
-
-    margin-bottom: 40px;
-}
-
-
-.tulip-title p {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #a66d65;
-
-    margin-bottom: 14px;
-
-}
-
-
-.tulip-title h2 {
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 43px;
-
-    line-height: 1.15;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #744b42;
-
-}
-
-
-.tulip-title span {
-
-    display: block;
-
-    margin-top: 16px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 14px;
-
-    color: #a47770;
-
-}
-
-
-/* =====================================================
-   TULIP GRID
-===================================================== */
-
-.tulip-grid {
-
-    width: min(950px, 95vw);
-
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 25px;
-
-}
-
-
-/* =====================================================
-   TULIP CARD
-===================================================== */
-
-.tulip-card {
-
-    position: relative;
-
-    width: 100%;
-
-    aspect-ratio: 3 / 4;
-
-    padding: 0;
-
-    border: none;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    cursor: pointer;
-
-    background: transparent;
-
-    box-shadow:
-        0 8px 25px
-        rgba(91,45,25,.18);
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
-
-}
-
-
-.tulip-card:hover {
-
-    transform:
-        translateY(-8px)
-        scale(1.025);
-
-    box-shadow:
-        0 15px 35px
-        rgba(91,45,25,.28);
-
-}
-
-
-/* =====================================================
-   THE ACTUAL IMAGE
-===================================================== */
-
-.tulip-card img {
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    border-radius: 20px;
-
-    transition:
-        transform .6s ease,
-        filter .4s ease;
-
-}
-
-
-.tulip-card:hover img {
-
-    transform: scale(1.06);
-
-    filter:
-        brightness(1.05);
-
-}
-
-
-/* =====================================================
-   SOFT GLOW
-===================================================== */
-
-.tulip-glow {
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent 50%,
-            rgba(50,20,15,.22)
-        );
-
-}
-
-
-/* =====================================================
-   DISCOVERED TULIP
-===================================================== */
-
-.tulip-card.discovered {
-
-    opacity: .58;
-
-}
-
-
-.tulip-card.discovered::after {
-
-    content: "✓";
-
-    position: absolute;
-
-    right: 12px;
-
-    top: 12px;
-
-    width: 30px;
-
-    height: 30px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,245,225,.9);
-
-    color: #9b5e56;
-
-    font-size: 17px;
-
-    box-shadow:
-        0 3px 10px rgba(50,20,10,.2);
-
-}
-
-
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-.tulip-progress {
-
-    text-align: center;
-
-    margin-top: 30px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-    color: #95665e;
-
-}
-
-
-/* =====================================================
-   VIDEO POPUP
-===================================================== */
-
-.video-popup {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 999999;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 25px;
-
-    background:
-        rgba(30,15,12,.78);
-
-    backdrop-filter:
-        blur(12px);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity .35s ease,
-        visibility .35s ease;
-
-}
-
-
-.video-popup.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-}
-
-
-/* =====================================================
-   VIDEO BOX
-===================================================== */
-
-.video-box {
-
-    position: relative;
-
-    width: min(750px, 92vw);
-
-    padding: 18px;
-
-    border-radius: 24px;
-
-    background:
-        rgba(255,244,224,.98);
-
-    box-shadow:
-        0 25px 80px
-        rgba(0,0,0,.45);
-
-    transform:
-        scale(.9);
-
-    transition:
-        transform .4s ease;
-
-}
-
-
-.video-popup.show .video-box {
-
-    transform:
-        scale(1);
-
-}
-
-
-/* =====================================================
-   VIDEO
-===================================================== */
-
-#memoryVideo {
-
-    width: 100%;
-
-    max-height: 65vh;
-
-    display: block;
-
-    border-radius: 16px;
-
-    background: #201511;
-
-}
-
-
-/* =====================================================
-   VIDEO MESSAGE
-===================================================== */
-
-#videoMessage {
-
-    margin:
-
-        18px
-        10px
-        8px;
-
-    text-align: center;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 18px;
-
-    line-height: 1.5;
-
-    font-style: italic;
-
-    color: #795047;
-
-}
-
-
-/* =====================================================
-   CLOSE BUTTON
-===================================================== */
-
-.close-video {
-
-    position: absolute;
-
-    right: -12px;
-
-    top: -12px;
-
-    width: 36px;
-
-    height: 36px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        #fff2dc;
-
-    color: #74463e;
-
-    font-size: 25px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
-    z-index: 10;
-
-    box-shadow:
-        0 4px 15px
-        rgba(0,0,0,.25);
-
-}
-
-
-.close-video:hover {
-
-    transform: scale(1.08);
-
-}
-
-
-/* =====================================================
-   FINAL PAGE
-===================================================== */
-
-.final-page {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 300;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,246,220,.98),
-            rgba(255,224,185,.98)
-        );
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transform: scale(1.04);
-
-    transition:
-        opacity 1.8s ease,
-        transform 1.8s ease;
-
-}
-
-
-.final-page.visible {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    transform: scale(1);
-
-}
-
-
-.final-content {
-
-    max-width: 650px;
-
-    padding: 30px;
-
-}
-
-
-.final-sparkle {
-
-    font-size: 45px;
-
-    color: #c17c72;
-
-    margin-bottom: 20px;
-
-}
-
-
-.final-small {
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-
-    color: #a16c64;
-
-    margin-bottom: 18px;
-
-}
-
-
-.final-content h2 {
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 50px;
-
-    line-height: 1.15;
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    color: #71473f;
-
-}
-
-
-.final-message {
-
-    margin-top: 25px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 15px;
-
-    line-height: 1.7;
-
-    color: #967069;
-
-}
-
-
-.final-heart {
-
-    margin-top: 25px;
-
-    font-size: 35px;
-
-    color: #bd7169;
-
 }
 
 
@@ -4165,56 +2292,117 @@ body {
 
 @media (max-width: 700px) {
 
-    #tulipGarden {
-
-        padding:
-            45px
-            18px
-            60px;
-
+    .lock-area {
+        width: 100%;
     }
 
+    .tulip-garden {
+        padding:
+            35px
+            15px
+            55px;
+    }
 
     .tulip-title h2 {
-
-        font-size: 34px;
-
+        font-size: 30px;
     }
 
+    .tulip-title span {
+        font-size: 11px;
+    }
 
     .tulip-grid {
+        width: 94vw;
+
+        top: 56%;
 
         grid-template-columns:
             repeat(2, 1fr);
 
-        gap: 15px;
-
+        gap: 12px;
     }
 
+    .tulip-card {
+        width: 135px;
+        height: 155px;
+    }
+
+    .video-box {
+        width: 92vw;
+
+        padding: 15px;
+
+        border-radius: 20px;
+    }
+
+    #videoMessage {
+        font-size: 15px;
+    }
 
     .final-content h2 {
-
-        font-size: 38px;
-
+        font-size: 36px;
     }
 
+    .final-message {
+        font-size: 14px;
+    }
 }
 
 
 @media (max-width: 430px) {
 
-    .tulip-grid {
-
-        grid-template-columns:
-            1fr 1fr;
-
+    .lock-wrapper {
+        transform:
+            scale(.9);
     }
 
+    .keypad {
+        width: 225px;
+    }
+
+    .key {
+        height: 52px;
+    }
+
+    .tulip-card {
+        width: 120px;
+        height: 140px;
+    }
 
     .tulip-title h2 {
-
-        font-size: 30px;
-
+        font-size: 27px;
     }
 
+    .tulip-title span {
+        font-size: 10px;
+    }
+
+    .final-content {
+        padding: 25px 20px;
+    }
+
+    .final-content h2 {
+        font-size: 31px;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+    }
 }
