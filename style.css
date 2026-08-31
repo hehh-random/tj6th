@@ -2406,3 +2406,42 @@ body {
             .01ms !important;
     }
 }
+
+/* =====================================================
+   RESTART BUTTON
+===================================================== */
+
+.restart-button {
+    margin-top: 25px;
+    padding: 12px 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.restart-button:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.restart-button:active {
+    transform: translateY(0);
+}
+
