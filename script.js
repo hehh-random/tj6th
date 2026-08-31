@@ -879,3 +879,18 @@ function showFinalPage() {
     );
 
 }
+
+/* =====================================================
+   RESTART BUTTON
+===================================================== */
+
+const restartButton =
+    document.getElementById("restartButton");
+
+restartButton.addEventListener("click", () => {
+
+    // Reload the page completely
+    // This resets everything back to the beginning.
+    window.location.reload();
+
+});
