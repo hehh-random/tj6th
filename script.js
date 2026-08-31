@@ -1,3 +1,7 @@
+/* =====================================================
+   SECRET CODE
+===================================================== */
+
 const SECRET_CODE = "1234";
 
 
@@ -10,9 +14,6 @@ const lockScreen =
 
 const lockArea =
     document.getElementById("lockArea");
-
-const keypad =
-    document.getElementById("keypad");
 
 const codeDisplay =
     document.getElementById("codeDisplay");
@@ -38,26 +39,26 @@ const enterWorld =
 const particles =
     document.getElementById("particles");
 
-const gardenPage =
-    document.getElementById("gardenPage");
-
 const gardenCreatures =
     document.getElementById("gardenCreatures");
 
-const tulipContainer =
-    document.getElementById("tulipContainer");
+const backspace =
+    document.getElementById("backspace");
 
-const tulipInstruction =
-    document.getElementById("tulipInstruction");
+const tulipGarden =
+    document.getElementById("tulipGarden");
 
-const videoOverlay =
-    document.getElementById("videoOverlay");
+const tulipCards =
+    document.querySelectorAll(".tulip-card");
 
-const secretVideo =
-    document.getElementById("secretVideo");
+const tulipProgress =
+    document.getElementById("tulipProgress");
 
-const videoSource =
-    document.getElementById("videoSource");
+const videoPopup =
+    document.getElementById("videoPopup");
+
+const memoryVideo =
+    document.getElementById("memoryVideo");
 
 const videoMessage =
     document.getElementById("videoMessage");
@@ -77,60 +78,11 @@ let enteredCode = "";
 
 let isUnlocking = false;
 
-let videosWatched = 0;
+let tulipsDiscovered = 0;
 
-let currentVideo = 0;
+const discoveredTulips = new Set();
 
-
-/* =====================================================
-   VIDEO INFORMATION
-===================================================== */
-
-const tulips = [
-
-    {
-        image: "tulip1.png",
-        video: "video1.mp4",
-        message:
-            "A little moment, just for you. ♡"
-    },
-
-    {
-        image: "tulip2.png",
-        video: "video2.mp4",
-        message:
-            "I hope this makes you smile. ✦"
-    },
-
-    {
-        image: "tulip3.png",
-        video: "video3.mp4",
-        message:
-            "Some memories deserve their own little place."
-    },
-
-    {
-        image: "tulip4.png",
-        video: "video4.mp4",
-        message:
-            "Here's another little piece of this secret garden. ♡"
-    },
-
-    {
-        image: "tulip5.png",
-        video: "video5.mp4",
-        message:
-            "Keep this one close to your heart. ✦"
-    },
-
-    {
-        image: "tulip6.png",
-        video: "video6.mp4",
-        message:
-            "And one last little surprise..."
-    }
-
-];
+let currentTulip = -1;
 
 
 /* =====================================================
@@ -143,20 +95,17 @@ const numberButtons =
 
 numberButtons.forEach(button => {
 
-    button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener("click", () => {
 
-            if (isUnlocking) {
-                return;
-            }
-
-            addNumber(
-                button.dataset.number
-            );
-
+        if (isUnlocking) {
+            return;
         }
-    );
+
+        addNumber(
+            button.dataset.number
+        );
+
+    });
 
 });
 
@@ -204,29 +153,25 @@ function addNumber(number) {
    BACKSPACE
 ===================================================== */
 
-if (backspace) {
+backspace.addEventListener(
+    "click",
+    () => {
 
-    backspace.addEventListener(
-        "click",
-        () => {
-
-            if (isUnlocking) {
-                return;
-            }
-
-            enteredCode =
-                enteredCode.slice(0, -1);
-
-            updateDisplay();
-
+        if (isUnlocking) {
+            return;
         }
-    );
 
-}
+        enteredCode =
+            enteredCode.slice(0, -1);
+
+        updateDisplay();
+
+    }
+);
 
 
 /* =====================================================
-   UPDATE DISPLAY
+   UPDATE CODE DOTS
 ===================================================== */
 
 function updateDisplay() {
@@ -238,22 +183,10 @@ function updateDisplay() {
     dots.forEach(
         (dot, index) => {
 
-            if (
-                index <
-                enteredCode.length
-            ) {
-
-                dot.classList.add(
-                    "active"
-                );
-
-            } else {
-
-                dot.classList.remove(
-                    "active"
-                );
-
-            }
+            dot.classList.toggle(
+                "active",
+                index < enteredCode.length
+            );
 
         }
     );
@@ -289,22 +222,19 @@ function checkCode() {
 
 function wrongCode() {
 
-    lockArea.classList.remove(
-        "shake"
-    );
+    lockArea.classList.remove("shake");
 
     void lockArea.offsetWidth;
 
-    lockArea.classList.add(
-        "shake"
-    );
+    lockArea.classList.add("shake");
 
 
     instruction.textContent =
         "That's not the right key...";
 
-    instruction.style.color =
-        "#a34e32";
+    instruction.classList.add(
+        "wrong"
+    );
 
 
     setTimeout(
@@ -317,7 +247,9 @@ function wrongCode() {
             instruction.textContent =
                 "Enter the secret code...";
 
-            instruction.style.color = "";
+            instruction.classList.remove(
+                "wrong"
+            );
 
         },
         900
@@ -347,11 +279,13 @@ function unlock() {
     createParticles();
 
 
+    /* First message */
+
     setTimeout(
         () => {
 
             unlockMessage.classList.add(
-                "show-unlock-message"
+                "show"
             );
 
         },
@@ -359,17 +293,21 @@ function unlock() {
     );
 
 
+    /* Second message */
+
     setTimeout(
         () => {
 
             comeInside.classList.add(
-                "show-come-inside"
+                "show"
             );
 
         },
         5100
     );
 
+
+    /* Secret world */
 
     setTimeout(
         () => {
@@ -404,9 +342,8 @@ function createParticles() {
             document.createElement("div");
 
 
-        particle.classList.add(
-            "particle"
-        );
+        particle.className =
+            "particle";
 
 
         particle.style.left =
@@ -483,317 +420,29 @@ enterWorld.addEventListener(
     "click",
     () => {
 
+        enterWorld.disabled = true;
+
         enterWorld.textContent =
             "The garden is waking...";
+
 
         gardenCreatures.classList.add(
             "garden-active"
         );
 
-        setTimeout(() => {
 
-            showTulipGarden();
+        createGardenCreatures();
 
-        }, 1800);
-
-    }
-);
-
-/* =====================================================
-   CREATE GARDEN
-===================================================== */
-
-function createGarden() {
-
-    gardenCreatures.innerHTML = "";
-
-    createButterflies();
-
-    createFireflies();
-
-    createTulips();
-
-}
-
-
-/* =====================================================
-   CREATE TULIPS
-===================================================== */
-
-function createTulips() {
-
-    tulipContainer.innerHTML = "";
-
-
-    tulips.forEach(
-        (tulip, index) => {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.className =
-                "tulip";
-
-
-            button.type =
-                "button";
-
-
-            button.dataset.index =
-                index;
-
-
-            /* -----------------------------------------
-               IMAGE
-            ----------------------------------------- */
-
-            const image =
-                document.createElement(
-                    "img"
-                );
-
-
-            image.src =
-                tulip.image;
-
-
-            image.alt =
-                `Secret tulip ${index + 1}`;
-
-
-            /* -----------------------------------------
-               IMAGE ERROR CHECK
-            ----------------------------------------- */
-
-            image.onerror =
-                function() {
-
-                    console.error(
-                        `Could not load ${tulip.image}`
-                    );
-
-                    this.alt =
-                        `Missing ${tulip.image}`;
-
-                };
-
-
-            button.appendChild(
-                image
-            );
-
-
-            /* -----------------------------------------
-               LABEL
-            ----------------------------------------- */
-
-            const label =
-                document.createElement(
-                    "span"
-                );
-
-
-            label.className =
-                "tulip-label";
-
-
-            label.textContent =
-                "open me ✦";
-
-
-            button.appendChild(
-                label
-            );
-
-
-            /* -----------------------------------------
-               CLICK
-            ----------------------------------------- */
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    openVideo(index);
-
-                }
-            );
-
-
-            tulipContainer.appendChild(
-                button
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   OPEN VIDEO
-===================================================== */
-
-function openVideo(index) {
-
-    currentVideo = index;
-
-
-    const tulip =
-        tulips[index];
-
-
-    /*
-        Set video.
-    */
-
-    videoSource.src =
-        tulip.video;
-
-
-    /*
-        Tell browser to reload
-        the new video source.
-    */
-
-    secretVideo.load();
-
-
-    /*
-        Set message immediately.
-    */
-
-    videoMessage.textContent =
-        tulip.message;
-
-
-    /*
-        Show popup.
-    */
-
-    videoOverlay.classList.add(
-        "visible"
-    );
-
-
-    /*
-        Try to start video.
-    */
-
-    secretVideo.play().catch(
-        () => {
-
-            /*
-                Browser may block
-                autoplay.
-
-                The controls will still
-                allow the user to press play.
-            */
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   VIDEO ENDED
-===================================================== */
-
-secretVideo.addEventListener(
-    "ended",
-    () => {
-
-        markVideoWatched();
-
-    }
-);
-
-
-/* =====================================================
-   MARK VIDEO WATCHED
-===================================================== */
-
-function markVideoWatched() {
-
-    /*
-        Don't count the same video twice.
-    */
-
-    const tulipButtons =
-        document.querySelectorAll(
-            ".tulip"
-        );
-
-
-    const button =
-        tulipButtons[currentVideo];
-
-
-    if (
-        button &&
-        button.dataset.watched === "true"
-    ) {
-
-        return;
-
-    }
-
-
-    if (button) {
-
-        button.dataset.watched =
-            "true";
-
-    }
-
-
-    videosWatched++;
-
-
-    /*
-        Change instruction.
-    */
-
-    if (
-        videosWatched <
-        tulips.length
-    ) {
-
-        tulipInstruction.textContent =
-            `${videosWatched} of 6 little secrets discovered ✦`;
-
-    } else {
-
-        tulipInstruction.textContent =
-            "You found them all... ♡";
-
-    }
-
-
-    /*
-        If all six videos
-        have been watched,
-        prepare final page.
-    */
-
-    if (
-        videosWatched ===
-        tulips.length
-    ) {
 
         setTimeout(
             () => {
 
-                closeVideoPopup();
+                secretWorld.classList.remove(
+                    "visible"
+                );
 
-                setTimeout(
-                    showFinalPage,
-                    700
+                tulipGarden.classList.add(
+                    "visible"
                 );
 
             },
@@ -801,85 +450,20 @@ function markVideoWatched() {
         );
 
     }
-
-}
-
-
-/* =====================================================
-   CLOSE VIDEO
-===================================================== */
-
-closeVideo.addEventListener(
-    "click",
-    closeVideoPopup
 );
 
 
 /* =====================================================
-   CLICK OUTSIDE VIDEO
+   CREATE GARDEN CREATURES
 ===================================================== */
 
-videoOverlay.addEventListener(
-    "click",
-    event => {
+function createGardenCreatures() {
 
-        if (
-            event.target ===
-            videoOverlay
-        ) {
+    gardenCreatures.innerHTML = "";
 
-            closeVideoPopup();
+    createButterflies();
 
-        }
-
-    }
-);
-
-
-/* =====================================================
-   CLOSE VIDEO FUNCTION
-===================================================== */
-
-function closeVideoPopup() {
-
-    secretVideo.pause();
-
-    videoOverlay.classList.remove(
-        "visible"
-    );
-
-}
-
-
-/* =====================================================
-   ESC KEY
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            closeVideoPopup();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   FINAL PAGE
-===================================================== */
-
-function showFinalPage() {
-
-    finalPage.classList.add(
-        "visible"
-    );
+    createFireflies();
 
 }
 
@@ -900,9 +484,7 @@ function createButterflies() {
     ) {
 
         const butterfly =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         butterfly.className =
@@ -944,74 +526,45 @@ function createButterflies() {
 
 
         const leftWing =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         leftWing.className =
             "butterfly-wing left";
 
 
         const rightWing =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         rightWing.className =
             "butterfly-wing right";
 
 
         const body =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         body.className =
             "butterfly-body";
 
 
         const leftAntenna =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         leftAntenna.className =
             "antenna left";
 
 
         const rightAntenna =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         rightAntenna.className =
             "antenna right";
 
 
-        butterfly.appendChild(
-            leftWing
-        );
-
-        butterfly.appendChild(
-            rightWing
-        );
-
-        butterfly.appendChild(
-            body
-        );
-
-        butterfly.appendChild(
-            leftAntenna
-        );
-
-        butterfly.appendChild(
-            rightAntenna
-        );
+        butterfly.appendChild(leftWing);
+        butterfly.appendChild(rightWing);
+        butterfly.appendChild(body);
+        butterfly.appendChild(leftAntenna);
+        butterfly.appendChild(rightAntenna);
 
 
         gardenCreatures.appendChild(
@@ -1029,7 +582,7 @@ function createButterflies() {
 
 function createFireflies() {
 
-    const amount = 10;
+    const amount = 12;
 
 
     for (
@@ -1039,9 +592,7 @@ function createFireflies() {
     ) {
 
         const firefly =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         firefly.className =
@@ -1082,8 +633,8 @@ function createFireflies() {
         );
 
 
-        firefly.style.scale =
-            random(.8, 1.35);
+        firefly.style.transform =
+            `scale(${random(.8, 1.35)})`;
 
 
         gardenCreatures.appendChild(
@@ -1094,169 +645,130 @@ function createFireflies() {
 
 }
 
+
 /* =====================================================
-   TULIP GARDEN
+   TULIP CLICK
 ===================================================== */
 
-const tulipGarden =
-    document.getElementById("tulipGarden");
+tulipCards.forEach(
+    (tulip, index) => {
 
-const tulipCards =
-    document.querySelectorAll(".tulip-card");
+        tulip.addEventListener(
+            "click",
+            () => {
 
-const videoPopup =
-    document.getElementById("videoPopup");
+                openVideo(
+                    index
+                );
 
-const memoryVideo =
-    document.getElementById("memoryVideo");
+            }
+        );
 
-const videoMessage =
-    document.getElementById("videoMessage");
-
-const closeVideo =
-    document.getElementById("closeVideo");
-
-const tulipProgress =
-    document.getElementById("tulipProgress");
-
-const finalPage =
-    document.getElementById("finalPage");
-
-
-let tulipsDiscovered = 0;
-
-const discoveredTulips =
-    new Set();
+    }
+);
 
 
 /* =====================================================
-   SHOW TULIP GARDEN
+   OPEN VIDEO
 ===================================================== */
 
-function showTulipGarden() {
+function openVideo(index) {
 
-    tulipGarden.classList.add("visible");
+    currentTulip = index;
+
+
+    const videoFile =
+        tulipCards[index].dataset.video;
+
+
+    const message =
+        tulipCards[index].dataset.message;
+
+
+    /* Load video */
+
+    memoryVideo.src =
+        "./" + videoFile;
+
+    memoryVideo.load();
+
+
+    /* Message */
+
+    videoMessage.textContent =
+        message;
+
+
+    /* Show popup */
+
+    videoPopup.classList.add(
+        "show"
+    );
+
+
+    /* Mark discovered */
+
+    if (
+        !discoveredTulips.has(index)
+    ) {
+
+        discoveredTulips.add(index);
+
+        tulipsDiscovered++;
+
+
+        tulipCards[index].classList.add(
+            "discovered"
+        );
+
+
+        tulipProgress.textContent =
+            `${tulipsDiscovered} / 6 discovered`;
+
+    }
+
+
+    /* Play */
+
+    memoryVideo.play().catch(
+        () => {
+            /* User can press play manually */
+        }
+    );
 
 }
 
 
 /* =====================================================
-   CLICK TULIP
+   VIDEO ENDED
 ===================================================== */
 
-tulipCards.forEach((tulip, index) => {
-
-    tulip.addEventListener("click", () => {
-
-        const videoFile =
-            tulip.dataset.video;
-
-        const message =
-            tulip.dataset.message;
-
-
-        /* ---------------------------------------------
-           LOAD VIDEO
-        --------------------------------------------- */
-
-        memoryVideo.src =
-            "./" + videoFile;
-
-
-        memoryVideo.load();
-
-
-        /* ---------------------------------------------
-           MESSAGE
-        --------------------------------------------- */
-
-        videoMessage.textContent =
-            message;
-
-
-        /* ---------------------------------------------
-           SHOW POPUP
-        --------------------------------------------- */
-
-        videoPopup.classList.add("show");
-
-
-        /* ---------------------------------------------
-           MARK DISCOVERED
-        --------------------------------------------- */
+memoryVideo.addEventListener(
+    "ended",
+    () => {
 
         if (
-            !discoveredTulips.has(index)
+            tulipsDiscovered === 6
         ) {
 
-            discoveredTulips.add(index);
+            setTimeout(
+                () => {
 
-            tulipsDiscovered++;
+                    closeMemoryVideo();
 
-            tulip.classList.add(
-                "discovered"
+                },
+                1000
             );
-
-
-            tulipProgress.textContent =
-                `${tulipsDiscovered} / 6 discovered`;
 
         }
 
-
-        /* ---------------------------------------------
-           PLAY
-        --------------------------------------------- */
-
-        memoryVideo.play().catch(() => {});
-
-    });
-
-});
+    }
+);
 
 
 /* =====================================================
    CLOSE VIDEO
 ===================================================== */
-
-function closeMemoryVideo() {
-
-    memoryVideo.pause();
-
-    memoryVideo.currentTime = 0;
-
-    memoryVideo.removeAttribute("src");
-
-    memoryVideo.load();
-
-    videoPopup.classList.remove("show");
-
-
-    /*
-        If all six have been discovered,
-        show final page after closing.
-    */
-
-    if (
-        tulipsDiscovered === 6
-    ) {
-
-        setTimeout(() => {
-
-            tulipGarden.classList.remove(
-                "visible"
-            );
-
-            finalPage.classList.add(
-                "visible"
-            );
-
-        }, 600);
-
-    }
-
-}
-
 
 closeVideo.addEventListener(
     "click",
@@ -1273,7 +785,8 @@ videoPopup.addEventListener(
     event => {
 
         if (
-            event.target === videoPopup
+            event.target ===
+            videoPopup
         ) {
 
             closeMemoryVideo();
@@ -1282,6 +795,47 @@ videoPopup.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   CLOSE VIDEO FUNCTION
+===================================================== */
+
+function closeMemoryVideo() {
+
+    memoryVideo.pause();
+
+    memoryVideo.currentTime = 0;
+
+    memoryVideo.removeAttribute(
+        "src"
+    );
+
+    memoryVideo.load();
+
+
+    videoPopup.classList.remove(
+        "show"
+    );
+
+
+    currentTulip = -1;
+
+
+    /* Show final page */
+
+    if (
+        tulipsDiscovered === 6
+    ) {
+
+        setTimeout(
+            showFinalPage,
+            700
+        );
+
+    }
+
+}
 
 
 /* =====================================================
@@ -1303,3 +857,25 @@ document.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   FINAL PAGE
+===================================================== */
+
+function showFinalPage() {
+
+    tulipGarden.classList.remove(
+        "visible"
+    );
+
+    gardenCreatures.classList.remove(
+        "garden-active"
+    );
+
+
+    finalPage.classList.add(
+        "visible"
+    );
+
+}
