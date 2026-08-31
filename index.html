@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -12,104 +11,36 @@
 
     <title>For You ♡</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
-    <!-- =====================================================
-         MAIN SECRET LOCK SCREEN
-    ====================================================== -->
-
     <main id="lockScreen">
 
-
-        <!-- =================================================
+        <!-- =====================================================
              ATMOSPHERE
-        ================================================== -->
+        ====================================================== -->
 
         <div class="golden-glow"></div>
-
         <div class="light-burst"></div>
-
         <div id="particles"></div>
 
-
-        <!-- =================================================
-             MAGICAL GARDEN CREATURES
-             
-             IMPORTANT:
-             Butterflies + fireflies are ONLY decorative.
-             They are NOT clickable.
-        ================================================== -->
-
+        <!-- Decorative butterflies + fireflies -->
         <div id="gardenCreatures"></div>
 
 
-        <!-- =================================================
-             SECRET COUNTER
-             
-             Kept hidden/unused now because the six
-             discoveries are the tulips.
-        ================================================== -->
-
-        <div
-            id="secretCounter"
-            style="display: none;"
-        >
-
-            ✦ Secrets discovered:
-
-            <span id="secretCount">
-                0
-            </span>
-
-            / 6
-
-        </div>
-
-
-        <!-- =================================================
-             CREATURE MESSAGE
-             
-             Not used anymore.
-        ================================================== -->
-
-        <div
-            id="creatureMessage"
-            style="display: none;"
-        >
-
-            <div class="message-sparkle">
-                ✦
-            </div>
-
-            <p id="creatureMessageText"></p>
-
-        </div>
-
-
-        <!-- =================================================
+        <!-- =====================================================
              LOCK AREA
-        ================================================== -->
+        ====================================================== -->
 
         <div
             class="lock-area"
             id="lockArea"
         >
 
-
-            <!-- =================================================
-                 LOCK + KEY
-            ================================================== -->
-
             <div class="lock-wrapper">
-
 
                 <!-- HEART LOCK -->
 
@@ -118,27 +49,15 @@
                     id="heartLock"
                 >
 
-                    <!-- Shackle -->
-
                     <div class="lock-shackle">
-
                         <div class="shackle-inner"></div>
-
                     </div>
-
-
-                    <!-- Heart -->
 
                     <div class="heart-body">
 
-                        <!-- Keyhole -->
-
                         <div class="keyhole">
-
                             <div class="keyhole-circle"></div>
-
                             <div class="keyhole-line"></div>
-
                         </div>
 
                     </div>
@@ -146,9 +65,7 @@
                 </div>
 
 
-                <!-- =================================================
-                     GOLDEN KEY
-                ================================================== -->
+                <!-- GOLDEN KEY -->
 
                 <div
                     class="golden-key"
@@ -156,15 +73,11 @@
                 >
 
                     <div class="key-ring"></div>
-
                     <div class="key-shaft"></div>
 
                     <div class="key-teeth">
-
                         <span></span>
-
                         <span></span>
-
                     </div>
 
                 </div>
@@ -172,9 +85,7 @@
             </div>
 
 
-            <!-- =================================================
-                 LOCK TEXT
-            ================================================== -->
+            <!-- LOCK TEXT -->
 
             <div class="lock-text">
 
@@ -186,132 +97,46 @@
                     Enter the secret code...
                 </p>
 
-
-                <!-- Code dots -->
-
                 <div
                     class="code-display"
                     id="codeDisplay"
                 >
-
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-
                 </div>
 
             </div>
 
 
-            <!-- =================================================
-                 KEYPAD
-            ================================================== -->
+            <!-- KEYPAD -->
 
             <div
                 class="keypad"
                 id="keypad"
             >
 
+                <button class="key" data-number="1" type="button">1</button>
+                <button class="key" data-number="2" type="button">2</button>
+                <button class="key" data-number="3" type="button">3</button>
 
-                <!-- ROW 1 -->
+                <button class="key" data-number="4" type="button">4</button>
+                <button class="key" data-number="5" type="button">5</button>
+                <button class="key" data-number="6" type="button">6</button>
 
-                <button
-                    class="key"
-                    data-number="1"
-                    type="button"
-                >
-                    1
-                </button>
-
-                <button
-                    class="key"
-                    data-number="2"
-                    type="button"
-                >
-                    2
-                </button>
-
-                <button
-                    class="key"
-                    data-number="3"
-                    type="button"
-                >
-                    3
-                </button>
-
-
-                <!-- ROW 2 -->
-
-                <button
-                    class="key"
-                    data-number="4"
-                    type="button"
-                >
-                    4
-                </button>
-
-                <button
-                    class="key"
-                    data-number="5"
-                    type="button"
-                >
-                    5
-                </button>
-
-                <button
-                    class="key"
-                    data-number="6"
-                    type="button"
-                >
-                    6
-                </button>
-
-
-                <!-- ROW 3 -->
-
-                <button
-                    class="key"
-                    data-number="7"
-                    type="button"
-                >
-                    7
-                </button>
-
-                <button
-                    class="key"
-                    data-number="8"
-                    type="button"
-                >
-                    8
-                </button>
-
-                <button
-                    class="key"
-                    data-number="9"
-                    type="button"
-                >
-                    9
-                </button>
-
-
-                <!-- ROW 4 -->
+                <button class="key" data-number="7" type="button">7</button>
+                <button class="key" data-number="8" type="button">8</button>
+                <button class="key" data-number="9" type="button">9</button>
 
                 <button
                     class="key empty"
                     type="button"
-                    aria-hidden="true"
                     tabindex="-1"
-                >
-                </button>
+                    aria-hidden="true"
+                ></button>
 
-                <button
-                    class="key"
-                    data-number="0"
-                    type="button"
-                >
-                    0
-                </button>
+                <button class="key" data-number="0" type="button">0</button>
 
                 <button
                     class="key backspace"
@@ -336,9 +161,7 @@
             id="unlockMessage"
         >
 
-            <div class="unlock-icon">
-                ✦
-            </div>
+            <div class="unlock-icon">✦</div>
 
             <h2>
                 You found the key.
@@ -352,7 +175,7 @@
 
 
         <!-- =====================================================
-             COME INSIDE MESSAGE
+             COME INSIDE
         ====================================================== -->
 
         <div
@@ -360,9 +183,7 @@
             id="comeInside"
         >
 
-            <div class="small-key">
-                🔑
-            </div>
+            <div class="small-key">🔑</div>
 
             <h2>
                 Come inside...
@@ -386,9 +207,7 @@
 
             <div class="world-content">
 
-                <div class="world-symbol">
-                    ☾
-                </div>
+                <div class="world-symbol">☾</div>
 
                 <p class="little-label">
                     WELCOME
@@ -417,242 +236,241 @@
         </section>
 
 
+        <!-- =====================================================
+             TULIP GARDEN
+        ====================================================== -->
 
-<!-- =====================================================
-     TULIP GARDEN
-===================================================== -->
-
-<section id="tulipGarden">
-
-    <div class="tulip-title">
-        <p>JUST FOR YOU</p>
-
-        <h2>
-            A little garden<br>
-            of memories ♡
-        </h2>
-
-        <span>
-            Tap each flower to discover what is inside...
-        </span>
-    </div>
-
-
-    <!-- =================================================
-         TULIPS
-    ================================================== -->
-
-    <div class="tulip-grid">
-
-        <!-- TULIP 1 -->
-
-        <button
-            class="tulip-card"
-            data-video="video1.mp4"
-            data-message="A little moment I wanted you to keep. ♡"
-            type="button"
+        <section
+            id="tulipGarden"
+            class="tulip-garden"
         >
 
-            <img
-                src="./tulip1.jpg"
-                alt="Pink tulip"
-            >
+            <div class="tulip-title">
 
-            <div class="tulip-glow"></div>
+                <p>JUST FOR YOU</p>
 
-        </button>
+                <h2>
+                    A little garden<br>
+                    of memories ♡
+                </h2>
+
+                <span>
+                    Tap each flower to discover what is inside...
+                </span>
+
+            </div>
 
 
-        <!-- TULIP 2 -->
+            <!-- TULIPS -->
 
-        <button
-            class="tulip-card"
-            data-video="video2.mp4"
-            data-message="Some memories are small, but they mean so much. ✦"
-            type="button"
+            <div class="tulip-grid">
+
+
+                <!-- TULIP 1 -->
+
+                <button
+                    class="tulip-card"
+                    data-video="video1.mp4"
+                    data-message="A little moment I wanted you to keep. ♡"
+                    type="button"
+                >
+
+                    <img
+                        src="./tulip1.jpg"
+                        alt="Pink tulip"
+                    >
+
+                    <div class="tulip-glow"></div>
+
+                </button>
+
+
+                <!-- TULIP 2 -->
+
+                <button
+                    class="tulip-card"
+                    data-video="video2.mp4"
+                    data-message="Some memories are small, but they mean so much. ✦"
+                    type="button"
+                >
+
+                    <img
+                        src="./tulip2.jpg"
+                        alt="Pink tulip"
+                    >
+
+                    <div class="tulip-glow"></div>
+
+                </button>
+
+
+                <!-- TULIP 3 -->
+
+                <button
+                    class="tulip-card"
+                    data-video="video3.mp4"
+                    data-message="Here's another little piece of this secret garden. ♡"
+                    type="button"
+                >
+
+                    <img
+                        src="./tulip3.jpg"
+                        alt="Pink tulip"
+                    >
+
+                    <div class="tulip-glow"></div>
+
+                </button>
+
+
+                <!-- TULIP 4 -->
+
+                <button
+                    class="tulip-card"
+                    data-video="video4.mp4"
+                    data-message="A tiny memory, saved here just for you. ✦"
+                    type="button"
+                >
+
+                    <img
+                        src="./tulip4.jpg"
+                        alt="Pink tulip"
+                    >
+
+                    <div class="tulip-glow"></div>
+
+                </button>
+
+
+                <!-- TULIP 5 -->
+
+                <button
+                    class="tulip-card"
+                    data-video="video5.mp4"
+                    data-message="You found another one... keep going. ♡"
+                    type="button"
+                >
+
+                    <img
+                        src="./tulip5.jpg"
+                        alt="Pink tulip"
+                    >
+
+                    <div class="tulip-glow"></div>
+
+                </button>
+
+
+                <!-- TULIP 6 -->
+
+                <button
+                    class="tulip-card"
+                    data-video="video6.mp4"
+                    data-message="One last little memory from this garden. ✦"
+                    type="button"
+                >
+
+                    <img
+                        src="./tulip6.jpg"
+                        alt="Pink tulip"
+                    >
+
+                    <div class="tulip-glow"></div>
+
+                </button>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="tulip-progress">
+
+                <span id="tulipProgress">
+                    0 / 6 discovered
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             VIDEO POPUP
+        ====================================================== -->
+
+        <div
+            id="videoPopup"
+            class="video-popup"
         >
 
-            <img
-                src="./tulip2.jpg"
-                alt="Pink tulip"
-            >
+            <div class="video-box">
 
-            <div class="tulip-glow"></div>
+                <button
+                    id="closeVideo"
+                    class="close-video"
+                    type="button"
+                    aria-label="Close video"
+                >
+                    ×
+                </button>
 
-        </button>
+                <div class="video-flower">
+                    ✦
+                </div>
 
+                <video
+                    id="memoryVideo"
+                    controls
+                    playsinline
+                ></video>
 
-        <!-- TULIP 3 -->
+                <p id="videoMessage"></p>
 
-        <button
-            class="tulip-card"
-            data-video="video3.mp4"
-            data-message="Here's another little piece of this secret garden. ♡"
-            type="button"
-        >
+            </div>
 
-            <img
-                src="./tulip3.jpg"
-                alt="Pink tulip"
-            >
-
-            <div class="tulip-glow"></div>
-
-        </button>
-
-
-        <!-- TULIP 4 -->
-
-        <button
-            class="tulip-card"
-            data-video="video4.mp4"
-            data-message="A tiny memory, saved here just for you. ✦"
-            type="button"
-        >
-
-            <img
-                src="./tulip4.jpg"
-                alt="Pink tulip"
-            >
-
-            <div class="tulip-glow"></div>
-
-        </button>
-
-
-        <!-- TULIP 5 -->
-
-        <button
-            class="tulip-card"
-            data-video="video5.mp4"
-            data-message="You found another one... keep going. ♡"
-            type="button"
-        >
-
-            <img
-                src="./tulip5.jpg"
-                alt="Pink tulip"
-            >
-
-            <div class="tulip-glow"></div>
-
-        </button>
-
-
-        <!-- TULIP 6 -->
-
-        <button
-            class="tulip-card"
-            data-video="video6.mp4"
-            data-message="One last little memory from this garden. ✦"
-            type="button"
-        >
-
-            <img
-                src="./tulip6.jpg"
-                alt="Pink tulip"
-            >
-
-            <div class="tulip-glow"></div>
-
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         PROGRESS
-    ================================================== -->
-
-    <div class="tulip-progress">
-
-        <span id="tulipProgress">
-            0 / 6 discovered
-        </span>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     VIDEO POPUP
-===================================================== -->
-
-<div
-    id="videoPopup"
-    class="video-popup"
->
-
-    <div class="video-box">
-
-        <button
-            id="closeVideo"
-            class="close-video"
-            type="button"
-        >
-            ×
-        </button>
-
-
-        <video
-            id="memoryVideo"
-            controls
-            playsinline
-        ></video>
-
-
-        <p id="videoMessage"></p>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     FINAL MESSAGE PAGE
-===================================================== -->
-
-<section
-    id="finalPage"
-    class="final-page"
->
-
-    <div class="final-content">
-
-        <div class="final-sparkle">
-            ✦
         </div>
 
-        <p class="final-small">
-            YOU FOUND THEM ALL
-        </p>
 
-        <h2>
-            And now you've<br>
-            reached the end...
-        </h2>
+        <!-- =====================================================
+             FINAL PAGE
+        ====================================================== -->
 
-        <p class="final-message">
-            I hope these little pieces of this garden
-            made you smile. ♡
-        </p>
+        <section
+            id="finalPage"
+            class="final-page"
+        >
 
-        <div class="final-heart">
-            ♡
-        </div>
+            <div class="final-content">
 
-    </div>
+                <div class="final-sparkle">
+                    ✦
+                </div>
 
-</section>
+                <p class="final-small">
+                    YOU FOUND THEM ALL
+                </p>
 
+                <h2>
+                    And now you've<br>
+                    reached the end...
+                </h2>
+
+                <p class="final-message">
+                    I hope these little pieces of this garden
+                    made you smile. ♡
+                </p>
+
+                <div class="final-heart">
+                    ♡
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
 
     <script src="script.js"></script>
 
